@@ -54,3 +54,6 @@ doc/
 .secret
 .idea/workspace.xml
 .idea/workspace.xml
+/public/packs
+/public/packs-test
+/node_modules
