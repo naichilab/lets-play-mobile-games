@@ -484,6 +484,16 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
+      <library name="rack-proxy (vbundled(0.6.2)) [path][gem]">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.4.0/gems/rack-proxy-0.6.2/lib" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.4.0/gems/rack-proxy-0.6.2/lib" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
       <library name="rack-test (vbundled(0.7.0)) [path][gem]">
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.4.0/gems/rack-test-0.7.0/lib" />
@@ -790,6 +800,22 @@
         </CLASSES>
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.4.0/gems/web-console-3.5.1/lib" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="webpacker (vbundled(3.0.2)) [path][gem]">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.4.0/bundler/gems/webpacker-3b09f788ec7f/exe" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.4.0/bundler/gems/webpacker-3b09f788ec7f/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.4.0/bundler/gems/webpacker-3b09f788ec7f/package" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.4.0/bundler/gems/webpacker-3b09f788ec7f/gemfiles" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.4.0/bundler/gems/webpacker-3b09f788ec7f/exe" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.4.0/bundler/gems/webpacker-3b09f788ec7f/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.4.0/bundler/gems/webpacker-3b09f788ec7f/package" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.4.0/bundler/gems/webpacker-3b09f788ec7f/gemfiles" />
         </SOURCES>
       </library>
     </orderEntry>
