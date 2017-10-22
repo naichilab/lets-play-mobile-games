@@ -203,7 +203,7 @@ body {
     overflow: hidden;
     text-align: center;
     background-color: #f0e68c;
-    background-image: url("../img/circle.png");
+    background-image: url("/circle.png");
     background-repeat: no-repeat;
     background-position: -35% center;
     -webkit-background-size: 70% 70%;
