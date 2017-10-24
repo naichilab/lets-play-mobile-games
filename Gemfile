@@ -7,6 +7,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'dotenv-rails', '~> 2.2.1' , groups: [:development, :test]
+
 gem 'webpacker', github: 'rails/webpacker'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
