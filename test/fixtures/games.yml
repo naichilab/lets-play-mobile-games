@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  permission: 
+  specific_conditions: MyString
+  android_url: MyString
+  ios_url: MyString
+
+two:
+  title: MyString
+  permission: 
+  specific_conditions: MyString
+  android_url: MyString
+  ios_url: MyString

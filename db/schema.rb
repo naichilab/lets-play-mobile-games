@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171024152547) do
+ActiveRecord::Schema.define(version: 20171024175032) do
+
+  create_table "games", force: :cascade do |t|
+    t.string "title", default: "", null: false
+    t.boolean "permission", default: false, null: false
+    t.string "specific_conditions"
+    t.string "android_url"
+    t.string "ios_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "social_profiles", force: :cascade do |t|
     t.string "user_id"

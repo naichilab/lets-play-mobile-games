@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @game.title %>
+</p>
+
+<p>
+  <strong>Permission:</strong>
+  <%= @game.permission %>
+</p>
+
+<p>
+  <strong>Specific conditions:</strong>
+  <%= @game.specific_conditions %>
+</p>
+
+<p>
+  <strong>Android url:</strong>
+  <%= @game.android_url %>
+</p>
+
+<p>
+  <strong>Ios url:</strong>
+  <%= @game.ios_url %>
+</p>
+
+<%= link_to 'Edit', edit_game_path(@game) %> |
+<%= link_to 'Back', games_path %>
