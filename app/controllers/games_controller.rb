@@ -26,8 +26,22 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(game_params)
 
+
+    if params[:game][:icon]
+      @game.icon = params[:game][:icon] # Assign a file like this
+
+    end
+
+
+
     respond_to do |format|
       if @game.save
+        pp @game.icon.url # => '/url/to/file.png'
+        pp @game.icon.current_path # => 'path/to/file.png'
+        pp @game.icon.thumb.url
+        pp @game.icon.thumb.current_path
+        pp @game.icon_identifier # => 'file.png'
+
         format.html { redirect_to @game, notice: 'Game was successfully created.' }
         format.json { render :show, status: :created, location: @game }
       else
@@ -35,6 +49,9 @@ class GamesController < ApplicationController
         format.json { render json: @game.errors, status: :unprocessable_entity }
       end
     end
+
+
+
   end
 
   # PATCH/PUT /games/1
@@ -69,6 +86,6 @@ class GamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
-      params.require(:game).permit(:title, :permission, :specific_conditions, :android_url, :ios_url)
+      params.require(:game).permit(:title, :permission, :specific_conditions, :android_url, :ios_url, :icon)
     end
 end

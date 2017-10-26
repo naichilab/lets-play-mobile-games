@@ -67,3 +67,7 @@ gem 'font-awesome-rails'
 # Devise
 gem 'devise'
 gem 'omniauth-twitter'
+
+
+gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
