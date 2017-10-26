@@ -1,47 +1,78 @@
-<%= form_with(model: game, local: true) do |form| %>
-    <% if game.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(game.errors.count, "error") %> prohibited this game from being saved:</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="well bs-component">
+        <%= form_with(model: game, local: true, class: 'form-horizontal') do |form| %>
+            <fieldset>
+              <!--
+              <% if game.errors.any? %>-->
+                  <!--<div id="error_explanation">-->
+                  <!--<h2><%= pluralize(game.errors.count, "error") %> prohibited this game from being saved:</h2>-->
 
-          <ul>
-            <% game.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
+                  <!--<ul>-->
+                  <!--
+                  <% game.errors.full_messages.each do |message| %>-->
+                      <!--<li><%= message %></li>-->
+                      <!--
+                  <% end %>-->
+                  <!--</ul>-->
+                  <!--</div>-->
+                  <!--
+              <% end %>-->
+              <div class="form-group">
+                <label for="game_title" class="col-lg-3 control-label">タイトル</label>
+                <div class="col-lg-9">
+                  <%= form.text_field :title, id: :game_title, class: 'form-control', placeholder: 'ゲームタイトル' %>
+                </div>
+              </div>
 
-    <div class="field">
-      <%= form.label :title %>
-      <%= form.text_field :title, id: :game_title %>
+              <div class="form-group">
+                <label for="game_permission" class="col-lg-3 control-label">実況可否</label>
+                <div class="col-lg-9">
+                  <label class="checkbox">
+                    <label>
+                      <%= form.check_box :permission, id: :game_permission %> 実況OK
+                    </label>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="game_specific_conditions" class="col-lg-3 control-label">条件</label>
+                <div class="col-lg-9">
+                  <%= form.text_area :specific_conditions, id: :game_specific_conditions, class: 'form-control', placeholder: '必ずストアへのリンクを貼ってください。など' %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="game_android_url" class="col-lg-3 control-label">AndroidストアURL</label>
+                <div class="col-lg-9">
+                  <%= form.text_field :android_url, id: :game_android_url, class: 'form-control', placeholder: 'https://play.google.com/store/apps/details?id=[パッケージ名]' %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="game_ios_url" class="col-lg-3 control-label">iOSストアURL</label>
+                <div class="col-lg-9">
+                  <%= form.text_field :ios_url, id: :game_ios_url, class: 'form-control', placeholder: 'https://itunes.apple.com/jp/app/id[app_id]' %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="game_icon" class="col-lg-3 control-label">アイコン画像</label>
+                <div class="col-lg-9">
+                  <%= form.file_field :icon, id: :game_icon, class: 'form-control' %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-lg-9 col-lg-offset-3">
+                  <%= form.submit class: "btn btn-primary" %>
+                </div>
+              </div>
+            </fieldset>
+        <% end %>
+      </div>
     </div>
-
-    <div class="field">
-      <%= form.label :permission %>
-      <%= form.text_field :permission, id: :game_permission %>
-    </div>
-
-    <div class="field">
-      <%= form.label :specific_conditions %>
-      <%= form.text_field :specific_conditions, id: :game_specific_conditions %>
-    </div>
-
-    <div class="field">
-      <%= form.label :android_url %>
-      <%= form.text_field :android_url, id: :game_android_url %>
-    </div>
-
-    <div class="field">
-      <%= form.label :ios_url %>
-      <%= form.text_field :ios_url, id: :game_ios_url %>
-    </div>
-
-    <div class="field">
-      <%= form.label :icon %>
-      <%= form.file_field :icon, id: :game_icon %>
-    </div>
-
-    <div class="actions">
-      <%= form.submit %>
-    </div>
-<% end %>
+  </div>
+</div>
