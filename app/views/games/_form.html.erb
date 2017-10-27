@@ -3,22 +3,8 @@
     <div class="col-md-8 col-md-offset-2">
       <div class="well bs-component">
         <%= form_with(model: game, local: true, class: 'form-horizontal') do |form| %>
+            <legend><%= title %></legend>
             <fieldset>
-              <!--
-              <% if game.errors.any? %>-->
-                  <!--<div id="error_explanation">-->
-                  <!--<h2><%= pluralize(game.errors.count, "error") %> prohibited this game from being saved:</h2>-->
-
-                  <!--<ul>-->
-                  <!--
-                  <% game.errors.full_messages.each do |message| %>-->
-                      <!--<li><%= message %></li>-->
-                      <!--
-                  <% end %>-->
-                  <!--</ul>-->
-                  <!--</div>-->
-                  <!--
-              <% end %>-->
               <div class="form-group">
                 <label for="game_title" class="col-lg-3 control-label">タイトル</label>
                 <div class="col-lg-9">
@@ -38,9 +24,9 @@
               </div>
 
               <div class="form-group">
-                <label for="game_specific_conditions" class="col-lg-3 control-label">条件</label>
+                <label for="game_specific_conditions" class="col-lg-3 control-label">条件・要望</label>
                 <div class="col-lg-9">
-                  <%= form.text_area :specific_conditions, id: :game_specific_conditions, class: 'form-control', placeholder: '必ずストアへのリンクを貼ってください。など' %>
+                  <%= form.text_area :specific_conditions, id: :game_specific_conditions, class: 'form-control', placeholder: '実況に際して条件・要望があればこちらに。' %>
                 </div>
               </div>
 
@@ -67,7 +53,7 @@
 
               <div class="form-group">
                 <div class="col-lg-9 col-lg-offset-3">
-                  <%= form.submit class: "btn btn-primary" %>
+                  <%= form.submit button_text, class: "btn btn-primary" %>
                 </div>
               </div>
             </fieldset>
