@@ -14,10 +14,10 @@ CarrierWave.configure do |config|
   else
     config.fog_credentials = {
         provider: 'local',
-        local_root: "#{Rails.root}/tmp/fog-local"
+        local_root: "#{Rails.root}/public/uploads/fog-local"
     }
     config.fog_directory = container_name
-    config.asset_host = '/fog-local/' + container_name
+    config.asset_host = '/uploads/fog-local/' + container_name
   end
 
   config.storage :fog

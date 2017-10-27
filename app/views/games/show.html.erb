@@ -1,29 +1,31 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @game.title %>
-</p>
-
-<p>
-  <strong>Permission:</strong>
-  <%= @game.permission %>
-</p>
-
-<p>
-  <strong>Specific conditions:</strong>
-  <%= @game.specific_conditions %>
-</p>
-
-<p>
-  <strong>Android url:</strong>
-  <%= @game.android_url %>
-</p>
-
-<p>
-  <strong>Ios url:</strong>
-  <%= @game.ios_url %>
-</p>
+<div class="row">
+  <div class="jumbotron <%= @game.permission ? 'bg-info2' : 'bg-danger2' %>">
+    <div class="row">
+      <div class="col-sm-6 col-md-5 col-lg-4">
+        <%= image_tag @game.icon.url, class: 'img-responsive' %>
+      </div>
+      <div class="col-sm-6 col-md-7 col-lg-8">
+        <h1><%= @game.permission ? '実況OK' : '実況NG' %></h1>
+        <h2><%= @game.title %></h2>
+        <% if @game.specific_conditions.present? then %>
+            <p><%= @game.specific_conditions %></p>
+        <% end %>
+        <p>
+          <% if @game.android_url.present? then %>
+              <%= link_to @game.android_url, target: '_blank' do %>
+                  <span class="btn btn-primary btn-lg">Google Play</span>
+              <% end %>
+          <% end %>
+          <% if @game.ios_url.present? then %>
+              <%= link_to @game.ios_url, target: '_blank' do %>
+                  <span class="btn btn-primary btn-lg">App Store</span>
+              <% end %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Back', games_path %>
