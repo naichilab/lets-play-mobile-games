@@ -6,16 +6,10 @@
 <div class="flex">
   <% @games.each do |game| %>
       <div class="item">
-        <%= image_tag "https://unsplash.it/600/400?random" %>
+        <%= image_tag game.icon.url %>
       </div>
       <div class="item">
-        <%= image_tag "https://unsplash.it/600/400?random" %>
-      </div>
-      <div class="item">
-        <%= image_tag "https://unsplash.it/600/400?random" %>
-      </div>
-      <div class="item">
-        <%= image_tag "https://unsplash.it/600/400?random" %>
+        <%= image_tag "https://unsplash.it/256/256?random" %>
       </div>
       <div class="item">
         <%= image_tag "https://unsplash.it/600/400?random" %>
