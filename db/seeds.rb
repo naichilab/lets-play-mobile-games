@@ -6,10 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-if ENV['VIRTUAL_ENV'] == 'development'
-  require 'factory_bot'
-  Dir[Rails.root.join('spec/support/factories/*.rb')].each { |f| require f }
-end
+require 'factory_bot'
+Dir[Rails.root.join('spec/support/factories/*.rb')].each { |f| require f }
 
 FactoryBot.create(:category, name: 'シューティング')
 FactoryBot.create(:category, name: 'アクション')
