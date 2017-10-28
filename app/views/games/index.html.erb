@@ -1,41 +1,7 @@
 <%= provide(:html_title, "登録ゲーム一覧") %>
 
-<h1>Games</h1>
-
 <div class="row">
   <%= render 'games_column', games: @games, col: 0 %>
   <%= render 'games_column', games: @games, col: 1 %>
   <%= render 'games_column', games: @games, col: 2 %>
 </div>
-
-<table>
-  <thead>
-  <tr>
-    <th>Title</th>
-    <th>Permission</th>
-    <th>Specific conditions</th>
-    <th>Android url</th>
-    <th>Ios url</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @games.each do |game| %>
-      <tr>
-        <td><%= game.title %></td>
-        <td><%= game.permission %></td>
-        <td><%= game.specific_conditions %></td>
-        <td><%= game.android_url %></td>
-        <td><%= game.ios_url %></td>
-        <td><%= link_to 'Show', game %></td>
-        <td><%= link_to 'Edit', edit_game_path(game) %></td>
-        <td><%= link_to 'Destroy', game, method: :delete, data: {confirm: 'Are you sure?'} %></td>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Game', new_game_path %>
