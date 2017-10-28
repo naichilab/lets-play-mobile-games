@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
   before_action :set_game, only: [:show, :edit, :update, :destroy]
+  before_action :set_categories, only: [:new, :edit, :create, :update]
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
@@ -16,13 +17,11 @@ class GamesController < ApplicationController
 
   # GET /games/new
   def new
-    @categories = Category.all
     @game = current_user.games.build
   end
 
   # GET /games/1/edit
   def edit
-    @categories = Category.all
   end
 
   # POST /games
@@ -36,15 +35,10 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.save
-        pp @game.icon.url # => '/url/to/file.png'
-        pp @game.icon.current_path # => 'path/to/file.png'
-        pp @game.icon.thumb.url
-        pp @game.icon.thumb.current_path
-        pp @game.icon_identifier # => 'file.png'
-
-        format.html {redirect_to @game, notice: 'Game was successfully created.'}
+        format.html {redirect_to @game, notice: '登録しました。'}
         format.json {render :show, status: :created, location: @game}
       else
+        flash.now[:alert] = "エラーがあるため登録できませんでした。"
         format.html {render :new}
         format.json {render json: @game.errors, status: :unprocessable_entity}
       end
@@ -58,9 +52,10 @@ class GamesController < ApplicationController
   def update
     respond_to do |format|
       if @game.update(game_params)
-        format.html {redirect_to @game, notice: 'Game was successfully updated.'}
+        format.html {redirect_to @game, notice: '更新しました。'}
         format.json {render :show, status: :ok, location: @game}
       else
+        flash.now[:alert] = "エラーがあるため更新できませんでした。"
         format.html {render :edit}
         format.json {render json: @game.errors, status: :unprocessable_entity}
       end
@@ -81,6 +76,10 @@ class GamesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_game
     @game = Game.find(params[:id])
+  end
+
+  def set_categories
+    @categories = Category.all
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
