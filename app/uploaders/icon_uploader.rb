@@ -56,4 +56,8 @@ class IconUploader < CarrierWave::Uploader::Base
     process resize_to_fill: [128, 128]
   end
 
+  def default_url(*args)
+    "http://via.placeholder.com/256x158?text=No+Picture"
+  end
+
 end

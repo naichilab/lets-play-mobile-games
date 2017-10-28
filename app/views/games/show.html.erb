@@ -1,22 +1,26 @@
 <div class="row">
-  <div class="jumbotron <%= @game.permission ? 'bg-info2' : 'bg-danger2' %>">
+  <div class="jumbotron">
     <div class="row">
       <div class="col-sm-6 col-md-5 col-lg-4">
         <%= image_tag @game.icon.url, class: 'img-responsive' %>
       </div>
       <div class="col-sm-6 col-md-7 col-lg-8">
-        <h1><%= @game.permission ? '実況OK' : '実況NG' %></h1>
-        <h2><%= @game.title %></h2>
-        <% if @game.specific_conditions.present? then %>
+        <h1><%= @game.title %></h1>
+        <h2>
+          <span class="label <%= @game.permission ? 'label-primary' : 'label-danger' %>">
+              <%= @game.permission ? '実況OK' : '実況NG' %>
+          </span>
+        </h2>
+        <% if @game.specific_conditions.present? %>
             <p><%= @game.specific_conditions %></p>
         <% end %>
         <p>
-          <% if @game.android_url.present? then %>
+          <% if @game.android_url.present? %>
               <%= link_to @game.android_url, target: '_blank' do %>
                   <span class="btn btn-primary btn-lg">Google Play</span>
               <% end %>
           <% end %>
-          <% if @game.ios_url.present? then %>
+          <% if @game.ios_url.present? %>
               <%= link_to @game.ios_url, target: '_blank' do %>
                   <span class="btn btn-primary btn-lg">App Store</span>
               <% end %>

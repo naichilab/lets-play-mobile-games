@@ -1,0 +1,52 @@
+
+.boxed,pre {
+    background-color: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 6px
+}
+
+.push-down-45 {
+    margin-bottom: 45px;
+}
+
+.game-icon-image {
+    width: 100%;
+    height: auto;
+    max-height: 700px;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+}
+
+.meta {
+    position: relative;
+    margin-bottom: 0
+}
+
+@media (min-width: 768px) {
+    .meta {
+        margin-bottom:45px
+    }
+}
+
+.post-content--front-page {
+    margin-bottom: 30px;
+}
+
+.front-page-title {
+    margin-top: -30px;
+}
+
+.read-more {
+    border-top: 1px solid #e4e4e4;
+    padding: 18px 5px 20px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: Lato,sans-serif;
+    transition: all .1s linear;
+}
+
+.read-more__arrow {
+    display: inline;
+    float: right;
+}

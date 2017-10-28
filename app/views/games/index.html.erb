@@ -2,19 +2,10 @@
 
 <h1>Games</h1>
 
-
-<div class="flex">
-  <% @games.each do |game| %>
-      <div class="item">
-        <%= image_tag game.icon.url %>
-      </div>
-      <div class="item">
-        <%= image_tag "https://unsplash.it/256/256?random" %>
-      </div>
-      <div class="item">
-        <%= image_tag "https://unsplash.it/600/400?random" %>
-      </div>
-  <% end %>
+<div class="row">
+  <%= render 'games_column', games: @games, col: 0 %>
+  <%= render 'games_column', games: @games, col: 1 %>
+  <%= render 'games_column', games: @games, col: 2 %>
 </div>
 
 <table>
