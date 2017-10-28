@@ -1,26 +1,66 @@
-<h2>Log in</h2>
+<div class="row">
+  <div class="col-xs-12 col-md-7 col-md-offset-1">
+    <div class="well bs-component">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'}) do |f| %>
+          <legend>ログイン</legend>
+          <fieldset>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label 'メールアドレス' %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+            <div class="form-group">
+              <label for="user_email" class="col-lg-3 control-label">メールアドレス</label>
+              <div class="col-lg-9">
+                <%= f.email_field :email, id: :user_email, class: 'form-control' %>
+              </div>
+            </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+            <div class="form-group">
+              <label for="user_password" class="col-lg-3 control-label">パスワード</label>
+              <div class="col-lg-9">
+                <%= f.password_field :password, id: :user_password, autocomplete: "off", class: 'form-control' %>
+              </div>
+            </div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+
+            <div class="form-group">
+              <div class="col-lg-9 col-lg-offset-3">
+                <%= f.submit 'ログイン', class: 'btn btn-primary' %>
+
+                <% if devise_mapping.rememberable? -%>
+                <label class="checkbox">
+                  <label>
+                    <%= f.check_box :remember_me, id: :user_remember_me %> ログインしたままにする
+                  </label>
+                </label>
+                <% end -%>
+
+              </div>
+            </div>
+
+
+          </fieldset>
+
+
+
+          <%- if devise_mapping.omniauthable? %>
+              <legend>SNSアカウントでログイン</legend>
+              <fieldset>
+                <%- resource_class.omniauth_providers.each do |provider| %>
+                    <div class="form-group">
+                      <div class="col-lg-9 col-lg-offset-3">
+                        <%= link_to "#{OmniAuth::Utils.camelize(provider)}アカウントでログイン", omniauth_authorize_path(resource_name, provider) %>
+                        <br/>
+                      </div>
+                    </div>
+                <% end -%>
+              </fieldset>
+          <% end -%>
+      <% end %>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
+  <div class="col-xs-12 col-md-3">
+    <div class="well bs-component">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>
 
-<%= render "devise/shared/links" %>
+
