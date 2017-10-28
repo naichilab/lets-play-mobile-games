@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   TEMP_EMAIL_PREFIX = 'change-me@'
 
+  has_many :games
+
   def self.new_token
     SecureRandom.urlsafe_base64
   end

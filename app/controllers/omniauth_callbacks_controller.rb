@@ -53,8 +53,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       user.skip_confirmation!
       # 仮のemailをデータベースに保存するため、validationを一時的に無効化して保存
       user.save(validate: false)
-      user
     end
+    user
   end
 
   # ユーザーとSocialProfileオブジェクトを関連づける。
