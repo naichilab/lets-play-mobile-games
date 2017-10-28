@@ -11,6 +11,15 @@ if ENV['VIRTUAL_ENV'] == 'development'
   Dir[Rails.root.join('spec/support/factories/*.rb')].each { |f| require f }
 end
 
+FactoryBot.create(:category, name: 'シューティング')
+FactoryBot.create(:category, name: 'アクション')
+FactoryBot.create(:category, name: 'アドベンチャー')
+FactoryBot.create(:category, name: 'ロールプレイング')
+FactoryBot.create(:category, name: 'パズル')
+FactoryBot.create(:category, name: 'レース')
+FactoryBot.create(:category, name: 'シミュレーション')
+FactoryBot.create(:category, name: '音楽')
+FactoryBot.create(:category, name: 'その他')
 
 if ENV['VIRTUAL_ENV'] == 'development'
 

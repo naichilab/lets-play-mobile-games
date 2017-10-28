@@ -1,14 +1,34 @@
 <div class="container">
+
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="well bs-component">
         <%= form_with(model: game, local: true, class: 'form-horizontal') do |form| %>
             <legend><%= title %></legend>
+
             <fieldset>
+              <% if game.errors.any? %>
+                  <div class="form-group">
+                    <div class="col-lg-9 col-lg-offset-3 text-danger">
+                      <%= "#{game.errors.count}件のエラーがあります。" %>
+                      <% game.errors.full_messages.each do |msg| %>
+                          <span class="help-block"><%= "・#{msg}" %></span>
+                      <% end %>
+                    </div>
+                  </div>
+              <% end %>
+
               <div class="form-group">
                 <label for="game_title" class="col-lg-3 control-label">タイトル</label>
                 <div class="col-lg-9">
                   <%= form.text_field :title, id: :game_title, class: 'form-control', placeholder: 'ゲームタイトル' %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="game_category" class="col-lg-3 control-label">ジャンル</label>
+                <div class="col-lg-9">
+                  <%= form.select :category, [['選択してください', nil]].concat(Category.all.collect {|c| [c.name, c.id]}), {}, {class: 'form-control'} %>
                 </div>
               </div>
 
