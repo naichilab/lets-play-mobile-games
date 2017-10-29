@@ -31,5 +31,13 @@
   </div>
 </div>
 
-<%= link_to 'Edit', edit_game_path(@game) %> |
-<%= link_to 'Back', games_path %>
+<% if @game.user == current_user %>
+    <div class="row">
+      <div class="col-xs-12">
+        <p>
+          <%= link_to '編集', edit_game_path(@game), class: 'btn btn-primary btn-lg' %>
+          <%= link_to '削除', game_path(@game), data: {confirm: "削除しますか？"}, method: :delete, class: 'btn btn-primary btn-lg' %>
+        </p>
+      </div>
+    </div>
+<% end %>
