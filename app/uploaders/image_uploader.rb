@@ -1,4 +1,4 @@
-class IconUploader < CarrierWave::Uploader::Base
+class ImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -50,14 +50,14 @@ class IconUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
-  process resize_to_fill: [512, 512]
+  process resize_to_limit: [1024, 1024]
 
   version :thumb do
-    process resize_to_fill: [256, 256]
+    process resize_to_limit: [512, 512]
   end
 
   def default_url(*args)
-    "http://via.placeholder.com/256x256?text=No+Icon"
+    "http://via.placeholder.com/256x512?text=No+Picture"
   end
 
 end

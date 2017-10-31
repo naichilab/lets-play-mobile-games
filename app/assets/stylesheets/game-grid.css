@@ -5,6 +5,10 @@
     border-radius: 6px
 }
 
+.boxed .label{
+    margin-right:5px;
+}
+
 .push-down-45 {
     margin-bottom: 45px;
 }

@@ -1,7 +1,7 @@
-<div class="col-xs-12 col-md-4">
+<div class="col-xs-12 col-md-3">
   <% index = 0 %>
   <% games.each do |game| %>
-      <% if index % 3 == col %>
+      <% if index % 4 == col %>
           <%= render game %>
       <% end %>
       <% index+= 1 %>

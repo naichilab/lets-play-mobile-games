@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171028211042) do
+ActiveRecord::Schema.define(version: 20171031154003) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -29,6 +29,11 @@ ActiveRecord::Schema.define(version: 20171028211042) do
     t.string "icon"
     t.integer "user_id"
     t.integer "category_id"
+    t.string "image1"
+    t.string "image2"
+    t.string "image3"
+    t.string "image4"
+    t.string "image5"
   end
 
   create_table "social_profiles", force: :cascade do |t|

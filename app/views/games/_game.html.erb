@@ -10,14 +10,11 @@
       <div class="post-content--front-page">
         <h1 class="front-page-title">
           <%= link_to game.title, game_path(game) %>
+        </h1>
+        <p>
           <span class="label <%= game.permission ? 'label-primary' : 'label-danger' %>">
               <%= game.permission ? '実況OK' : '実況NG' %>
           </span>
-        </h1>
-        <% if game.specific_conditions.present? %>
-            <h3><%= game.specific_conditions %></h3>
-        <% end %>
-        <p>
           <% if game.android_url.present? then %>
               <span class="label label-default">Android</span>
           <% end %>
