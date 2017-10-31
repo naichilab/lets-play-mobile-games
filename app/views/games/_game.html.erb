@@ -12,9 +12,7 @@
           <%= link_to game.title, game_path(game) %>
         </h1>
         <p>
-          <span class="label <%= game.permission ? 'label-primary' : 'label-danger' %>">
-              <%= game.permission ? '実況OK' : '実況NG' %>
-          </span>
+          <span class="label <%= game.permission ? 'label-primary' : 'label-danger' %>"><%= game.permission ? '実況OK' : '実況NG' %></span>
           <% if game.android_url.present? then %>
               <span class="label label-default">Android</span>
           <% end %>
