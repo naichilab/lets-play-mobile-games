@@ -51,6 +51,8 @@ Rails.application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   if ENV['VIRTUAL_ENV'] == 'production'
     config.force_ssl = true
+  else
+    config.force_ssl = false
   end
 
   # Use the lowest log level to ensure availability of diagnostic information
