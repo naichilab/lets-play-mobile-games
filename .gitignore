@@ -60,3 +60,4 @@ doc/
 
 /public/uploads
 rails_best_practices_output.*
+rspec_results.html
