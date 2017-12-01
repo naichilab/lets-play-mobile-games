@@ -59,3 +59,4 @@ doc/
 /node_modules
 
 /public/uploads
+rails_best_practices_output.*
