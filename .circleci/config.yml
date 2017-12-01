@@ -56,10 +56,10 @@ jobs:
       # run static code analyze
       - run:
           name: run rails_best_practices
-          command: bundle exec /tmp/test-results/rails_best_practices -f html
+          command: bundle exec rails_best_practices -f html
       - run:
           name: run brakeman
-          command: bundle exec brakeman -o /tmp/test-results/brakeman_result.html -qz
+          command: bundle exec brakeman -o brakeman_result.html -qz
 
       # collect reports
       - store_test_results:
