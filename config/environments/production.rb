@@ -70,7 +70,12 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "rails-vue-sandbox_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = {host: ENV['HOST_NAME']}
+  host_name = ENV['HOST_NAME']
+  if host_name.blank? then
+    host_name = ENV['HEROKU_APP_NAME'] + '.herokuapp.com'
+  end
+
+  config.action_mailer.default_url_options = {host: host_name}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
       :address => 'smtp.sendgrid.net',
