@@ -2,7 +2,7 @@
   "name": "lets-play-list",
   "description": "",
   "scripts": {
-    "postdeploy": "bundle exec rake db:schema:load db:seed",
+    "postdeploy": "bundle exec rake db:reset db:seed",
     "pr-predestroy": "echo \"this is pre-destroy script.\""
   },
   "env": {
