@@ -2,7 +2,7 @@
   "name": "lets-play-list",
   "description": "",
   "scripts": {
-    "postdeploy": "echo \"this is post deploy script.\"",
+    "postdeploy": "bundle exec rake db:schema:load db:seed",
     "pr-predestroy": "echo \"this is pre-destroy script.\""
   },
   "env": {
@@ -24,13 +24,13 @@
     "SECRET_KEY_BASE": {
       "generator": "secret"
     },
-    "VIRTUAL_ENV": "production"
+    "VIRTUAL_ENV": "production",
+    "CONOHA_CONTAINER_NAME": "letsplaylist_development"
   },
   "formation": {
   },
   "addons": [
     "heroku-postgresql",
-    "sendgrid"
   ],
   "buildpacks": [
     {
