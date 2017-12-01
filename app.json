@@ -24,7 +24,7 @@
     "SECRET_KEY_BASE": {
       "generator": "secret"
     },
-    "VIRTUAL_ENV": "production",
+    "VIRTUAL_ENV": "development",
     "CONOHA_CONTAINER_NAME": "letsplaylist_development"
   },
   "formation": {

@@ -21,13 +21,17 @@ FactoryBot.create(:category, name: 'その他')
 
 if ENV['VIRTUAL_ENV'] == 'development'
 
-  10.times do |n|
+  # test user
+  test_user = FactoryBot.create(:user, email: 'test@test.com', password: 'hogehoge')
+  test_user.confirm
+
+  3.times do |n|
     FactoryBot.create(:user)
   end
 
   users = User.all
 
-  50.times do |n|
+  5.times do |n|
     game = FactoryBot.create(:game, user: users.sample(1).first)
   end
 
