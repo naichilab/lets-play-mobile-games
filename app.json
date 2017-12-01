@@ -30,7 +30,7 @@
   "formation": {
   },
   "addons": [
-    "heroku-postgresql"aaa
+    "heroku-postgresql"
   ],
   "buildpacks": [
     {
