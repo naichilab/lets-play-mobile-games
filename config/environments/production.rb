@@ -75,7 +75,7 @@ Rails.application.configure do
     host_name = ENV['HEROKU_APP_NAME'] + '.herokuapp.com'
   end
 
-  config.action_mailer.default_url_options = host_name
+  config.action_mailer.default_url_options = {host: host_name}
 
   if ENV['VIRTUAL_ENV']=='production' then
     config.action_mailer.delivery_method = :smtp
