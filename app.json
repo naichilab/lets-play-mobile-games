@@ -30,6 +30,12 @@
     "SENDGRID_USERNAME": {
       "required": true
     },
+    "HEROKU_APP_NAME": {
+      "required": true
+    },
+    "HEROKU_PARENT_APP_NAME": {
+      "required": true
+    },
     "VIRTUAL_ENV": "development",
     "CONOHA_CONTAINER_NAME": "letsplaylist_development"
   },
