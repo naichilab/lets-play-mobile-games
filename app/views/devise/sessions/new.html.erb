@@ -1,17 +1,17 @@
 <div class="row">
-  <div class="col-xs-12 col-md-7 col-md-offset-1">
+  <div class="col-xs-12 col-sm-7 col-md-6 col-md-offset-1">
     <div class="well bs-component">
       <form>
         <%- if devise_mapping.omniauthable? %>
             <legend>SNSアカウントでログイン</legend>
             <fieldset>
               <%- resource_class.omniauth_providers.each do |provider| %>
-                  <div class="form-group">
-                    <div class="col-lg-9 col-lg-offset-3">
-                      <%= link_to "#{OmniAuth::Utils.camelize(provider)}アカウントでログイン", omniauth_authorize_path(resource_name, provider) %>
-                      <br/>
-                    </div>
-                  </div>
+                <div class="form-group">
+                  <a href=<%= omniauth_authorize_path(resource_name, provider) %> class="btn btn-twitter btn-block">
+                    <i class="fa fa-twitter fa-lg"></i>
+                    <%= "#{OmniAuth::Utils.camelize(provider)}でログイン" %>
+                  </a>
+                </div>
               <% end -%>
             </fieldset>
         <% end -%>
@@ -20,48 +20,32 @@
 
     <div class="well bs-component">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'}) do |f| %>
-          <legend>ログイン</legend>
-          <fieldset>
-
-            <div class="form-group">
-              <label for="user_email" class="col-lg-3 control-label">メールアドレス</label>
-              <div class="col-lg-9">
+        <fieldset>
+          <legend>メールアドレスでログイン</legend>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="user_email" class="control-label">メールアドレス</label>
                 <%= f.email_field :email, id: :user_email, class: 'form-control' %>
               </div>
-            </div>
-
-            <div class="form-group">
-              <label for="user_password" class="col-lg-3 control-label">パスワード</label>
-              <div class="col-lg-9">
+              <div class="form-group">
+                <label for="user_password" class="control-label">パスワード</label>
                 <%= f.password_field :password, id: :user_password, autocomplete: "off", class: 'form-control' %>
               </div>
             </div>
-
-
-            <div class="form-group">
-              <div class="col-lg-9 col-lg-offset-3">
-                <%= f.submit 'ログイン', class: 'btn btn-primary' %>
-
-                <% if devise_mapping.rememberable? -%>
-                <label class="checkbox">
-                  <label>
-                    <%= f.check_box :remember_me, id: :user_remember_me %> ログインしたままにする
-                  </label>
-                </label>
-                <% end -%>
-
-              </div>
-            </div>
-
-          </fieldset>
-
+            <%= f.submit 'ログイン', class: 'btn btn-success btn-block' %>
+            <% if devise_mapping.rememberable? -%>
+            <label class="checkbox">
+              <label>
+                <%= f.check_box :remember_me, id: :user_remember_me %> ログインしたままにする
+              </label>
+            </label>
+            <% end -%>
+        </fieldset>
       <% end %>
     </div>
   </div>
-  <div class="col-xs-12 col-md-3">
-    <div class="well bs-component">
-      <%= render "devise/shared/links" %>
-    </div>
+  <div class="col-xs-12 col-sm-5 col-md-3">
+    <%= render "devise/shared/links" %>
   </div>
 </div>
 
