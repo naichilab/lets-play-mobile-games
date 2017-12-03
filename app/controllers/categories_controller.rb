@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :admin_user
 
   # GET /categories
   # GET /categories.json
@@ -71,4 +73,12 @@ class CategoriesController < ApplicationController
     def category_params
       params.require(:category).permit(:name)
     end
+
+    # Confirms an admin user.
+    def admin_user
+      unless current_user.admin then
+        render template: "errors/forbidden", layout: false, status: :forbidden
+      end
+    end
+
 end

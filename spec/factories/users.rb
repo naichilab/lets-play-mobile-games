@@ -10,5 +10,13 @@ FactoryBot.define do
       end
     end
 
+    factory :admin_user do
+      admin true
+    end
+
+    factory :invalid_user do
+      username '   '
+    end
+
   end
 end

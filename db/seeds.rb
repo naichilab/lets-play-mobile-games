@@ -22,11 +22,19 @@ FactoryBot.create(:category, name: 'その他')
 if ENV['VIRTUAL_ENV'] == 'development'
 
   # test user
-  test_user = FactoryBot.create(:user, email: 'test@test.com', password: 'hogehoge')
-  test_user.confirm
+  test_user = FactoryBot.build(:user, email: 'test@test.com', password: 'hogehoge')
+  test_user.skip_confirmation!
+  test_user.save
+
+  # admin user
+  admin_user = FactoryBot.build(:admin_user, email: 'admin@test.com', password: 'hogehoge')
+  admin_user.skip_confirmation!
+  admin_user.save
 
   3.times do |n|
-    FactoryBot.create(:user)
+    user = FactoryBot.build(:user)
+    user.skip_confirmation!
+    user.save
   end
 
   users = User.all

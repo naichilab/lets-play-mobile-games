@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= render 'layouts/ga' %>
+  <title><%= full_title(yield(:html_title)) %></title>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= favicon_link_tag 'favicon.png' %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+<%= render 'layouts/header' %>
+
+<h1>403 forbidden</h1>
+
+</body>
+</html>
