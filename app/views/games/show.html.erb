@@ -14,18 +14,16 @@
         <% if @game.specific_conditions.present? %>
             <p><%= @game.specific_conditions %></p>
         <% end %>
-        <p>
-          <% if @game.android_url.present? %>
-              <%= link_to @game.android_url, target: '_blank' do %>
-                  <span class="btn btn-primary btn-lg">Google Play</span>
-              <% end %>
+        <% if @game.android_url.present? %>
+          <%= link_to @game.android_url, target: '_blank' do %>
+              <%= image_tag(asset_path('google-play-badge.png'), :width => 160) %>
           <% end %>
-          <% if @game.ios_url.present? %>
-              <%= link_to @game.ios_url, target: '_blank' do %>
-                  <span class="btn btn-primary btn-lg">App Store</span>
-              <% end %>
+        <% end %>
+        <% if @game.ios_url.present? %>
+          <%= link_to @game.ios_url, target: '_blank' do %>
+              <%= image_tag(asset_path("Download_on_the_App_Store_Badge_JP_RGB_blk_100317.svg"), :width => 120) %>
           <% end %>
-        </p>
+        <% end %>
       </div>
     </div>
   </div>
