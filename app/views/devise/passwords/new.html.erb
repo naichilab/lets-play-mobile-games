@@ -16,29 +16,21 @@
                 </div>
             <% end %>
 
-            <div class="form-group">
-              <label for="user_email" class="col-lg-3 control-label">メールアドレス</label>
-              <div class="col-lg-9">
-                <%= f.email_field :email, id: :user_email, class: 'form-control' %>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="user_email" class="control-label">メールアドレス</label>
+                <%= f.email_field :email, id: :user_email, class: 'form-control', placeholder: '再設定用メールの送信先を入力してください' %>
               </div>
             </div>
 
-            <div class="form-group">
-              <div class="col-lg-9 col-lg-offset-3">
-                <%= f.submit 'メールを送信', class: 'btn btn-primary' %>
-              </div>
-            </div>
+            <%= f.submit 'メールを送信', class: 'btn btn-primary btn-block' %>
 
           </fieldset>
 
       <% end %>
     </div>
   </div>
-  <div class="col-xs-12 col-md-3">
-    <div class="well bs-component">
+  <div class="col-xs-12 col-sm-5 col-md-3">
       <%= render "devise/shared/links" %>
-    </div>
   </div>
 </div>
-
-
