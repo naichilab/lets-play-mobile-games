@@ -1,5 +1,10 @@
 FactoryBot.define do
   factory :category do
-    name "MyString"
+    sequence(:name) {|n| "カテゴリー#{n}" }
+
+    factory :invalid_category do
+      name "   "
+    end
+
   end
 end
