@@ -16,20 +16,20 @@
                 </div>
             <% end %>
             <div class="col-md-12">
-            <div class="form-group">
-              <label for="user_email" class="control-label">メールアドレス</label>
-              <%= f.email_field :email, id: :user_email, class: 'form-control' %>
-            </div>
+              <div class="form-group">
+                <label for="user_email" class="control-label">メールアドレス</label>
+                <%= f.email_field :email, id: :user_email, class: 'form-control' %>
+              </div>
 
-            <div class="form-group">
-              <label for="user_password" class="control-label">パスワード</label>
-              <%= f.password_field :password, id: :user_password, autocomplete: "off", class: 'form-control', placeholder: '6文字以上入力してください' %>
-            </div>
+              <div class="form-group">
+                <label for="user_password" class="control-label">パスワード</label>
+                <%= f.password_field :password, id: :user_password, autocomplete: "off", class: 'form-control', placeholder: '6文字以上入力してください' %>
+              </div>
 
-            <div class="form-group">
-              <label for="user_password_confirmation" class="control-label">パスワード(確認)</label>
-              <%= f.password_field :password_confirmation, id: :user_password_confirmation, autocomplete: "off", class: 'form-control', placeholder: '再度パスワードを入力してください' %>
-            </div>
+              <div class="form-group">
+                <label for="user_password_confirmation" class="control-label">パスワード(確認)</label>
+                <%= f.password_field :password_confirmation, id: :user_password_confirmation, autocomplete: "off", class: 'form-control', placeholder: '再度パスワードを入力してください' %>
+              </div>
             </div>
             <%= f.submit '登録', class: 'btn btn-success btn-block' %>
 
@@ -38,9 +38,7 @@
     </div>
   </div>
   <div class="col-xs-12 col-sm-5 col-md-3">
-    <legend><i class="fa fa-question-circle text-info" aria-hidden="true"></i>ヘルプ</legend>
     <%= render "devise/shared/links" %>
-    <br />
   </div>
 </div>
 
