@@ -11,8 +11,11 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
 
+
   # api
   namespace :api, {format: :json } do
     get 'games', to: 'games#index', as: 'games'
   end
+  get 'games2', to: 'games#search'
+
 end

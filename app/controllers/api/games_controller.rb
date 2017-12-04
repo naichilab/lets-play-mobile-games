@@ -3,7 +3,7 @@ module Api
   class GamesController < ApplicationController
 
     def index
-      games = Game.all
+      games = Game.select(:id, :title, :icon, :permission)
 
       render json: games
     end
