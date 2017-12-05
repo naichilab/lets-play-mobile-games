@@ -1,6 +1,6 @@
 class Game < ApplicationRecord
   belongs_to :user
-  has_one :category
+  belongs_to :category
 
   validates :title, presence: true, length: {maximum: 64}
 
