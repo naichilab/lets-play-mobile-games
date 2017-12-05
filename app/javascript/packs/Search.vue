@@ -1,13 +1,10 @@
 <template>
     <div>
-        <div v-for="category in categories">
+        <div v-for="category in masterData.categories">
             <input type="checkbox" :id="'chk' + category.id" :value="category.id"
-                   v-model="form_values.checkedCategories" v-on:change="getGames">
+                   v-model="formValues.categories" v-on:change="getGames">
             <label :for="'chk' + category.id" v-text="category.name"></label>
         </div>
-        {{form_values.checkedCategories}}
-
-        <button @click="getGames()">get</button>
         <ul>
             <li v-for="game in games">
                 {{ game.title }}
@@ -22,29 +19,24 @@
         data: function () {
             return {
                 games: {},
-                categories: {},
-                form_values: {
-                    checkedCategories: []
+                masterData: {
+                    categories: {}
+                },
+                formValues: {
+                    categories: []
                 }
             }
         },
         created: function () {
             axios.get('/api/categories')
                 .then(res => {
-                    this.categories = res.data
+                    this.masterData.categories = res.data
                 })
         },
         methods: {
             getGames() {
-                let queries = '?'
-                this.form_values.checkedCategories.forEach((v,i,a)=>{
-                    queries += 'categories[]=' + v + '&'
-                })
-                var url = '/api/games'
-                if(queries.length > 1){
-                    url += queries
-                }
-                axios.get(url)
+                axios.get('/api/games'
+                    , {params: this.formValues})
                     .then(res => {
                         this.games = res.data;
                     });
