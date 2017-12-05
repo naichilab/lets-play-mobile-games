@@ -1,13 +1,11 @@
 <template>
     <div>
-        <p>
-            <select v-model="checkedNames" multiple>
-                <option v-for="category in categories">{{category.name}}</option>
-            </select>
-            <br>
-            {{checkedNames}}
-        </p>
-        <input type=checkbox v-for="category in categories" id="{{ category.id }}" value="{{ category.id }}" v-text="{{category.name}}" v-model="checkedNames">
+        <div v-for="category in categories">
+            <input type="checkbox" :id="'chk' + category.id" :value="category.id"
+                   v-model="form_values.checkedCategories">
+            <label :for="'chk' + category.id" v-text="category.name"></label>
+        </div>
+        {{form_values.checkedCategories}}
 
         <button @click="getGames()">get</button>
         <ul>
@@ -23,9 +21,11 @@
     export default {
         data: function () {
             return {
-                checkedNames: [],
                 games: {},
-                categories: {}
+                categories: {},
+                form_values: {
+                    checkedCategories: []
+                }
             }
         },
         created: function () {
@@ -36,7 +36,14 @@
         },
         methods: {
             getGames() {
+                let queries = '?'
+                this.form_values.checkedCategories.forEach((v,i,a)=>{
+                    queries += 'categories[]=' + v + '&'
+                })
                 var url = '/api/games'
+                if(queries.length > 1){
+                    url += queries
+                }
                 axios.get(url)
                     .then(res => {
                         this.games = res.data;
