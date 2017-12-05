@@ -2,7 +2,7 @@
     <div>
         <div v-for="category in categories">
             <input type="checkbox" :id="'chk' + category.id" :value="category.id"
-                   v-model="form_values.checkedCategories">
+                   v-model="form_values.checkedCategories" v-on:change="getGames">
             <label :for="'chk' + category.id" v-text="category.name"></label>
         </div>
         {{form_values.checkedCategories}}
