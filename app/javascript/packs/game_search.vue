@@ -3,29 +3,38 @@
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
             <h2>実況可否</h2>
             <div>
-                <input type="radio" id="radOK" value="true" v-model="formValues.permission" v-on:change="getGames">
-                <label for="radOK">実況OK</label>
+                <input type="radio" id="radPermissionAll" value="" v-model="formValues.permission" v-on:change="getGames">
+                <label for="radPermissionAll">すべて</label>
             </div>
             <div>
-                <input type="radio" id="radNG" value="false" v-model="formValues.permission" v-on:change="getGames">
-                <label for="radNG">実況NG</label>
+                <input type="radio" id="radPermissionOK" value="true" v-model="formValues.permission" v-on:change="getGames">
+                <label for="radPermissionOK">実況OK</label>
+            </div>
+            <div>
+                <input type="radio" id="radPermissionNG" value="false" v-model="formValues.permission" v-on:change="getGames">
+                <label for="radPermissionNG">実況NG</label>
             </div>
             <h2>プラットフォーム</h2>
             <div>
-                <input type="checkbox" id="chkAndroid" value="android"
-                       v-model="formValues.platforms" v-on:change="getGames">
-                <label for="chkAndroid">Android</label>
+                <input type="radio" id="radPlatformAll" value="" v-model="formValues.platform" v-on:change="getGames">
+                <label for="radPlatformAll">すべて</label>
             </div>
             <div>
-                <input type="checkbox" id="chkIOS" value="ios"
-                       v-model="formValues.platforms" v-on:change="getGames">
-                <label for="chkIOS">iOS</label>
+                <input type="radio" id="radPlatformAndroid" value="android" v-model="formValues.platform" v-on:change="getGames">
+                <label for="radPlatformAndroid">Android</label>
+            </div>
+            <div>
+                <input type="radio" id="radPlatformIOS" value="ios" v-model="formValues.platform" v-on:change="getGames">
+                <label for="radPlatformIOS">iOS</label>
             </div>
             <h2>ジャンル</h2>
+            <div>
+                <input type="radio" id="radCategoryAll" value="" v-model="formValues.category" v-on:change="getGames">
+                <label for="radCategoryAll">すべて</label>
+            </div>
             <div v-for="category in masterData.categories">
-                <input type="checkbox" :id="'chkCategory' + category.id" :value="category.id"
-                       v-model="formValues.categories" v-on:change="getGames">
-                <label :for="'chkCategory' + category.id" v-text="category.name"></label>
+                <input type="radio" :id="'radCategory' + category.id" :value="category.id" v-model="formValues.category" v-on:change="getGames">
+                <label :for="'radCategory' + category.id" v-text="category.name"></label>
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
@@ -81,9 +90,9 @@
                     categories: {}
                 },
                 formValues: {
-                    permission: true,
-                    categories: [],
-                    platforms: []
+                    permission: "",
+                    category: "",
+                    platform: ""
                 }
             }
         },

@@ -13,16 +13,15 @@ module Api
       end
 
 
-      unless params[:categories].blank?
-        category_ids = params[:categories]
-        games = games.where(category_id: category_ids)
+      unless params[:category].blank?
+        games = games.where(category_id: params[:category])
       end
 
-      unless params[:platforms].blank?
-        if params[:platforms].to_a.include?('android')
+      unless params[:platform].blank?
+        if params[:platform]=='android'
           games = games.where("android_url <> ''")
         end
-        if params[:platforms].to_a.include?('ios')
+        if params[:platform]=='ios'
           games = games.where("ios_url <> ''")
         end
       end
