@@ -6,9 +6,9 @@
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
 import Vue from 'vue/dist/vue.esm'
-import Search from './Search.vue'
+import game_search from './game_search.vue'
 
-Vue.component('search', Search)
+Vue.component('game-search', game_search)
 const app = new Vue({
     el: '#vue'
 })
