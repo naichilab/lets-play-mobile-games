@@ -1,0 +1,12 @@
+.ellipsisable-text {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.foldable-text
+{
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
