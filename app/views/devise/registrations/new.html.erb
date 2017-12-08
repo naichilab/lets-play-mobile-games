@@ -17,6 +17,11 @@
             <% end %>
             <div class="col-md-12">
               <div class="form-group">
+                <label for="user_username" class="control-label">ユーザー表示名</label>
+                <%= f.text_field :username, id: :user_username, class: 'form-control' %>
+              </div>
+
+              <div class="form-group">
                 <label for="user_email" class="control-label">メールアドレス</label>
                 <%= f.email_field :email, id: :user_email, class: 'form-control' %>
               </div>

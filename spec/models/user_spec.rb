@@ -28,8 +28,8 @@ describe User do
         it {is_expected.not_to be_valid}
       end
 
-      context "33文字以上の場合" do
-        let(:username) {"a" * 33}
+      context "51文字以上の場合" do
+        let(:username) {"a" * 51}
         it {is_expected.not_to be_valid}
       end
     end
