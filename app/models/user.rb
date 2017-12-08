@@ -7,9 +7,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :omniauthable, omniauth_providers: [:twitter]
 
-
   # validates
-  validates :username, presence: true, length: {maximum: 32}
+  validates :username, presence: true, length: {maximum: 50}, uniqueness: true
 
   # relations
   has_many :games, dependent: :destroy
