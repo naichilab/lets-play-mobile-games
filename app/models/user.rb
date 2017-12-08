@@ -8,7 +8,7 @@ class User < ApplicationRecord
          :confirmable, :omniauthable, omniauth_providers: [:twitter]
 
   # validates
-  validates :username, presence: true, length: {maximum: 50}, uniqueness: true
+  validates :username, presence: true, length: {maximum: 50}
 
   # relations
   has_many :games, dependent: :destroy
