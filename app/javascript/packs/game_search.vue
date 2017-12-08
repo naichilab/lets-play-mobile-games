@@ -53,31 +53,12 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-10 col-xs-offset-1 ">
-
                             <!-- Start of the content -->
                             <div class="post-content--front-page">
                                 <h1 class="front-page-title">
                                     <a :href="'/games/' + game.id" v-text="game.title"></a>
                                 </h1>
-                                <!--<p>-->
-                                <!--<span v-if="game.permission" class="label label-primary">実況OK</span>-->
-                                <!--<span v-else="" class="label label-danger">実況NG</span>-->
-                                <!--</p>-->
-                                <!--<p>-->
-                                <!--<span v-if="game.android_url != ''" class="label label-default">Android</span>-->
-                                <!--<span v-if="game.ios_url != ''" class="label label-default">iOS</span>-->
-                                <!--</p>-->
                             </div>
-
-                            <!-- End of the content -->
-                            <!--<a :href="'/games/' + game.id">-->
-                                <!--<div class="read-more">-->
-                                    <!--詳細-->
-                                    <!--<div class="read-more__arrow">-->
-                                        <!--<i class="fa fa-chevron-right"></i>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</a>-->
                         </div>
                     </div>
                 </div>
