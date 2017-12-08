@@ -1,3 +1,5 @@
+@import "break-point";
+
 .body-container { padding-top: 22px; }
 
 .bg-info2 {
@@ -12,4 +14,10 @@
 
 section.section-share{
     padding: 10px 0;
+}
+
+@include xs-screen-media {
+    .navbar .navbar-brand {
+        font-size: 18px;
+    }
 }
