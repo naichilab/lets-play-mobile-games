@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'factory_bot'
-Dir[Rails.root.join('spec/support/factories/*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec/support/factories/*.rb')].each {|f| require f}
 
 FactoryBot.create(:category, name: 'シューティング')
 FactoryBot.create(:category, name: 'アクション')
@@ -39,8 +39,13 @@ if ENV['VIRTUAL_ENV'] == 'development'
 
   users = User.all
 
-  5.times do |n|
-    game = FactoryBot.create(:game, user: users.sample(1).first)
+  categories = Category.all
+
+  50.times do |n|
+    game = FactoryBot.create(:game,
+                             user: users.sample(1).first,
+                             category: categories.sample(1).first)
+    # pp game
   end
 
 end

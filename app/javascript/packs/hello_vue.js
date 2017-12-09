@@ -8,6 +8,7 @@
 import Vue from 'vue/dist/vue.esm'
 import Hoge from './Hoge.vue'
 Vue.component('hoge', Hoge)
+
 const app = new Vue({
     el: '#hello'
 })
