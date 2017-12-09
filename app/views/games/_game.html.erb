@@ -7,9 +7,9 @@
     <div class="col-xs-10 col-xs-offset-1">
       <!-- Start of the content -->
       <div class="post-content--front-page">
-        <h1 class="front-page-title ellipsisable-text">
+        <div class="front-page-title ellipsisable-text">
           <%= link_to game.title, game_path(game) %>
-        </h1>
+        </div>
         <p>
           <span class="label <%= game.permission ? 'label-primary' : 'label-danger' %>"><%= game.permission ? '実況OK' : '実況NG' %></span>
           <% if game.android_url.present? then %>
