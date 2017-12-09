@@ -22,18 +22,14 @@
     margin-bottom: 0
 }
 
-@media (min-width: 768px) {
-    .meta {
-        margin-bottom:45px
-    }
-}
-
 .post-content--front-page {
     margin-bottom: 30px;
 }
 
 .front-page-title {
-    margin-top: -30px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    font-size: 22px;
 }
 
 .read-more {
