@@ -1,0 +1,31 @@
+@import "vars.scss";
+
+@mixin xs-screen-media {
+    @media #{$xs-screen} {
+        @content;
+    }
+}
+
+@mixin sm-screen-media {
+    @media #{$sm-screen} {
+        @content;
+    }
+}
+
+@mixin md-screen-media {
+    @media #{$md-screen} {
+        @content;
+    }
+}
+
+@mixin lg-screen-media {
+    @media #{$lg-screen} {
+        @content;
+    }
+}
+
+@mixin xl-screen-media {
+    @media #{$xl-screen} {
+        @content;
+    }
+}
