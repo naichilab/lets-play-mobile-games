@@ -1,0 +1,24 @@
+ja:
+  devise:
+    mailer:
+      confirmation_instructions:
+        subject: "そのゲーム実況できる？アカウントの登録を完了してください"
+        welcome_message: "こんにちは %{email} さん"
+        description: "メールアドレス確認のために以下のリンクをクリックして、アカウントの登録を完了してください。"
+        confirm_link_text: "確認する"
+      reset_password_instructions:
+        subject: "パスワードのリセット"
+        welcome_message: "こんにちは %{email} さん"
+        description: "パスワードを変更する場合は、以下のリンクをクリックしてください。"
+        confirm_link_text: "パスワードを変更する。"
+        please_ignore_message: "このメールに覚えがない場合は、無視してください。" 
+      unlock_instructions:
+        subject: "アカウントのロック解除"
+        welcome_message: "こんにちは %{email} さん"
+      email_changed:
+        subject: "メールアドレスの変更通知"
+        welcome_message: "こんにちは %{email} さん"
+      password_change:
+        subject: "パスワードの変更通知"
+        welcome_message: "こんにちは %{email} さん"
+        description: "パスワードが変更されました。"  
