@@ -15,7 +15,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to 'ゲームを登録', new_game_path %></li>
-          <li><%= link_to 'フィードバック', "https://docs.google.com/forms/d/e/1FAIpQLSfEta48PsfTBTkIx76idPpI7yNzo_HTdg-RknYm1ZxhGh7gWw/viewform" %></li> 
+          <li><%= link_to 'フィードバック', "https://docs.google.com/forms/d/e/1FAIpQLSfEta48PsfTBTkIx76idPpI7yNzo_HTdg-RknYm1ZxhGh7gWw/viewform", target: "_blank" %></li>
           <% if user_signed_in? %>
               <!--<li><strong><%= link_to current_user.username, root_path %></strong></li>-->
               <li><%= link_to 'プロフィール変更', edit_user_registration_path %></li>
