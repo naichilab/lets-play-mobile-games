@@ -15,8 +15,8 @@ Devise.setup do |config|
 
   if ENV['HOST_NAME'].present?
     # heroku staging and production
-    host_name = ENV['HOST_NAME'].present?
-  elsif ENV['HEROKU_APP_NAME']
+    host_name = ENV['HOST_NAME']
+  elsif ENV['HEROKU_APP_NAME'].present?
     # heroku review apps
     host_name = ENV['HEROKU_APP_NAME'] + '.herokuapp.com'
   else
