@@ -12,7 +12,18 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+
+  if ENV['HOST_NAME'].present?
+    # heroku staging and production
+    host_name = ENV['HOST_NAME']
+  elsif ENV['HEROKU_APP_NAME'].present?
+    # heroku review apps
+    host_name = ENV['HEROKU_APP_NAME'] + '.herokuapp.com'
+  else
+    # local or other
+    host_name = 'please-set-HOST_NAME-env.com'
+  end
+  config.mailer_sender = "no-reply@#{host_name}"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
