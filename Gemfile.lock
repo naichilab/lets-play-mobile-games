@@ -348,6 +348,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails-i18n (5.0.4)
+      i18n (~> 0.7)
+      railties (~> 5.0)
     rails_best_practices (1.19.0)
       activesupport
       code_analyzer (>= 0.4.8)
@@ -487,6 +490,7 @@ DEPENDENCIES
   puma (~> 3.7)
   rails (~> 5.1.4)
   rails-controller-testing
+  rails-i18n (~> 5.0)
   rails_best_practices (~> 1.19)
   rspec-rails
   rspec_junit_formatter

@@ -1,0 +1,53 @@
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+ja:
+  devise:
+    confirmations:
+      confirmed: "メールアドレスの確認が完了しました。"
+      send_instructions: "メールアドレス確認のためのメールが送信されます。"
+      send_paranoid_instructions: "メールアドレスが登録されている場合、確認メールが送信されます。"
+    failure:
+      already_authenticated: "すでにログインしています。"
+      inactive: "無効なアカウントです。"
+      invalid: "%{authentication_keys} もしくは password に誤りがあります。"
+      locked: "アカウントがロックされています。"
+      last_attempt: "もう一度失敗した場合、アカウントがロックされます。"
+      not_found_in_database: "%{authentication_keys} もしくは password に誤りがあります。"
+      timeout: "セッションが切れています。再度ログインしてください。"
+      unauthenticated: "この操作にはログインが必要です。"
+      unconfirmed: "登録が完了していないためログインできません。確認メールから登録を完了してください。"
+    omniauth_callbacks:
+      failure: "%{kind} 認証に失敗しました。理由： \"%{reason}\"."
+      success: "%{kind}アカウントによるログインが成功しました。"
+    passwords:
+      no_token: "パスワード再設定メールのリンクからのみアクセスが許可されています。"
+      send_instructions: "パスワード再設定メールが送信されました。"
+      send_paranoid_instructions: "パスワード再設定メールが送信されます。"
+      updated: "パスワードを更新しました。"
+      updated_not_active: "パスワードを更新しました。"
+    registrations:
+      destroyed: "アカウントを削除しました。ご利用ありがとうございました！！"
+      signed_up: "ログインしました。"
+      signed_up_but_inactive: "ログインに成功しましたが、アカウントが無効です。"
+      signed_up_but_locked: "ログインに成功しましたが、アカウントがロックされています。"
+      signed_up_but_unconfirmed: "入力されたメールアドレスに確認メールを送信しました。メールに記載されたリンクから登録を完了してください。"
+      update_needs_confirmation: "新しく登録したメールアドレスに確認メールを送信しました。メールに記載されたリンクから登録を完了してください。"
+      updated: "アカウント情報を更新しました。"
+    sessions:
+      signed_in: "ログインしました。"
+      signed_out: "ログアウトしました。"
+      already_signed_out: "すでにログアウトしています。"
+    unlocks:
+      send_instructions: "アカウントのロックを解除するためのメールが送信されました。"
+      send_paranoid_instructions: "アカウントのロックを解除するためのメールが送信されました。"
+      unlocked: "アカウントのロックが解除されました。再度ログインしてください。"
+  errors:
+    messages:
+      already_confirmed: "は登録済みです。ログインしてください。"
+      confirmation_period_expired: "確認メールの有効期限が切れています。確認メールを再送してください。"
+      expired: "確認メールの有効期限が切れています。確認メールを再送してください。"
+      not_found: "が見つかりません。"
+      not_locked: "はロックされていません。"
+      not_saved:
+        one: "1個の誤りがあります。"
+        other: "%{count}個の誤りがあります。"
