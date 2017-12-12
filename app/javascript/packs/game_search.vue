@@ -44,7 +44,7 @@
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
-            <div v-if="games.length == 0">
+            <div v-if="games.length === 0">
                 <h3>見つかりませんでした。</h3>
                 <p>このサービスに登録されていないゲームについては、開発者に直接お問い合わせください。</p>
             </div>
