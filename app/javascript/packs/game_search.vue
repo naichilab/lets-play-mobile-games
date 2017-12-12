@@ -44,7 +44,10 @@
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
-            <div v-if="games.length == 0">見つかりませんでした。</div>
+            <div v-if="games.length == 0">
+                <h3>見つかりませんでした。</h3>
+                <p>このサービスに登録されていないゲームについては、開発者に直接お問い合わせください。</p>
+            </div>
             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3" v-for="game in games">
 
                 <div class="boxed push-down-45">
