@@ -26,7 +26,7 @@
             <div class="form-group">
               <label for="game_category" class="col-lg-3 control-label">ジャンル</label>
               <div class="col-lg-9">
-                <%= form.select :category_id, @categories.map {|c| [c.name, c.id]}, {include_blank: '選択してください'}, {class: 'form-control'} %>
+                <%= form.select :category_id, @categories.map {|c| [c.name, c.id]}, {include_blank: '選択してください'}, {id: 'game_category', class: 'form-control'} %>
               </div>
             </div>
 
@@ -79,7 +79,7 @@
                   </div>
                 </div>
 
-          <% end %>
+            <% end %>
 
             <div class="form-group">
               <div class="col-lg-9 col-lg-offset-3">
