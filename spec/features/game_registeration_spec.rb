@@ -20,9 +20,10 @@ feature "Game Registeration" do
 
     fill_in 'タイトル', with: 'これはゲームタイトルです。'
     select "シューティング", from: "game_category"
-    fill_in '条件・要望', with: 'ダウンロードページへのリンクを貼ってね！！！'
+    fill_in '実況者へ伝えたいこと', with: 'ダウンロードページへのリンクを貼ってね！！！'
     fill_in 'AndroidストアURL', with: 'https://google.com/hogehoge'
     fill_in 'iOSストアURL', with: 'https://google.com/fugafuga'
+    fill_in 'ガイドライン', with: "ガイドラインはこちらです！！¥r¥nhttps://www.google.co.jp/search?q=ガイドライン"
 
     click_button '作成'
 
