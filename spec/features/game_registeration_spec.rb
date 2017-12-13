@@ -3,6 +3,10 @@ require "rails_helper"
 feature "Game Registeration" do
 
   background do
+    create(:category, name: 'シューティング')
+    create(:category, name: 'アクション')
+    create(:category, name: 'アドベンチャー')
+
     user = build(:user)
     user.skip_confirmation!
     user.save
