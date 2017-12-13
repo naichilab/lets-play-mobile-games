@@ -7,11 +7,10 @@ module Api
       pp params
       games = Game.select(:id, :title, :icon, :permission, :android_url, :ios_url)
 
-      unless params[:permission].blank?
-        p = params[:permission] == "true"
-        games = games.where(permission: p)
-      end
-
+      # unless params[:permission].blank?
+      #   p = params[:permission] == "true"
+      #   games = games.where(permission: p)
+      # end
 
       unless params[:category].blank?
         games = games.where(category_id: params[:category])
