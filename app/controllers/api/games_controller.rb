@@ -5,12 +5,7 @@ module Api
     def index
 
       pp params
-      games = Game.select(:id, :title, :icon, :permission, :android_url, :ios_url)
-
-      # unless params[:permission].blank?
-      #   p = params[:permission] == "true"
-      #   games = games.where(permission: p)
-      # end
+      games = Game.select(:id, :title, :icon, :android_url, :ios_url)
 
       unless params[:category].blank?
         games = games.where(category_id: params[:category])
