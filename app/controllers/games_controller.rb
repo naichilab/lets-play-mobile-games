@@ -90,7 +90,7 @@ class GamesController < ApplicationController
   # Confirms the correct user.
   def correct_user
     if @game.user != current_user
-      redirect_to(root_url)
+      render template: "errors/forbidden", layout: false, status: :forbidden
     end
   end
 end
