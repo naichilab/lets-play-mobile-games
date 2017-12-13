@@ -3,6 +3,7 @@ class Game < ApplicationRecord
   belongs_to :category
 
   validates :title, presence: true, length: {maximum: 64}
+  validates :guideline, length: {maximum: 512}
 
   mount_uploader :icon, IconUploader
 
