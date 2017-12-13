@@ -69,6 +69,7 @@ end
 
 group :test do
   gem 'rails-controller-testing'
+  gem 'guard-rspec', require: false
 end
 
 
