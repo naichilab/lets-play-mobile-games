@@ -20,14 +20,20 @@ feature "Game Registeration" do
 
     fill_in 'タイトル', with: 'これはゲームタイトルです。'
     select "シューティング", from: "game_category"
-    fill_in '実況者へ伝えたいこと', with: 'ダウンロードページへのリンクを貼ってね！！！'
     fill_in 'AndroidストアURL', with: 'https://google.com/hogehoge'
     fill_in 'iOSストアURL', with: 'https://google.com/fugafuga'
     fill_in 'ガイドライン', with: "ガイドラインはこちらです！！¥r¥nhttps://www.google.co.jp/search?q=ガイドライン"
+    fill_in '実況者へ伝えたいこと', with: 'ダウンロードページへのリンクを貼ってね！！！'
 
     click_button '作成'
 
     expect(page).to have_text 'これはゲームタイトルです'
+    expect(page).to have_text 'シューティング'
+    #TODO 画像リンクのテスト方法わからない
+    # expect(page).to have_link 'https://google.com/hogehoge'
+    # expect(page).to have_link 'https://google.com/fugafuga'
+    expect(page).to have_text 'ガイドラインはこちらです！！'
+    expect(page).to have_text 'ダウンロードページへのリンクを貼ってね'
   end
 
   scenario "ゲーム一覧" do
