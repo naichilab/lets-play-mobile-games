@@ -1,0 +1,41 @@
+// Place all the styles related to the Games controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "vars.scss";
+@import "break-point.scss";
+
+.search-condition-title[aria-expanded=false] .fa-caret-down {
+    display:none;
+}
+
+.search-condition-title[aria-expanded=true] .fa-caret-right {
+    display:none;
+}
+
+.box-joint {
+    margin-bottom: -1px;
+}
+
+.condition-box {
+    font-size: $text-size;
+}
+
+.condition-item {
+    position: relative;
+    display: block;
+    padding: 2px $text-size;
+    margin-bottom: -1px;
+    border: 1px solid #ddd;
+    border-width: 0 0 1px 0;
+    i {
+        margin-right: $text-size / 4;
+    }
+    label {
+        padding-left: $text-size / 2;
+        font-weight: 100;
+        font-size: 0.8em;
+    }
+    input {
+        margin-left: $text-size;
+    }
+}
