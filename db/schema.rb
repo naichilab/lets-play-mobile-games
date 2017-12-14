@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171214162123) do
+ActiveRecord::Schema.define(version: 20171214171341) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -59,6 +59,17 @@ ActiveRecord::Schema.define(version: 20171214162123) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["provider", "uid"], name: "index_social_profiles_on_provider_and_uid", unique: true
+  end
+
+  create_table "store_urls", force: :cascade do |t|
+    t.integer "game_id"
+    t.integer "platform_id"
+    t.string "url"
+    t.string "memo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_store_urls_on_game_id"
+    t.index ["platform_id"], name: "index_store_urls_on_platform_id"
   end
 
   create_table "users", force: :cascade do |t|
