@@ -1,5 +1,7 @@
 class PlatformsController < ApplicationController
   before_action :set_platform, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :admin_user
 
   # GET /platforms
   # GET /platforms.json
@@ -71,4 +73,11 @@ class PlatformsController < ApplicationController
     def platform_params
       params.require(:platform).permit(:code, :name)
     end
+
+    def admin_user
+      unless current_user.admin then
+        render template: "errors/forbidden", layout: false, status: :forbidden
+      end
+    end
+
 end
