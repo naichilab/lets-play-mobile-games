@@ -30,14 +30,16 @@ feature "Game Registeration" do
   end
 
   scenario "ゲーム一覧" do
-    create(:game)
-    create(:game)
-    create(:game)
-    create(:game)
-    create(:game)
+    game1 = create(:game)
+    game2 = create(:game)
+    game3 = create(:game)
 
     # アクセスできること
     visit games_path
+
+    expect(page).to have_link  game1.title
+    expect(page).to have_link  game2.title
+    expect(page).to have_link  game3.title
   end
 
   scenario "ゲーム詳細" do
