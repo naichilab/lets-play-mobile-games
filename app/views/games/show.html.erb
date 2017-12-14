@@ -6,11 +6,6 @@
       </div>
       <div class="col-sm-6 col-md-7 col-lg-8">
         <h1 class="foldable-text"><%= @game.title %></h1>
-        <h2>
-          <span class="label <%= @game.permission ? 'label-primary' : 'label-danger' %>">
-              <%= @game.permission ? '実況OK' : '実況NG' %>
-          </span>
-        </h2>
         <% if @game.specific_conditions.present? %>
             <p class="foldable-text"><%= @game.specific_conditions %></p>
         <% end %>
