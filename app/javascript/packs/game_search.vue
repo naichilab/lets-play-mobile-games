@@ -82,19 +82,18 @@
                 <p>このサービスに登録されていないゲームについては、開発者に直接お問い合わせください。</p>
             </div>
             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3" v-for="game in games">
-
-                <div class="boxed push-down-45">
-                    <div class="meta">
+                <!-- Start of the content -->
+                <div class="boxed">
+                    <div class="boxed-content">
+                        <a :href="'/games/' + game.id"></a>
                         <img class="game-icon-image" :src="game.icon.thumb.url">
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-10 col-xs-offset-1 ">
-                            <!-- Start of the content -->
-                            <div class="post-content--front-page">
-                                <h1 class="front-page-title">
-                                    <a :href="'/games/' + game.id" v-text="game.title"></a>
-                                </h1>
-                            </div>
+                        <div class="front-page-title ellipsisable-text">
+                            <span v-text="game.title"></span>
+                        </div>
+                        <div>
+                            <i class="fa fa-warning fa-lg text-warning" v-if="game.permission" aria-hidden="true"></i>
+                            <i class="fa fa-android fa-lg android-statue-logo" v-if="game.android_url.length > 0" aria-hidden="true"></i>
+                            <i class="fa fa-apple fa-lg apple-logo" v-if="game.ios_url.length > 0" aria-hidden="true"></i>
                         </div>
                     </div>
                 </div>

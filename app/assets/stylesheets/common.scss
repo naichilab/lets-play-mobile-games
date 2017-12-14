@@ -1,5 +1,4 @@
 .ellipsisable-text {
-    width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -9,4 +8,14 @@
 {
     word-wrap: break-word;
     overflow-wrap: break-word;
+}
+
+.android-statue-logo
+{
+    color: #a4c639;
+}
+
+.apple-logo
+{
+    color: #999999
 }
