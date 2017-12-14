@@ -9,15 +9,21 @@
 require 'factory_bot'
 Dir[Rails.root.join('spec/support/factories/*.rb')].each {|f| require f}
 
-FactoryBot.create(:category, name: 'シューティング')
-FactoryBot.create(:category, name: 'アクション')
-FactoryBot.create(:category, name: 'アドベンチャー')
-FactoryBot.create(:category, name: 'ロールプレイング')
-FactoryBot.create(:category, name: 'パズル')
-FactoryBot.create(:category, name: 'レース')
-FactoryBot.create(:category, name: 'シミュレーション')
-FactoryBot.create(:category, name: '音楽')
-FactoryBot.create(:category, name: 'その他')
+# create categories
+categories = %w(シューティング アクション アドベンチャー ロールプレイング パズル レース シミュレーション 音楽 その他)
+categories.each do |c|
+  unless Category.where(name: c).any?
+    FactoryBot.create(:category, name: c)
+  end
+end
+
+# create platforms
+platforms = {windows: 'Windows', osx: 'OS X', ios: 'iOS', android: 'Android', linux: 'Linux', web: 'Web'}
+platforms.each do |code, name|
+  unless Platform.where(code: code).any?
+    FactoryBot.create(:platform, code: code, name: name)
+  end
+end
 
 if ENV['VIRTUAL_ENV'] == 'development'
 
