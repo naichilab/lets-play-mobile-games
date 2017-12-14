@@ -84,13 +84,13 @@ class GamesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def game_params
-    params.require(:game).permit(:title, :permission, :specific_conditions, :android_url, :ios_url, :icon, :category_id)
+    params.require(:game).permit(:title, :permission, :specific_conditions, :android_url, :ios_url, :icon, :category_id, :guideline)
   end
 
   # Confirms the correct user.
   def correct_user
     if @game.user != current_user
-      redirect_to(root_url)
+      render template: "errors/forbidden", layout: false, status: :forbidden
     end
   end
 end

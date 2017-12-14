@@ -7,5 +7,9 @@ FactoryBot.define do
 
     user
     category
+
+    factory :invalid_game do
+      title "   "
+    end
   end
 end

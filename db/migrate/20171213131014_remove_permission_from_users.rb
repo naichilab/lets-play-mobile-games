@@ -4,6 +4,6 @@ class RemovePermissionFromUsers < ActiveRecord::Migration[5.1]
   end
 
   def down
-    add_column :games, :permission, null: false, default: '0'
+    add_column :games, :permission, :boolean, null: false, default: '0'
   end
 end

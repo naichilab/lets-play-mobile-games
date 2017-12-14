@@ -31,13 +31,6 @@
             </div>
 
             <div class="form-group">
-              <label for="game_specific_conditions" class="col-lg-3 control-label">条件・要望</label>
-              <div class="col-lg-9">
-                <%= form.text_area :specific_conditions, id: :game_specific_conditions, class: 'form-control', placeholder: '実況に際して条件・要望があればこちらに。' %>
-              </div>
-            </div>
-
-            <div class="form-group">
               <label for="game_android_url" class="col-lg-3 control-label">AndroidストアURL</label>
               <div class="col-lg-9">
                 <%= form.text_field :android_url, id: :game_android_url, class: 'form-control', placeholder: 'https://play.google.com/store/apps/details?id=[パッケージ名]' %>
@@ -48,6 +41,20 @@
               <label for="game_ios_url" class="col-lg-3 control-label">iOSストアURL</label>
               <div class="col-lg-9">
                 <%= form.text_field :ios_url, id: :game_ios_url, class: 'form-control', placeholder: 'https://itunes.apple.com/jp/app/id[app_id]' %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="game_guideline" class="col-lg-3 control-label">ガイドライン</label>
+              <div class="col-lg-9">
+                <%= form.text_area :guideline, id: :game_guideline, class: 'form-control', rows: 5, placeholder: '実況に関するガイドライン、もしくはガイドラインを記載したURLがあれば入力してください。特にない場合は何も記入しないでください。' %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="game_specific_conditions" class="col-lg-3 control-label">実況者へ伝えたいこと</label>
+              <div class="col-lg-9">
+                <%= form.text_area :specific_conditions, id: :game_specific_conditions, class: 'form-control', rows: 3, placeholder: 'ゲームの楽しみ方など、実況者へ伝えたいことがあれば入力してください。' %>
               </div>
             </div>
 

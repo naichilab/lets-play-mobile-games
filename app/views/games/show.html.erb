@@ -5,7 +5,11 @@
         <%= image_tag @game.icon.url, class: 'img-responsive' %>
       </div>
       <div class="col-sm-6 col-md-7 col-lg-8">
+        <p><%= @game.category.name %></p>
         <h1 class="foldable-text"><%= @game.title %></h1>
+        <% if @game.guideline.present? %>
+            <p class="foldable-text"><%= @game.guideline %></p>
+        <% end %>
         <% if @game.specific_conditions.present? %>
             <p class="foldable-text"><%= @game.specific_conditions %></p>
         <% end %>
