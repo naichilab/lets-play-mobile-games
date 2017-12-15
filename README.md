@@ -34,6 +34,8 @@ RubyやRails導入は個人個人違うと思うので省略します。導入�
     VIRTUAL_ENV=test
     ```
 
-  4. `bundle exec rails s`でサーバーが立ち上がるかチェックしてみて下さい。
+  4. `bundle exec rake db:create`と`bundle exec rake db:migrate`を順に実行して下さい。
 
-  5. サーバーが立ち上がれば環境構築成功です！開発を進めて下さい！
+  5. `bundle exec rails s`でサーバーが立ち上がるかチェックしてみて下さい。
+
+  6. サーバーが立ち上がりサイトへのアクセスに成功すれば環境構築成功です！開発を進めて下さい！
