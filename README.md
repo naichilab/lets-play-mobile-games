@@ -1,4 +1,4 @@
-# ゲームを実況しよう！
+# ゲームを実況しよう！ [![CircleCI](https://circleci.com/gh/naichilab/lets-play-mobile-games/tree/master.svg?style=svg)](https://circleci.com/gh/naichilab/lets-play-mobile-games/tree/master)
 
 ## サイト概要  
 youtuberをはじめとする実況者さんに対して実況可能アプリを提示するサービスを主な目的としたサイトです。
