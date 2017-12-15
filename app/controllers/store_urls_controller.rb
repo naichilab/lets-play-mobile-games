@@ -1,5 +1,9 @@
 class StoreUrlsController < ApplicationController
   before_action :set_store_url, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+
+
 
   # GET /store_urls
   # GET /store_urls.json
@@ -71,4 +75,12 @@ class StoreUrlsController < ApplicationController
     def store_url_params
       params.require(:store_url).permit(:game_id, :platform_id, :url, :memo)
     end
+
+    # Confirms the correct user.
+    def correct_user
+      if @store_url.game.user != current_user
+        render template: "errors/forbidden", layout: false, status: :forbidden
+      end
+    end
+
 end
