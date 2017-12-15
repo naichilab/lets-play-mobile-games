@@ -79,8 +79,7 @@
                             <span v-text="game.title"></span>
                         </div>
                         <div>
-                            <!-- TODO: ガイドラインの有無に変更する -->
-                            <span class="icon-guideline" v-if="game.permission" aria-hidden="true"></span>
+                            <span class="icon-guideline" v-if="game.guideline !== null && game.guideline.length > 0 " aria-hidden="true"></span>
                             <span class="icon-android" v-if="game.android_url.length > 0" aria-hidden="true"></span>
                             <span class="icon-ios" v-if="game.ios_url.length > 0" aria-hidden="true"></span>
                         </div>
@@ -102,7 +101,6 @@
                     categories: {}
                 },
                 formValues: {
-                    permission: "",
                     category: "",
                     platform: ""
                 }
