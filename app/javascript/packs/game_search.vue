@@ -16,34 +16,6 @@
 
             <div class="condition-area">
                 <div class="panel panel-default condition-box box-joint">
-                    <div class="panel-heading search-condition-title" data-toggle="collapse" data-target="#guideline-condition" aria-expanded="true" aria-controls="guideline-chevron">
-                        <i class="fa fa-caret-right" aria-hidden="true"></i>
-                        <i class="fa fa-caret-down" aria-hidden="true"></i>
-                        ガイドライン
-                    </div>
-                    <ul class="list-group collapse in" id="guideline-condition">
-                        <li class="condition-item">
-                            <input type="radio" id="radPermissionAll" value="" v-model="formValues.permission"
-                                                                               v-on:change="getGames">
-                            <label for="radPermissionAll">すべて</label>
-                        </li>
-                        <li class="condition-item">
-                            <input type="radio" id="radPermissionNG" value="false" v-model="formValues.permission"
-                                                                                   v-on:change="getGames">
-                            <label for="radPermissionNG">
-                                なし
-                            </label>
-                        </li>
-                        <li class="condition-item">
-                            <input type="radio" id="radPermissionOK" value="true" v-model="formValues.permission"
-                                                                                  v-on:change="getGames">
-                            <label for="radPermissionOK">
-                                <span class="icon-guideline" aria-hidden="true"></span>あり
-                            </label>
-                        </li>
-                    </ul>
-                </div>
-                <div class="panel panel-default condition-box box-joint">
                     <div class="panel-heading search-condition-title" data-toggle="collapse" data-target="#platform-condition" aria-expanded="true" aria-controls="platform-chevron">
                         <i class="fa fa-caret-right" aria-hidden="true"></i>
                         <i class="fa fa-caret-down" aria-hidden="true"></i>
