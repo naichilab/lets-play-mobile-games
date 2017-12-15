@@ -28,17 +28,17 @@
                             <label for="radPermissionAll">すべて</label>
                         </li>
                         <li class="condition-item">
-                            <input type="radio" id="radPermissionOK" value="true" v-model="formValues.permission"
-                                                                                  v-on:change="getGames">
-                            <label for="radPermissionOK">
-                                <i class="fa fa-warning fa-lg text-warning" aria-hidden="true"></i>あり
-                            </label>
-                        </li>
-                        <li class="condition-item">
                             <input type="radio" id="radPermissionNG" value="false" v-model="formValues.permission"
                                                                                    v-on:change="getGames">
                             <label for="radPermissionNG">
-                                <i class="fa fa-check-circle-o fa-lg text-success" aria-hidden="true"></i>なし
+                                なし
+                            </label>
+                        </li>
+                        <li class="condition-item">
+                            <input type="radio" id="radPermissionOK" value="true" v-model="formValues.permission"
+                                                                                  v-on:change="getGames">
+                            <label for="radPermissionOK">
+                                <span class="icon-guideline" aria-hidden="true"></span>あり
                             </label>
                         </li>
                     </ul>
@@ -58,14 +58,14 @@
                             <input type="radio" id="radPlatformAndroid" value="android" v-model="formValues.platform"
                                                                                         v-on:change="getGames">
                             <label for="radPlatformAndroid">
-                                <i class="fa fa-android fa-lg android-statue-logo" aria-hidden="true"></i>Android
+                                <span class="icon-android" aria-hidden="true"></span>Android
                             </label>
                         </li>
                         <li class="condition-item">
                             <input type="radio" id="radPlatformIOS" value="ios" v-model="formValues.platform"
                                                                                 v-on:change="getGames">
                             <label for="radPlatformIOS">
-                                <i class="fa fa-apple fa-lg apple-logo" aria-hidden="true"></i>iOS
+                                <span class="icon-ios" aria-hidden="true"></span>iOS
                             </label>
                         </li>
                     </ul>
@@ -107,9 +107,10 @@
                             <span v-text="game.title"></span>
                         </div>
                         <div>
-                            <i class="fa fa-warning fa-lg text-warning" v-if="game.permission" aria-hidden="true"></i>
-                            <i class="fa fa-android fa-lg android-statue-logo" v-if="game.android_url.length > 0" aria-hidden="true"></i>
-                            <i class="fa fa-apple fa-lg apple-logo" v-if="game.ios_url.length > 0" aria-hidden="true"></i>
+                            <!-- TODO: ガイドラインの有無に変更する -->
+                            <span class="icon-guideline" v-if="game.permission" aria-hidden="true"></span>
+                            <span class="icon-android" v-if="game.android_url.length > 0" aria-hidden="true"></span>
+                            <span class="icon-ios" v-if="game.ios_url.length > 0" aria-hidden="true"></span>
                         </div>
                     </div>
                 </div>

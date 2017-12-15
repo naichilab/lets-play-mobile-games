@@ -5,7 +5,7 @@
 @import "break-point.scss";
 
 @mixin text-prefix-icon {
-    i {
+    [class^="icon"]{
         margin-right: $text-size / 4;
     }
 }
