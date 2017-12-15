@@ -4,11 +4,14 @@
 @import "vars.scss";
 @import "break-point.scss";
 
-@mixin text-prefix-icon
-{
+@mixin text-prefix-icon {
     i {
         margin-right: $text-size / 4;
     }
+}
+
+.search-area {
+    margin-bottom: $text-size / 4;
 }
 
 .condition-area {

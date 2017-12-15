@@ -1,6 +1,14 @@
 <template>
     <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+            <!-- TODO: サーバサイド実装後に対応 -->
+            <div class="input-group search-area">
+                <input class="form-control" type="text"  placeholder="ゲームタイトルで探す" />
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </span>
+            </div>
+
             <input type="checkbox" id="filtering" class="hidden-element condition-filter-area">
             <label for="filtering" class="btn btn-warning btn-block condition-filter-area filter-btn">
                 <i class="fa fa-filter"></i>条件で絞りこみ
@@ -82,7 +90,7 @@
                     </ul>
                 </div>
             </div>
-            </div>
+        </div>
 
         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
             <div v-if="games.length === 0">
