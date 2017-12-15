@@ -4,6 +4,34 @@
 @import "vars.scss";
 @import "break-point.scss";
 
+@mixin text-prefix-icon
+{
+    i {
+        margin-right: $text-size / 4;
+    }
+}
+
+.condition-area {
+    @include xs-screen-media {
+       display: none;
+    }
+    @include sm-screen-media {
+       display: none;
+    }
+    @include md-screen-media {
+        display: none;
+    }
+}
+
+.condition-filter-area {
+    @include lg-screen-media {
+       display: none;
+    }
+    @include xl-screen-media {
+        display: none;
+    }
+}
+
 .search-condition-title[aria-expanded=false] .fa-caret-down {
     display:none;
 }
@@ -27,9 +55,7 @@
     margin-bottom: -1px;
     border: 1px solid #ddd;
     border-width: 0 0 1px 0;
-    i {
-        margin-right: $text-size / 4;
-    }
+    @include text-prefix-icon;
     label {
         padding-left: $text-size / 2;
         font-weight: 100;
@@ -38,4 +64,18 @@
     input {
         margin-left: $text-size;
     }
+}
+
+input[type=checkbox]:checked ~ div.condition-area {
+    display: block;
+}
+
+.filter-btn {
+    margin-bottom: $text-size;
+    @include text-prefix-icon;
+}
+
+input[type=checkbox]:checked ~ .filter-btn {
+    display: block;
+    margin-bottom: 0px;
 }
