@@ -1,24 +1,39 @@
-# README
+# ゲームを実況しよう！
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* サイト概要  
+youtuberをはじめとする実況者さんに対して実況可能アプリを提示するサービスを主な目的としたサイトです。
 
-Things you may want to cover:
+* お手伝いさん募集！  
+  * サイトの問題点/改善点を指摘してくださる方
+  * 問題点/改善点を修正/改善してくださる方
+<br><br>
 
-* Ruby version
+  以上のような方を随時募集しています！  
+  issueやプルリク歓迎なので、お手伝いよろしくお願いします！
 
-* System dependencies
+* 開発環境構築のすゝめ  
+RubyやRails導入は個人個人違うと思うので省略します。導入方法が全く分からない方は環境構築を解説している記事（[参考記事](https://qiita.com/SRAUFactory/items/d7b07b45b10408a42046)）を探してみて下さい。  
+<br>
+環境構築が済んでいる方は以下の工程をお願いします。
+  1. ターミナルで`git clone https://github.com/naichilab/lets-play-mobile-games.git`を実行してプロジェクトをコピーしてきます。
 
-* Configuration
+  2. プロジェクトに移動して`bundle install --path vendor/bundle`を実行します。
 
-* Database creation
+  3. いくつかファイルを生成します。
+    1. `.env`ファイルを生成。（中身は空でおkです）
 
-* Database initialization
+    2. `.env.development`ファイルを生成。中身は以下をコピペして下さい。  
+    ```
+    CONOHA_CONTAINER_NAME=letsplaylist_development
+    VIRTUAL_ENV=development
+    ```
 
-* How to run the test suite
+    3. `.env.test`ファイルを生成。中身は以下をコピペして下さい。  
+    ```
+    CONOHA_CONTAINER_NAME=letsplaylist_test
+    VIRTUAL_ENV=test
+    ```
 
-* Services (job queues, cache servers, search engines, etc.)
+  4. `bundle exec rails s`でサーバーが立ち上がるかチェックしてみて下さい。
 
-* Deployment instructions
-
-* ...
+  5. サーバーが立ち上がれば環境構築成功です！開発を進めて下さい！
