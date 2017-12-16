@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   }
   root to: 'home#index'
 
-
+  get 'static_pages/policy', to:'static_pages#policy'
 
   # api
   namespace :api, {format: :json } do
