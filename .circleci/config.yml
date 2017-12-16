@@ -38,6 +38,7 @@ jobs:
 
       # Yarn
       - restore_cache:
+          name: Restore yarn cache
           keys:
           - v1-yarn-{{ checksum "yarn.lock" }}
           # fallback to using the latest cache if no exact match is found
@@ -48,8 +49,9 @@ jobs:
           command: yarn install
 
       - save_cache:
+          name: Store yarn cache
           paths:
-            - .yarn-cache
+            - ~/.yarn-cache
           key: v1-yarn-{{ checksum "yarn.lock" }}
 
       # Database setup
