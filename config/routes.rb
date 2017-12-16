@@ -18,6 +18,5 @@ Rails.application.routes.draw do
     get 'games', to: 'games#index'
     get 'categories', to: 'categories#index'
   end
-  get 'games2', to: 'games#search'
 
 end
