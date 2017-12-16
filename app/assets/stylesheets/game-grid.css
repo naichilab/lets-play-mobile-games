@@ -9,6 +9,10 @@
     position: relative;
 }
 
+.boxed-icon-area {
+    display: inline-block;
+}
+
 .boxed a {
     display: block;
     position: absolute;

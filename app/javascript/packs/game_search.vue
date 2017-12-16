@@ -78,7 +78,7 @@
                         <div class="front-page-title ellipsisable-text">
                             <span v-text="game.title"></span>
                         </div>
-                        <div>
+                        <div class="boxed-icon-area">
                             <span class="icon-guideline" v-if="game.guideline !== null && game.guideline.length > 0 " aria-hidden="true"></span>
                             <span class="icon-android" v-if="game.android_url.length > 0" aria-hidden="true"></span>
                             <span class="icon-ios" v-if="game.ios_url.length > 0" aria-hidden="true"></span>
