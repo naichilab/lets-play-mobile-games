@@ -13,4 +13,18 @@ class Game < ApplicationRecord
   mount_uploader :image4, ImageUploader
   mount_uploader :image5, ImageUploader
 
+  scope :has_android, -> do
+    is_not_null = Game.arel_table[:android_url].not_eq(nil)
+    is_not_blank = Game.arel_table[:android_url].not_eq('')
+    where(is_not_null).where(is_not_blank)
+  end
+
+  scope :has_ios, -> do
+    is_not_null = Game.arel_table[:ios_url].not_eq(nil)
+    is_not_blank = Game.arel_table[:ios_url].not_eq('')
+    where(is_not_null).where(is_not_blank)
+  end
+
+
+
 end

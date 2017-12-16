@@ -21,10 +21,10 @@ module Api
 
       if params[:platform].present?
         if params[:platform]=='android'
-          games = games.where("android_url <> ''")
+          games = games.has_android
         end
         if params[:platform]=='ios'
-          games = games.where("ios_url <> ''")
+          games = games.has_ios
         end
       end
 
