@@ -1,11 +1,11 @@
 <template>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
-            <!-- TODO: サーバサイド実装後に対応 -->
+
             <div class="input-group search-area">
-                <input class="form-control" type="text"  placeholder="ゲームタイトルで探す" />
+                <input class="form-control" type="text"  placeholder="単語で探す" v-model="formValues.words" v-on:change="getGames" />
                 <span class="input-group-btn">
-                    <button class="btn btn-primary" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    <button class="btn btn-primary" type="button" v-on:click="getGames"><i class="fa fa-search" aria-hidden="true"></i></button>
                 </span>
             </div>
 
@@ -101,6 +101,7 @@
                     categories: {}
                 },
                 formValues: {
+                    words: "",
                     category: "",
                     platform: ""
                 }
