@@ -1,0 +1,84 @@
+// Place all the styles related to the Games controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "vars.scss";
+@import "break-point.scss";
+
+@mixin text-prefix-icon {
+    [class^="icon"]{
+        margin-right: $text-size / 4;
+    }
+}
+
+.search-area {
+    margin-bottom: $text-size / 4;
+}
+
+.condition-area {
+    @include xs-screen-media {
+       display: none;
+    }
+    @include sm-screen-media {
+       display: none;
+    }
+    @include md-screen-media {
+        display: none;
+    }
+}
+
+.condition-filter-area {
+    @include lg-screen-media {
+       display: none;
+    }
+    @include xl-screen-media {
+        display: none;
+    }
+}
+
+.search-condition-title[aria-expanded=false] .fa-caret-down {
+    display:none;
+}
+
+.search-condition-title[aria-expanded=true] .fa-caret-right {
+    display:none;
+}
+
+.box-joint {
+    margin-bottom: -1px;
+}
+
+.condition-box {
+    font-size: $text-size;
+}
+
+.condition-item {
+    position: relative;
+    display: block;
+    padding: 2px $text-size;
+    margin-bottom: -1px;
+    border: 1px solid #ddd;
+    border-width: 0 0 1px 0;
+    @include text-prefix-icon;
+    label {
+        padding-left: $text-size / 2;
+        font-weight: 100;
+        font-size: 0.8em;
+    }
+    input {
+        margin-left: $text-size;
+    }
+}
+
+input[type=checkbox]:checked ~ div.condition-area {
+    display: block;
+}
+
+.filter-btn {
+    margin-bottom: $text-size;
+    @include text-prefix-icon;
+}
+
+input[type=checkbox]:checked ~ .filter-btn {
+    display: block;
+    margin-bottom: 0px;
+}

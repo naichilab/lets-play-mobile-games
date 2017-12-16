@@ -1,5 +1,4 @@
 .ellipsisable-text {
-    width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -9,4 +8,35 @@
 {
     word-wrap: break-word;
     overflow-wrap: break-word;
+}
+
+.hidden-element {
+    display: none;
+}
+
+.icon {
+    font-family: FontAwesome;
+    font-size: 1.45em;
+    line-height: 0.8em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-guideline:before {
+    @extend .icon;
+    font-size: 1.3em;
+    content: "\f071";
+    color: #F9A825;
+}
+
+.icon-ios:before {
+    @extend .icon;
+    content: "\f179";
+    color: #999999;
+}
+
+.icon-android:before {
+    @extend .icon;
+    content: "\f17b";
+    color: #a4c639;
 }
