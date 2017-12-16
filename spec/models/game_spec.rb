@@ -27,9 +27,7 @@ describe Game do
         it {is_expected.not_to be_valid}
       end
     end
-  end
 
-  describe "ガイドライン" do
     describe ":guideline" do
       let(:game) {build(:game, guideline: guideline)}
       subject {game}
