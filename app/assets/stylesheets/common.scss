@@ -23,12 +23,9 @@
 }
 
 .icon-nav {
-    font-family: FontAwesome;
+    @extend .icon;
     font-size: 1.3em;
     margin-right: 8px;
-    line-height: 0.8em;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     color: #606060;
 }
 

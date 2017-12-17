@@ -1,0 +1,14 @@
+<% is_mobile ||= false %>
+
+<li <% if is_mobile %>class="mobile-nav-user-profile"<% end %>>
+    <%= link_to 'ゲームを登録', new_game_path %>
+</li>
+<li <% if is_mobile %>class="mobile-nav-user-profile"<% end %>>
+    <%= link_to 'プロフィール変更', edit_user_registration_path %>
+</li>
+<li role="separator" class="divider"></li>
+<li <% if is_mobile %>class="mobile-nav-user-profile"<% end %>>
+    <%= link_to destroy_user_session_path, method: :delete do %>
+        <span class="icon-signout"></span>ログアウト
+    <% end %>
+</li>

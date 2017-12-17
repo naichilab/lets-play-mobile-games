@@ -25,16 +25,10 @@
                       <div class="ellipsisable-text"><span class="icon-user"></span><%= current_user.username %></div>
                   </a>
                   <ul class="dropdown-menu">
-                    <li><%= link_to 'ゲームを登録', new_game_path %></li>
-                    <li><%= link_to 'プロフィール変更', edit_user_registration_path %></li>
-                    <li role="separator" class="divider"></li>
-                    <li>
-                      <%= link_to destroy_user_session_path, method: :delete do %>
-                          <span class="icon-signout"></span>ログアウト
-                      <% end %>
-                    </li>
+                    <%= render "layouts/user_profile_menu", is_mobile: false %>
                   </ul>
               </li>
+              <%= render "layouts/user_profile_menu", is_mobile: true %>
           <% else %>
             <li><%= link_to 'ゲームを登録', new_game_path %></li>
             <li><%= link_to 'ユーザー登録', new_user_registration_path %></li>
