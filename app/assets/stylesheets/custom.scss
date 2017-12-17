@@ -10,8 +10,6 @@
     background-color: #fad1e4 !important;
 }
 
-
-
 section.section-share{
     padding: 10px 0;
 }
@@ -19,5 +17,23 @@ section.section-share{
 @include xs-screen-media {
     .navbar .navbar-brand {
         font-size: 18px;
+    }
+}
+
+.nav-user-proflie {
+    @include xs-screen-media {
+        width: 100%;
+    }
+    @include sm-screen-media {
+        width: 100%;
+    }
+    @include md-screen-media {
+        width: 180px;
+    }
+    @include lg-screen-media {
+        width: 180px;
+    }
+    @include xl-screen-media {
+        width: 180px;
     }
 }
