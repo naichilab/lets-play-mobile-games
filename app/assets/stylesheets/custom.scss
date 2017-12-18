@@ -30,13 +30,13 @@ section.section-share{
         display: none!important;
     }
     @include md-screen-media {
-        width: 180px;
+        max-width: 180px;
     }
     @include lg-screen-media {
-        width: 180px;
+        max-width: 180px;
     }
     @include xl-screen-media {
-        width: 180px;
+        max-width: 180px;
     }
 }
 
