@@ -22,6 +22,30 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-nav {
+    @extend .icon;
+    font-size: 1.3em;
+    margin-right: 8px;
+    color: #606060;
+}
+
+.icon-user:before {
+    @extend .icon-nav;
+    content: "\f2be";
+    vertical-align: middle;
+}
+
+.icon-feedback:before {
+    @extend .icon-nav;
+    content: "\f27a";
+}
+
+.icon-signout:before {
+    @extend .icon-nav;
+    content: "\f08b";
+    vertical-align: middle;
+}
+
 .icon-guideline:before {
     @extend .icon;
     font-size: 1.3em;

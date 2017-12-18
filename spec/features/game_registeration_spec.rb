@@ -15,7 +15,7 @@ feature "Game Registeration" do
 
   scenario "ゲームを登録" do
     visit root_path
-    click_link 'ゲームを登録'
+    click_link 'ゲームを登録', match: :first
     expect(page).to have_text "新規登録"
 
     fill_in 'タイトル', with: 'これはゲームタイトルです。'

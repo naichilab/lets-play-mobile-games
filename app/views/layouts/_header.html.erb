@@ -14,15 +14,25 @@
           <li><a href="/games">ゲーム一覧</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to 'ゲームを登録', new_game_path %></li>
-          <li><%= link_to 'フィードバック', "https://docs.google.com/forms/d/e/1FAIpQLSfEta48PsfTBTkIx76idPpI7yNzo_HTdg-RknYm1ZxhGh7gWw/viewform", target: "_blank" %></li>
+            <li>
+              <%= link_to "https://docs.google.com/forms/d/e/1FAIpQLSfEta48PsfTBTkIx76idPpI7yNzo_HTdg-RknYm1ZxhGh7gWw/viewform", target: "_blank" do %>
+                <span class="icon-feedback"></span>フィードバック
+              <% end %>
+            </li>
           <% if user_signed_in? %>
-              <!--<li><strong><%= link_to current_user.username, root_path %></strong></li>-->
-              <li><%= link_to 'プロフィール変更', edit_user_registration_path %></li>
-              <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+              <li class="dropdown nav-user-proflie">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                      <div class="ellipsisable-text"><span class="icon-user"></span><%= current_user.username %></div>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <%= render "layouts/user_profile_menu", is_mobile: false %>
+                  </ul>
+              </li>
+              <%= render "layouts/user_profile_menu", is_mobile: true %>
           <% else %>
-              <li><%= link_to 'ユーザー登録', new_user_registration_path %></li>
-              <li><%= link_to 'ログイン', new_user_session_path %></li>
+            <li><%= link_to 'ゲームを登録', new_game_path %></li>
+            <li><%= link_to 'ユーザー登録', new_user_registration_path %></li>
+            <li><%= link_to 'ログイン', new_user_session_path %></li>
           <% end %>
         </ul>
       </div>

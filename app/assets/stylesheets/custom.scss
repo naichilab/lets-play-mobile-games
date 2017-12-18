@@ -1,3 +1,5 @@
+// This css is the purpose of overriding bootstrap css.
+
 @import "break-point";
 
 .body-container { padding-top: 22px; }
@@ -10,8 +12,6 @@
     background-color: #fad1e4 !important;
 }
 
-
-
 section.section-share{
     padding: 10px 0;
 }
@@ -19,5 +19,41 @@ section.section-share{
 @include xs-screen-media {
     .navbar .navbar-brand {
         font-size: 18px;
+    }
+}
+
+.nav-user-proflie {
+    @include xs-screen-media {
+        display: none!important;
+    }
+    @include sm-screen-media {
+        display: none!important;
+    }
+    @include md-screen-media {
+        max-width: 180px;
+    }
+    @include lg-screen-media {
+        max-width: 180px;
+    }
+    @include xl-screen-media {
+        max-width: 180px;
+    }
+}
+
+.mobile-nav-user-profile {
+    @include xs-screen-media {
+        width: 100%;
+    }
+    @include sm-screen-media {
+        width: 100%;
+    }
+    @include md-screen-media {
+        display: none!important;
+    }
+    @include lg-screen-media {
+        display: none!important;
+    }
+    @include xl-screen-media {
+        display: none!important;
     }
 }
