@@ -5,18 +5,11 @@ describe GamesController do
   shared_examples 'ログイン不要なアクセス' do
     describe "GET #index" do
       before do
-        @game1 = create(:game)
-        @game2 = create(:game)
-        @game3 = create(:game)
         get :index
       end
 
       it 'returns a success response' do
         expect(response).to be_success
-      end
-
-      it 'assigns all games' do
-        expect(assigns(:games)).to include @game1, @game2, @game3
       end
     end
 

@@ -1,8 +1,7 @@
 <%= provide(:html_title, "登録ゲーム一覧") %>
 
-<div class="row">
-  <%= render 'games_column', games: @games, col: 0 %>
-  <%= render 'games_column', games: @games, col: 1 %>
-  <%= render 'games_column', games: @games, col: 2 %>
-  <%= render 'games_column', games: @games, col: 3 %>
+<div id="vue">
+  <game-search></game-search>
 </div>
+
+<%= javascript_pack_tag 'search' %>

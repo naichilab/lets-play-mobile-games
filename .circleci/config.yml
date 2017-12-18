@@ -36,9 +36,30 @@ jobs:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
+      # Yarn
+      - restore_cache:
+          name: Restore yarn cache
+          keys:
+          - v1-yarn-{{ checksum "yarn.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-yarn-
+
+      - run:
+          name: yarn Install
+          command: yarn install
+
+      - save_cache:
+          name: Store yarn cache
+          paths:
+            - ~/.yarn-cache
+          key: v1-yarn-{{ checksum "yarn.lock" }}
+
       # Database setup
       - run: bundle exec rake db:create RAILS_ENV=test
       - run: bundle exec rake db:schema:load RAILS_ENV=test
+
+      # webpack
+      - run: bundle exec webpack
 
       # run tests!
       - run:
