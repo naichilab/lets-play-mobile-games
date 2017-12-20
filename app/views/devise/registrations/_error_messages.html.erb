@@ -1,0 +1,8 @@
+<% if (resource.errors.messages.keys & target_field).length > 0 %>
+    <div class="form-group col-md-12">
+        <%= "#{resource.errors.count}件のエラーがあります。" %>
+        <% resource.errors.full_messages.each do |msg| %>
+            <span class="help-block"><%= "・#{msg}" %></span>
+        <% end %>
+    </div>
+<% end %>
