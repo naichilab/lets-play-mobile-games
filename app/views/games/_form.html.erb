@@ -1,9 +1,9 @@
-<div class="row">
+<div id="game-form" class="row">
   <div class="col-md-8 col-md-offset-2">
     <div class="well bs-component">
-      <div id="vue">
-        <game-form :game="<%= game.to_json %>" :categories="<%= @categories.to_json %>"></game-form>
-      </div>
+      <!--<div id="vue">-->
+        <!--<game-form :game="<%= game.to_json %>" :categories="<%= @categories.to_json %>"></game-form>-->
+      <!--</div>-->
       <%= form_with(model: game, local: true, class: 'form-horizontal') do |form| %>
           <legend><%= title %></legend>
 
