@@ -6,6 +6,7 @@
     "axios": "^0.17.1",
     "coffeescript": "1.12.7",
     "vue": "^2.5.2",
+    "vue-data-scooper": "^0.7.1",
     "vue-loader": "^13.3.0",
     "vue-template-compiler": "^2.5.2"
   },
