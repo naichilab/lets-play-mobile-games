@@ -14,6 +14,18 @@
     display: none;
 }
 
+.google-play-badge {
+    width: 180px;
+    display:inline-block;
+}
+
+.apple-store-badge {
+    width: 130px;
+    // google playのBadgeに画像サイズ合わせるために設定
+    margin: 12px;
+    display:inline-block;
+}
+
 .icon {
     font-family: FontAwesome;
     font-size: 1.45em;
@@ -63,4 +75,10 @@
     @extend .icon;
     content: "\f17b";
     color: #a4c639;
+}
+
+.icon-pencil:before {
+    @extend .icon;
+    font-size: 1em;
+    content: "\f040";
 }
