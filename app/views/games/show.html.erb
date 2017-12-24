@@ -1,40 +1,46 @@
-<div class="row">
-  <div class="jumbotron">
-    <div class="row">
-      <div class="col-sm-6 col-md-5 col-lg-4">
+<div class="row game-detail">
+    <div class="col-xs-12">
+        <% if @game.user == current_user %>
+            <%= link_to(edit_game_path(@game), class: 'btn btn-primary pull-left') do %>
+                <span class="icon-pencil"></span> 編集する
+            <% end %>
+            <%= link_to(game_path(@game), data: {confirm: "削除しますか？"}, method: :delete, class: 'btn btn-danger pull-right') do %>
+                <i class="fa fa-trash" aria-hidden="true"></i> 削除する
+            <% end %>
+        <% end %>
+    </div>
+    <span class="col-xs-12 col-sm-4 game-icon">
         <%= image_tag @game.icon.url, class: 'img-responsive' %>
-      </div>
-      <div class="col-sm-6 col-md-7 col-lg-8">
-        <p><%= @game.category.name %></p>
-        <h1 class="foldable-text"><%= @game.title %></h1>
+    </span>
+    <div class="col-xs-12 col-sm-8">
+        <div class="game-detail-title">
+            <p><%= @game.category.name %></p>
+            <h1 class="foldable-text"><%= @game.title %></h1>
+        </div>
         <% if @game.guideline.present? %>
-            <p class="foldable-text"><%= @game.guideline %></p>
+            <div class = "guideline">
+                <span class="guideline-header"><i class="fa fa-warning" aria-hidden="true"></i>実況ガイドライン</span>
+                <span class="guideline-contents"><%= @game.guideline %></span>
+            </div>
         <% end %>
-        <% if @game.specific_conditions.present? %>
-            <p class="foldable-text"><%= @game.specific_conditions %></p>
-        <% end %>
-        <% if @game.android_url.present? %>
-          <%= link_to @game.android_url, target: '_blank' do %>
-              <%= image_tag(asset_path('google-play-badge.png'), :width => 160) %>
-          <% end %>
-        <% end %>
-        <% if @game.ios_url.present? %>
-          <%= link_to @game.ios_url, target: '_blank' do %>
-              <%= image_tag(asset_path("Download_on_the_App_Store_Badge_JP_RGB_blk_100317.svg"), :width => 120) %>
-          <% end %>
-        <% end %>
-      </div>
+        <div class="game-describe">
+            <legend><i class="fa fa-comment-o" aria-hidden="true"></i> 開発者からのメッセージ</legend>
+            <span class="game-describe-contents"><% if @game.specific_conditions.present? %><%= @game.specific_conditions %><% else %>特にありません<% end %></span>
+        </div>
+        <div class="game-external-links">
+            <legend><i class="fa fa-link" aria-hidden="true"></i> 関連リンク</legend>
+            <div class="game-external-links-contents">
+                <% if @game.android_url.present? %>
+                    <%= link_to @game.android_url, target: '_blank' do %>
+                        <%= image_tag(asset_path('google-play-badge.png'), :class => 'google-play-badge') %>
+                    <% end %>
+                <% end %>
+                <% if @game.ios_url.present? %>
+                    <%= link_to @game.ios_url, target: '_blank' do %>
+                        <%= image_tag(asset_path("Download_on_the_App_Store_Badge_JP_RGB_blk_100317.svg"), :class => 'apple-store-badge') %>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
-
-<% if @game.user == current_user %>
-    <div class="row">
-      <div class="col-xs-12">
-        <p>
-          <%= link_to '編集', edit_game_path(@game), class: 'btn btn-primary btn-lg' %>
-          <%= link_to '削除', game_path(@game), data: {confirm: "削除しますか？"}, method: :delete, class: 'btn btn-primary btn-lg' %>
-        </p>
-      </div>
-    </div>
-<% end %>
