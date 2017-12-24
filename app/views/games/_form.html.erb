@@ -1,11 +1,7 @@
 <div data-vue="game_form" class="row">
   <div class="col-md-8 col-md-offset-2">
     <div class="well bs-component">
-      <!--<div id="vue">-->
-      <!--<game-form :game="<%= game.to_json %>" :categories="<%= @categories.to_json %>"></game-form>-->
-      <!--</div>-->
-      {{game}}
-      <%= vue_form_with(model: game, local: true, class: 'form-horizontal') do |form| %>
+      <%= form_with(model: game, local: true, class: 'form-horizontal') do |form| %>
           <legend><%= title %></legend>
 
           <fieldset>
@@ -23,42 +19,42 @@
             <div class="form-group">
               <label for="game_title" class="col-lg-3 control-label">タイトル</label>
               <div class="col-lg-9">
-                <%= form.text_field :title, id: :game_title, class: 'form-control', placeholder: 'ゲームタイトル' %>
+                <%= form.text_field :title, id: :game_title, class: 'form-control', placeholder: 'ゲームタイトル', "v-model" => "game.title" %>
               </div>
             </div>
 
             <div class="form-group">
               <label for="game_category" class="col-lg-3 control-label">ジャンル</label>
               <div class="col-lg-9">
-                <%= form.select :category_id, @categories.map {|c| [c.name, c.id]}, {include_blank: '選択してください'}, {id: 'game_category', class: 'form-control'} %>
+                <%= form.select :category_id, @categories.map {|c| [c.name, c.id]}, {include_blank: '選択してください'}, {id: 'game_category', class: 'form-control', "v-model" => "game.category_id"} %>
               </div>
             </div>
 
             <div class="form-group">
               <label for="game_android_url" class="col-lg-3 control-label">AndroidストアURL</label>
               <div class="col-lg-9">
-                <%= form.text_field :android_url, id: :game_android_url, class: 'form-control', placeholder: 'https://play.google.com/store/apps/details?id=[パッケージ名]' %>
+                <%= form.text_field :android_url, id: :game_android_url, class: 'form-control', placeholder: 'https://play.google.com/store/apps/details?id=[パッケージ名]', "v-model" => "game.android_url" %>
               </div>
             </div>
 
             <div class="form-group">
               <label for="game_ios_url" class="col-lg-3 control-label">iOSストアURL</label>
               <div class="col-lg-9">
-                <%= form.text_field :ios_url, id: :game_ios_url, class: 'form-control', placeholder: 'https://itunes.apple.com/jp/app/id[app_id]' %>
+                <%= form.text_field :ios_url, id: :game_ios_url, class: 'form-control', placeholder: 'https://itunes.apple.com/jp/app/id[app_id]', "v-model" => "game.ios_url" %>
               </div>
             </div>
 
             <div class="form-group">
               <label for="game_guideline" class="col-lg-3 control-label">ガイドライン</label>
               <div class="col-lg-9">
-                <%= form.text_area :guideline, id: :game_guideline, class: 'form-control', rows: 5, placeholder: '実況に関するガイドライン、もしくはガイドラインを記載したURLがあれば入力してください。特にない場合は何も記入しないでください。' %>
+                <%= form.text_area :guideline, id: :game_guideline, class: 'form-control', rows: 5, placeholder: '実況に関するガイドライン、もしくはガイドラインを記載したURLがあれば入力してください。特にない場合は何も記入しないでください。', "v-model" => "game.guideline" %>
               </div>
             </div>
 
             <div class="form-group">
               <label for="game_specific_conditions" class="col-lg-3 control-label">実況者へ伝えたいこと</label>
               <div class="col-lg-9">
-                <%= form.text_area :specific_conditions, id: :game_specific_conditions, class: 'form-control', rows: 3, placeholder: 'ゲームの楽しみ方など、実況者へ伝えたいことがあれば入力してください。' %>
+                <%= form.text_area :specific_conditions, id: :game_specific_conditions, class: 'form-control', rows: 3, placeholder: 'ゲームの楽しみ方など、実況者へ伝えたいことがあれば入力してください。', "v-model" => "game.specific_conditions" %>
               </div>
             </div>
 
@@ -70,9 +66,15 @@
               </div>
             </div>
 
-            <%= game.store_urls.each do |su| %>
-                <%= su.id %>
-            <% end %>
+            <!--<%= content_tag :ul, 'data-vue-model': "{ \"store_urls\": #{game.store_urls.to_json} }" do %>-->
+                <!--<li v-for="store_url in store_urls">-->
+                  <!--{{ store_url }}-->
+                <!--</li>-->
+            <!--<% end %>-->
+
+            <!--<%= game.store_urls.each do |su| %>-->
+                <!--<%= su.id %>-->
+            <!--<% end %>-->
 
 
             <div class="form-group">
