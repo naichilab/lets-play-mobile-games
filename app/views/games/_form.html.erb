@@ -4,7 +4,8 @@
       <!--<div id="vue">-->
         <!--<game-form :game="<%= game.to_json %>" :categories="<%= @categories.to_json %>"></game-form>-->
       <!--</div>-->
-      <%= form_with(model: game, local: true, class: 'form-horizontal') do |form| %>
+      {{game}}
+      <%= vue_form_with(model: game, local: true, class: 'form-horizontal') do |form| %>
           <legend><%= title %></legend>
 
           <fieldset>
@@ -61,24 +62,26 @@
               </div>
             </div>
 
+            <input type="file" @change="showHoge"/>
+
             <div class="form-group">
               <label for="game_icon" class="col-lg-3 control-label">アイコン画像</label>
               <div class="col-lg-9">
-                <%= form.file_field :icon, id: :game_icon, class: 'form-control' %>
+                <%= file_field_tag 'game[icon]', id: :game_icon, class: 'form-control', "v-on:change" => "showHoge" %>
                 <span class="help-block">正方形を推奨。正方形に切り取られて表示されます。</span>
               </div>
             </div>
 
-            <% for i in 1..5 %>
+            <!--<% for i in 1..5 %>-->
 
-                <div class="form-group">
-                  <label for="game_image<%= i %>" class="col-lg-3 control-label">スクリーンショット<%= i %></label>
-                  <div class="col-lg-9">
-                    <%= form.file_field "image#{i}", id: "game_image#{i}", class: 'form-control' %>
-                  </div>
-                </div>
+                <!--<div class="form-group">-->
+                  <!--<label for="game_image<%= i %>" class="col-lg-3 control-label">スクリーンショット<%= i %></label>-->
+                  <!--<div class="col-lg-9">-->
+                    <!--<%= form.file_field "image#{i}", id: "game_image#{i}", class: 'form-control' %>-->
+                  <!--</div>-->
+                <!--</div>-->
 
-            <% end %>
+            <!--<% end %>-->
 
             <div class="form-group">
               <div class="col-lg-9 col-lg-offset-3">
