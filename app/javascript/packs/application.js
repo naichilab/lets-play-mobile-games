@@ -14,16 +14,12 @@
 //    * dataやmethods等を書いておく
 // たぶんこんなかんじ
 
-console.log('Hello World from Webpacker')
-
-
 import Vue from 'vue/dist/vue.esm'
-import VueDataScooper from "vue-data-scooper"
 
-Vue.use(VueDataScooper)
+import VueAssignModel from 'vue-assign-model'
+Vue.use(VueAssignModel)
 
 var vms = []
-
 var options = {}
 var requireContext = require.context('./options', false, /\.js$/)
 requireContext.keys().forEach(key => {

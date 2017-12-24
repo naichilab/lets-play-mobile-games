@@ -382,9 +382,6 @@ GEM
       json
       require_all
       ruby-progressbar
-    rails_vue_melt (0.2.0)
-      rails (~> 5.1)
-      webpacker (~> 3.0)
     railties (5.1.4)
       actionpack (= 5.1.4)
       activesupport (= 5.1.4)
@@ -524,7 +521,6 @@ DEPENDENCIES
   rails-controller-testing
   rails-i18n (~> 5.0)
   rails_best_practices (~> 1.19)
-  rails_vue_melt
   rspec-rails
   rspec_junit_formatter
   sass-rails (~> 5.0)
