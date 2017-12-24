@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Store Urls</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Game</th>
+      <th>Platform</th>
+      <th>Url</th>
+      <th>Memo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @store_urls.each do |store_url| %>
+      <tr>
+        <td><%= store_url.game %></td>
+        <td><%= store_url.platform %></td>
+        <td><%= store_url.url %></td>
+        <td><%= store_url.memo %></td>
+        <td><%= link_to 'Show', store_url %></td>
+        <td><%= link_to 'Edit', edit_store_url_path(store_url) %></td>
+        <td><%= link_to 'Destroy', store_url, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Store Url', new_store_url_path %>

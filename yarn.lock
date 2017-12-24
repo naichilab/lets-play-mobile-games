@@ -1705,6 +1705,12 @@ es-to-primitive@^1.1.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.1"
 
+es5-dot-prop@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/es5-dot-prop/-/es5-dot-prop-4.1.1.tgz#72102153eabb3740d66b735da616e2dd9be5737b"
+  dependencies:
+    is-obj "^1.0.0"
+
 es5-ext@^0.10.14, es5-ext@^0.10.35, es5-ext@^0.10.9, es5-ext@~0.10.14:
   version "0.10.35"
   resolved "https://registry.yarnpkg.com/es5-ext/-/es5-ext-0.10.35.tgz#18ee858ce6a3c45c7d79e91c15fcca9ec568494f"
@@ -2569,6 +2575,10 @@ is-number@^3.0.0:
   resolved "https://registry.yarnpkg.com/is-number/-/is-number-3.0.0.tgz#24fd6201a4782cf50561c810276afc7d12d71195"
   dependencies:
     kind-of "^3.0.2"
+
+is-obj@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/is-obj/-/is-obj-1.0.1.tgz#3e4729ac1f5fde025cd7d83a896dab9f4f67db0f"
 
 is-path-cwd@^1.0.0:
   version "1.0.0"
@@ -5192,6 +5202,12 @@ vm-browserify@0.0.4:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-0.0.4.tgz#5d7ea45bbef9e4a6ff65f95438e0a87c357d5a73"
   dependencies:
     indexof "0.0.1"
+
+vue-assign-model@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/vue-assign-model/-/vue-assign-model-1.0.0.tgz#04a7cd889b92c3f3a1c304a2c51fff0ee1383e58"
+  dependencies:
+    es5-dot-prop "^4.1.1"
 
 vue-hot-reload-api@^2.2.0:
   version "2.2.0"

@@ -1,0 +1,37 @@
+<%= form_with(model: store_url, local: true) do |form| %>
+  <% if store_url.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(store_url.errors.count, "error") %> prohibited this store_url from being saved:</h2>
+
+      <ul>
+      <% store_url.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :game_id %>
+    <%= form.text_field :game_id, id: :store_url_game_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :platform_id %>
+    <%= form.text_field :platform_id, id: :store_url_platform_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url %>
+    <%= form.text_field :url, id: :store_url_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :memo %>
+    <%= form.text_field :memo, id: :store_url_memo %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
