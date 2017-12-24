@@ -33,16 +33,16 @@
             <%= render partial: "error_messages", locals: { target_field: [:password, :password_confirmation, :current_password] } %>
             <div class="col-md-12">
                 <div class="form-group">
+                    <label for="user_current_password" class="control-label">現在のパスワード</label>
+                    <%= f.password_field :current_password, id: :user_current_password, autocomplete: "off", class: 'form-control' %>
+                </div>
+                <div class="form-group">
                     <label for="user_password" class="control-label">新しいパスワード</label>
                     <%= f.password_field :password, id: :user_password, autocomplete: "off", class: 'form-control', placeholder: '6文字以上入力してください' %>
                 </div>
                 <div class="form-group">
                     <label for="user_password_confirmation" class="control-label">新しいパスワード(確認)</label>
                     <%= f.password_field :password_confirmation, id: :user_password_confirmation, autocomplete: "off", class: 'form-control', placeholder: '同じパスワードを入力してください' %>
-                </div>
-                <div class="form-group">
-                    <label for="user_current_password" class="control-label">現在のパスワード</label>
-                    <%= f.password_field :current_password, id: :user_current_password, autocomplete: "off", class: 'form-control' %>
                 </div>
             </div>
         </fieldset>
