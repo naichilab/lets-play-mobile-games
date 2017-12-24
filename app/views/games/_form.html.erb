@@ -61,7 +61,7 @@
             <div class="form-group">
               <label for="game_icon" class="col-lg-3 control-label">アイコン画像</label>
               <div class="col-lg-9">
-                <%= file_field_tag 'game[icon]', id: :game_icon, class: 'form-control' %>
+                <%= form.file_field :icon, id: :game_icon, class: 'form-control' %>
                 <span class="help-block">正方形を推奨。正方形に切り取られて表示されます。</span>
               </div>
             </div>
