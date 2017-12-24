@@ -1,10 +1,10 @@
 export default {
     data: () => ({
-        message: 'A'
+        // message: 'A'
     }),
     methods: {
-        showHoge() {
-            console.log("this is hogehoge")
-        }
+        // showHoge() {
+        //     console.log("this is hogehoge")
+        // }
     },
 }

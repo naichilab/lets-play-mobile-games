@@ -88,6 +88,3 @@ gem 'omniauth-twitter'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
 gem 'fog'
-
-# ref. https://qiita.com/kuroda@github/items/940338b5f6f46da2c5f1
-gem "vue-rails-form-builder"
