@@ -20,12 +20,12 @@
         <% if @game.guideline.present? %>
             <div class = "guideline">
                 <span class="guideline-header"><i class="fa fa-warning" aria-hidden="true"></i>実況ガイドライン</span>
-                <span class="guideline-contents"><%= @game.guideline %></span>
+                <span class="guideline-contents"><%= text_contain_url(h(@game.guideline)).html_safe %></span>
             </div>
         <% end %>
         <div class="game-describe">
             <legend><i class="fa fa-comment-o" aria-hidden="true"></i> 開発者からのメッセージ</legend>
-            <span class="game-describe-contents"><% if @game.specific_conditions.present? %><%= @game.specific_conditions %><% else %>特にありません<% end %></span>
+            <span class="game-describe-contents"><% if @game.specific_conditions.present? %><%= text_contain_url(h(@game.specific_conditions)).html_safe %><% else %>特にありません<% end %></span>
         </div>
         <div class="game-external-links">
             <legend><i class="fa fa-link" aria-hidden="true"></i> 関連リンク</legend>
