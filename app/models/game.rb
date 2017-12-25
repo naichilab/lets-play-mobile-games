@@ -1,6 +1,7 @@
 class Game < ApplicationRecord
   belongs_to :user
   belongs_to :category
+  has_many :store_urls
 
   validates :title, presence: true, length: {maximum: 64}
   validates :guideline, length: {maximum: 512}

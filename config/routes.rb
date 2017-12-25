@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :store_urls
   resources :platforms
   resources :categories
   resources :games

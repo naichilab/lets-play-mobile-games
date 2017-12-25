@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Game:</strong>
+  <%= @store_url.game %>
+</p>
+
+<p>
+  <strong>Platform:</strong>
+  <%= @store_url.platform %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @store_url.url %>
+</p>
+
+<p>
+  <strong>Memo:</strong>
+  <%= @store_url.memo %>
+</p>
+
+<%= link_to 'Edit', edit_store_url_path(@store_url) %> |
+<%= link_to 'Back', store_urls_path %>
