@@ -28,7 +28,7 @@ module Api
         end
       end
 
-      render json: games.shuffle
+      render json: games.order(created_at: :desc)
     end
 
   end
