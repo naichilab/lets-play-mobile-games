@@ -13,6 +13,7 @@ class User < ApplicationRecord
   # relations
   has_many :games, dependent: :destroy
 
+  mount_uploader :icon, IconUploader
 
   def self.new_token
     SecureRandom.urlsafe_base64
