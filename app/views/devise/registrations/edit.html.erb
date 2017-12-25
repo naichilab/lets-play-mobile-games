@@ -58,6 +58,11 @@
               </div>
             </div>
 
+            <!-- TODO: #31 -->
+            <%= image_tag @user.icon, class: 'img-responsive' %>
+            <%= f.file_field :icon, id: :user_icon, class: 'form-control' %>
+            <span class="help-block">正方形を推奨。正方形に切り取られて表示されます。</span>
+
             <div class="form-group">
               <div class="col-lg-9 col-lg-offset-3">
                 <%= f.submit '更新', class: 'btn btn-primary' %>
@@ -65,7 +70,6 @@
             </div>
 
           </fieldset>
-
       <% end %>
     </div>
   </div>
