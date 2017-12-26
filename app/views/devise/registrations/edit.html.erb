@@ -1,85 +1,74 @@
 <% provide(:html_title, "プロフィール変更") %>
 <div class="row">
-  <div class="col-xs-12 col-md-7 col-md-offset-1">
+  <div class="col-xs-12 col-md-4">
+    <%= image_tag @user.icon, class: 'user-icon' %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put,class: 'form-horizontal' }) do |f| %>
+      <div data-vue="icon_upload_form">
+        <label class="user-icon-upload-button">
+          <span class="btn btn-primary btn-block">
+            <i class="fa fa-upload" aria-hidden="true"></i> プロフィール画像を変更する
+            <%= f.file_field :icon, id: :user_icon, class:"hidden-element", accept: 'image/png,image/jpg,image/jpeg,image/gif', "v-on:change"=>"onSelectedFile" %>
+          </span>
+        </label>
+        <%= f.submit "", id:"icon_upload_button", class: 'btn btn-primary hidden-element' %>
+        <span class="help-block">正方形を推奨。正方形に切り取られて表示されます。</span>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-xs-12 col-md-8">
     <div class="well bs-component">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put,class: 'form-horizontal' }) do |f| %>
           <legend>プロフィール変更</legend>
           <fieldset>
+            <%= render partial: "error_messages", locals: { target_field: [:username, :email] } %>
 
-            <% if resource.errors.any? %>
+            <div class="col-md-12">
                 <div class="form-group">
-                  <div class="col-lg-9 col-lg-offset-3 text-danger">
-                    <%= "#{resource.errors.count}件のエラーがあります。" %>
-                    <% resource.errors.full_messages.each do |msg| %>
-                        <span class="help-block"><%= "・#{msg}" %></span>
-                    <% end %>
-                  </div>
+                    <label for="user_username" class="control-label">ユーザ表示名</label>
+                    <%= f.text_field :username, id: :user_username, class: 'form-control' %>
                 </div>
-            <% end %>
-
-            <div class="form-group">
-              <label for="user_username" class="col-lg-3 control-label">ユーザ表示名</label>
-              <div class="col-lg-9">
-                <%= f.text_field :username, id: :user_username, class: 'form-control' %>
-              </div>
+                <div class="form-group">
+                    <label for="user_email" class="control-label">メールアドレス</label>
+                    <%= f.email_field :email, id: :user_email, class: 'form-control' %>
+                    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                        <span class="help-block">
+                            メールアドレス変更の確認待ちです。 : <%= resource.unconfirmed_email %>
+                        </span>
+                    <% end %>
+                </div>
             </div>
-
-            <div class="form-group">
-              <label for="user_email" class="col-lg-3 control-label">メールアドレス</label>
-              <div class="col-lg-9">
-                <%= f.email_field :email, id: :user_email, class: 'form-control' %>
-
-                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-                    <span class="help-block">
-                      メールアドレス変更の確認待ちです。 : <%= resource.unconfirmed_email %>
-                    </span>
-                <% end %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="user_password" class="col-lg-3 control-label">パスワード</label>
-              <div class="col-lg-9">
-                <%= f.password_field :password, id: :user_password, autocomplete: "off", class: 'form-control' %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="user_password_confirmation" class="col-lg-3 control-label">パスワード(確認)</label>
-              <div class="col-lg-9">
-                <%= f.password_field :password_confirmation, id: :user_password_confirmation, autocomplete: "off", class: 'form-control' %>
-                <span class="help-block">変更しない場合は入力しないでください。</span>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="user_current_password" class="col-lg-3 control-label">現在のパスワード</label>
-              <div class="col-lg-9">
-                <%= f.password_field :current_password, id: :user_current_password, autocomplete: "off", class: 'form-control' %>
-              </div>
-            </div>
-
-            <!-- TODO: #31 -->
-            <%= image_tag @user.icon, class: 'img-responsive' %>
-            <%= f.file_field :icon, id: :user_icon, class: 'form-control' %>
-            <span class="help-block">正方形を推奨。正方形に切り取られて表示されます。</span>
-
-            <div class="form-group">
-              <div class="col-lg-9 col-lg-offset-3">
-                <%= f.submit '更新', class: 'btn btn-primary' %>
-              </div>
-            </div>
-
           </fieldset>
+          <%= f.submit 'プロフィールを更新する', class: 'btn btn-primary' %>
       <% end %>
     </div>
-  </div>
-  <div class="col-xs-12 col-md-3">
+
     <div class="well bs-component">
-      <legend>アカウント削除</legend>
-      <p>
-        <%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "取り消せません。実行しますか？" }, method: :delete , class: 'btn btn-danger' %>
-      </p>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put,class: 'form-horizontal' }) do |f| %>
+        <legend>パスワード変更</legend>
+        <fieldset>
+            <%= render partial: "error_messages", locals: { target_field: [:password, :password_confirmation, :current_password] } %>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="user_current_password" class="control-label">現在のパスワード</label>
+                    <%= f.password_field :current_password, id: :user_current_password, autocomplete: "off", class: 'form-control' %>
+                </div>
+                <div class="form-group">
+                    <label for="user_password" class="control-label">新しいパスワード</label>
+                    <%= f.password_field :password, id: :user_password, autocomplete: "off", class: 'form-control', placeholder: '6文字以上入力してください' %>
+                </div>
+                <div class="form-group">
+                    <label for="user_password_confirmation" class="control-label">新しいパスワード(確認)</label>
+                    <%= f.password_field :password_confirmation, id: :user_password_confirmation, autocomplete: "off", class: 'form-control', placeholder: '同じパスワードを入力してください' %>
+                </div>
+            </div>
+        </fieldset>
+        <%= f.submit 'パスワードを更新する', class: 'btn btn-primary' %>
+    <% end %>
+    </div>
+
+    <div class="well bs-component">
+        <legend>アカウント削除</legend>
+        <%= button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "取り消せません。実行しますか？" }, method: :delete , class: 'btn btn-danger' %>
     </div>
   </div>
 </div>
