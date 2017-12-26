@@ -7,7 +7,7 @@
         <label class="user-icon-upload-button">
           <span class="btn btn-primary btn-block">
             <i class="fa fa-upload" aria-hidden="true"></i> プロフィール画像を変更する
-            <%= f.file_field :icon, id: :user_icon, class:"hidden-element", "v-on:change"=>"onSelectedFile" %>
+            <%= f.file_field :icon, id: :user_icon, class:"hidden-element", accept: 'image/png,image/jpg,image/jpeg,image/gif', "v-on:change"=>"onSelectedFile" %>
           </span>
         </label>
         <%= f.submit "", id:"icon_upload_button", class: 'btn btn-primary hidden-element' %>
