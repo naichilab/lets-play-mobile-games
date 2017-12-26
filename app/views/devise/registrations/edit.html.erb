@@ -1,3 +1,4 @@
+<% provide(:html_title, "プロフィール変更") %>
 <div class="row">
   <div class="col-xs-12 col-md-7 col-md-offset-4">
     <div class="well bs-component">
@@ -20,6 +21,10 @@
                         </span>
                     <% end %>
                 </div>
+            　　　　　　　　<!-- TODO: #31 -->
+            　　　　　　　　<%= image_tag @user.icon, class: 'img-responsive' %>
+            　　　　　　　　<%= f.file_field :icon, id: :user_icon, class: 'form-control' %>
+            　　　　　　　　<span class="help-block">正方形を推奨。正方形に切り取られて表示されます。</span>
             </div>
           </fieldset>
           <%= f.submit 'プロフィールを更新する', class: 'btn btn-primary' %>
@@ -56,5 +61,3 @@
     </div>
   </div>
 </div>
-
-

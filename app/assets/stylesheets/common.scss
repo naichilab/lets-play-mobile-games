@@ -14,53 +14,14 @@
     display: none;
 }
 
-.icon {
-    font-family: FontAwesome;
-    font-size: 1.45em;
-    line-height: 0.8em;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+.google-play-badge {
+    width: 180px;
+    display:inline-block;
 }
 
-.icon-nav {
-    @extend .icon;
-    font-size: 1.3em;
-    margin-right: 8px;
-    color: #606060;
-}
-
-.icon-user:before {
-    @extend .icon-nav;
-    content: "\f2be";
-    vertical-align: middle;
-}
-
-.icon-feedback:before {
-    @extend .icon-nav;
-    content: "\f27a";
-}
-
-.icon-signout:before {
-    @extend .icon-nav;
-    content: "\f08b";
-    vertical-align: middle;
-}
-
-.icon-guideline:before {
-    @extend .icon;
-    font-size: 1.3em;
-    content: "\f071";
-    color: #F9A825;
-}
-
-.icon-ios:before {
-    @extend .icon;
-    content: "\f179";
-    color: #999999;
-}
-
-.icon-android:before {
-    @extend .icon;
-    content: "\f17b";
-    color: #a4c639;
+.apple-store-badge {
+    width: 130px;
+    // google playのBadgeに画像サイズ合わせるために設定
+    margin: 12px;
+    display:inline-block;
 }
