@@ -21,11 +21,16 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # ユーザーを探す。
     # 第１候補：ログイン中のユーザー、第２候補：SocialProfileオブジェクトに紐付けされているユーザー。
     user = current_or_profile_user(profile)
-    unless user
+
+    if !user
       # 第３候補：認証データにemailが含まれていればそれを元にユーザーを探す。
       # 見つからなければ、ユーザーを新規作成。
       user ||= find_or_create_new_user(profile)
+    elsif user.icon.blank?
+      user.remote_icon_url = profile.image_url
+      user.save(validate: false)
     end
+
     associate_user_with_profile!(user, profile)
     user
   end
@@ -47,7 +52,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       user = User.new(
           username: profile.name,
           email: profile.email.present? ? profile.email: temp_email,
-          password: User.new_token
+          password: User.new_token,
+          remote_icon_url: profile.image_url
       )
 
       # email確認メール送信を延期するために一時的にemail確認済みの状態にする。
