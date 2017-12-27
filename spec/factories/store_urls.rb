@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :store_url do
-    url Faker::Internet.url('hogehoge.com')
-    memo {['', Faker::Lorem.sentence].sample(1).first}
+    sequence(:url) {|n| Faker::Internet.url('hogehoge.com') + "#{n}"}
+    memo {['', Faker::Lorem.sentence].sample}
 
     game
     platform
