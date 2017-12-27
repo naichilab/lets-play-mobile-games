@@ -37,6 +37,18 @@
     color: #F9A825;
 }
 
+.icon-windows:before {
+  @extend .icon;
+  content: "\f17a";
+  color: #349deb;
+}
+
+.icon-osx:before {
+  @extend .icon;
+  content: "\f179";
+  color: #000000;
+}
+
 .icon-ios:before {
     @extend .icon;
     content: "\f179";
@@ -44,13 +56,29 @@
 }
 
 .icon-android:before {
-    @extend .icon;
-    content: "\f17b";
-    color: #a4c639;
+  @extend .icon;
+  content: "\f17b";
+  color: #a4c639;
+}
+
+.icon-linux:before {
+  @extend .icon;
+  content: "\f17c";
+  color: #d0922d;
+}
+
+.icon-web:before {
+  @extend .icon;
+  content: "\f13b";
+  color: #f83d26;
 }
 
 .icon-pencil:before {
     @extend .icon;
     font-size: 1em;
     content: "\f040";
+}
+
+.platform-icon {
+  margin-right: 5px;
 }

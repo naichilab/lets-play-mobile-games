@@ -1,9 +1,9 @@
 module Api
 
-  class CategoriesController < ApplicationController
+  class PlatformsController < ApplicationController
 
     def index
-      @categories = Category.all
+      @platforms = Platform.all
       render 'index', formats: 'json', handlers: 'jbuilder'
     end
 

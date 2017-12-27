@@ -3,9 +3,11 @@
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
 
             <div class="input-group search-area">
-                <input class="form-control" type="text"  placeholder="単語で探す" v-model="formValues.words" v-on:change="getGames" />
+                <input class="form-control" type="text" placeholder="単語で探す" v-model="formValues.words"
+                       v-on:change="getGames"/>
                 <span class="input-group-btn">
-                    <button class="btn btn-primary" type="button" v-on:click="getGames"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    <button class="btn btn-primary" type="button" v-on:click="getGames"><i class="fa fa-search"
+                                                                                           aria-hidden="true"></i></button>
                 </span>
             </div>
 
@@ -16,47 +18,46 @@
 
             <div class="condition-area">
                 <div class="panel panel-default condition-box box-joint">
-                    <div class="panel-heading search-condition-title" data-toggle="collapse" data-target="#platform-condition" aria-expanded="true" aria-controls="platform-chevron">
+                    <div class="panel-heading search-condition-title" data-toggle="collapse"
+                         data-target="#platform-condition" aria-expanded="true" aria-controls="platform-chevron">
                         <i class="fa fa-caret-right" aria-hidden="true"></i>
                         <i class="fa fa-caret-down" aria-hidden="true"></i>
                         プラットフォーム
                     </div>
                     <ul class="list-group collapse in" id="platform-condition">
                         <li class="condition-item">
-                            <input type="radio" id="radPlatformAll" value="" v-model="formValues.platform" v-on:change="getGames">
+                            <input type="radio" id="radPlatformAll" value="" v-model="formValues.platform"
+                                   v-on:change="getGames">
                             <label for="radPlatformAll">すべて</label>
                         </li>
-                        <li class="condition-item">
-                            <input type="radio" id="radPlatformAndroid" value="android" v-model="formValues.platform"
-                                                                                        v-on:change="getGames">
-                            <label for="radPlatformAndroid">
-                                <span class="icon-android" aria-hidden="true"></span>Android
-                            </label>
-                        </li>
-                        <li class="condition-item">
-                            <input type="radio" id="radPlatformIOS" value="ios" v-model="formValues.platform"
-                                                                                v-on:change="getGames">
-                            <label for="radPlatformIOS">
-                                <span class="icon-ios" aria-hidden="true"></span>iOS
+                        <li class="condition-item" v-for="p in masterData.platforms">
+                            <input type="radio" :id="'radPlatform' + p.code" :value="p.code"
+                                   v-model="formValues.platform"
+                                   @change="getGames">
+                            <label :for="'radPlatform' + p.code">
+                                <span :class="'icon-' + p.code" aria-hidden="true"></span>{{p.name}}
                             </label>
                         </li>
                     </ul>
                 </div>
 
                 <div class="panel panel-default condition-box">
-                    <div class="panel-heading search-condition-title" data-toggle="collapse" data-target="#genre-condition" aria-expanded="true" aria-controls="genre-chevron">
+                    <div class="panel-heading search-condition-title" data-toggle="collapse"
+                         data-target="#genre-condition" aria-expanded="true" aria-controls="genre-chevron">
                         <i class="fa fa-caret-right" aria-hidden="true"></i>
                         <i class="fa fa-caret-down" aria-hidden="true"></i>
                         ジャンル
                     </div>
                     <ul class="list-group collapse in" id="genre-condition">
                         <li class="condition-item">
-                            <input type="radio" id="radCategoryAll" value="" v-model="formValues.category" v-on:change="getGames">
+                            <input type="radio" id="radCategoryAll" value="" v-model="formValues.category"
+                                   v-on:change="getGames">
                             <label for="radCategoryAll">すべて</label>
                         </li>
                         <li class="condition-item" v-for="category in masterData.categories">
-                            <input type="radio" :id="'radCategory' + category.id" :value="category.id" v-model="formValues.category"
-                                                                                                       v-on:change="getGames">
+                            <input type="radio" :id="'radCategory' + category.id" :value="category.id"
+                                   v-model="formValues.category"
+                                   v-on:change="getGames">
                             <label :for="'radCategory' + category.id" v-text="category.name"></label>
                         </li>
                     </ul>
@@ -79,9 +80,10 @@
                             <span v-text="game.title"></span>
                         </div>
                         <div class="boxed-icon-area">
-                            <span class="icon-guideline" v-if="game.guideline !== null && game.guideline.length > 0 " aria-hidden="true"></span>
-                            <span class="icon-android" v-if="game.android_url.length > 0" aria-hidden="true"></span>
-                            <span class="icon-ios" v-if="game.ios_url.length > 0" aria-hidden="true"></span>
+                            <span class="icon-guideline" v-if="game.guideline !== null && game.guideline.length > 0 "
+                                  aria-hidden="true"></span>
+                            <span :class="'platform-icon icon-' + p.code" v-for="p in masterData.platforms"
+                                  v-if="game['has_' + p.code]" aria-hidden="true"></span>
                         </div>
                     </div>
                 </div>
@@ -98,7 +100,8 @@
             return {
                 games: {},
                 masterData: {
-                    categories: {}
+                    categories: {},
+                    platforms: {}
                 },
                 formValues: {
                     words: "",
@@ -110,11 +113,16 @@
         created: function () {
             axios.get('/api/categories')
                 .then(res => {
-                    this.masterData.categories = res.data
+                    this.masterData.categories = res.data.categories
+                })
+            axios.get('/api/platforms')
+                .then(res => {
+                    console.log("get platforms")
+                    this.masterData.platforms = res.data.platforms
                 })
             axios.get('/api/games')
                 .then(res => {
-                    this.games = res.data;
+                    this.games = res.data.games;
                 })
         },
         methods: {
@@ -122,7 +130,7 @@
                 axios.get('/api/games'
                     , {params: this.formValues})
                     .then(res => {
-                        this.games = res.data;
+                        this.games = res.data.games;
                     })
             }
         },

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   # api
   namespace :api, {format: :json } do
     get 'games', to: 'games#index'
+    get 'platforms', to: 'platforms#index'
     get 'categories', to: 'categories#index'
   end
 

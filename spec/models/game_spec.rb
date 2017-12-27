@@ -63,5 +63,26 @@ describe Game do
 
   end
 
+  describe "platforms" do
+
+    it "has android" do
+      game = create(:game)
+      platform = create(:platform, code: 'android')
+      create(:store_url, game: game, platform: platform )
+      expect(game.has_platform('android')).to be_truthy
+      expect(game.has_platform('ios')).to be_falsey
+    end
+
+    it "has ios" do
+      game = create(:game)
+      platform = create(:platform, code: 'ios')
+      create(:store_url, game: game, platform: platform )
+      expect(game.has_platform('ios')).to be_truthy
+      expect(game.has_platform('android')).to be_falsey
+    end
+
+  end
+
+
 
 end

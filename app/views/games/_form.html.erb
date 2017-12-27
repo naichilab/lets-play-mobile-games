@@ -1,4 +1,8 @@
 <div data-vue="game_form" class="row">
+  <div data-vue-model="<%= "{ \"store_urls\": #{game.store_urls.to_json(:only => [:id, :url, :memo], :include => {:platform => {:only => [:id, :name]}})} }" %>"></div>
+  <div data-vue-model="<%= "{ \"platforms\": #{@platforms.to_json(:only => [:id, :name])} }" %>"></div>
+
+
   <div class="col-md-8 col-md-offset-2">
     <div class="well bs-component">
       <%= form_with(model: game, local: true, class: 'form-horizontal') do |form| %>
@@ -66,16 +70,20 @@
               </div>
             </div>
 
-            <!--<%= content_tag :ul, 'data-vue-model': "{ \"store_urls\": #{game.store_urls.to_json} }" do %>-->
-                <!--<li v-for="store_url in store_urls">-->
-                  <!--{{ store_url }}-->
-                <!--</li>-->
-            <!--<% end %>-->
-
-            <!--<%= game.store_urls.each do |su| %>-->
-                <!--<%= su.id %>-->
-            <!--<% end %>-->
-
+            <div class="form-group">
+              <label for="game_store_urls" class="col-lg-3 control-label">ダウンロードURL</label>
+              <div class="col-lg-9">
+                <div v-for="(store_url, index) in store_urls">
+                  <select v-model="store_url.platform.id" name="game[store_url][][platform_id]">
+                    <option v-for="p in platforms" :value="p.id">{{p.name}}</option>
+                  </select>
+                  <input type="text" v-model="store_url.url" name="game[store_url][][url]" placeholder="https://">
+                  <input type="text" v-model="store_url.memo" name="game[store_url][][memo]" placeholder="メモ">
+                  <button type="button" @click="removeUrl(index)">削除</button>
+                </div>
+                <button type="button" @click="addUrl">追加</button>
+              </div>
+            </div>
 
             <div class="form-group">
               <div class="col-lg-9 col-lg-offset-3">
