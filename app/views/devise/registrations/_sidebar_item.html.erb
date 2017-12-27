@@ -1,0 +1,8 @@
+<% condition =  controller.action_name == target_action %>
+<li class="side-menu-item <% if condition %>selected<% end %>">
+    <% if condition %>
+        <%= text %>
+    <% else %>
+        <%= link_to(text, :action => action ) %>
+    <% end %>
+</li>

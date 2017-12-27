@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   }
   root to: 'home#index'
 
-
+  devise_scope :user do
+    get "users/games", to: "users/registrations#games"
+  end
 
   # api
   namespace :api, {format: :json } do

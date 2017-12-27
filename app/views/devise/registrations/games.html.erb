@@ -1,0 +1,28 @@
+<% provide(:html_title, "登録ゲーム一覧") %>
+
+<legend>登録ゲーム一覧</legend>
+<div class="registered-game-list">
+  <table class="table responsive-width-table">
+    <thead>
+      <tr>
+        <th class="registered-game-title-cell">タイトル</th>
+        <th class="registered-game-category-cell">ジャンル</th>
+        <th class="registered-game-platform-cell">プラットフォーム</th>
+      </tr>
+    </thead>
+    <tbody> 
+      <% current_user.games.each do |game| %>
+        <tr>
+          <td class="registered-game-title-cell">
+            <span class="registered-game-category"><%= game.category.name %></span>
+            <div class="registered-game-title ellipsisable-text"><%= link_to game.title, game_path(game) %></div>
+          </td>
+          <td class="registered-game-category-cell">
+            <%= game.category.name %>
+          </td>
+          <td class="registered-game-platform-cell"></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

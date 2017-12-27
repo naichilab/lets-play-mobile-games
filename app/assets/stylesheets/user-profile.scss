@@ -1,11 +1,125 @@
-.user-icon {
+@import "vars.scss";
+@import "break-point.scss";
+
+@mixin flexible-table-cell($xs-width: null, $sm-width: null, $md-width: null) {
+  @include xs-screen-media {
+    @if $xs-width == null {
+      display: none!important;
+    }
+    @else {
+      width: $xs-width;
+    }
+  }
+  @include sm-screen-media {
+    @if $sm-width == null {
+      display: none!important;
+    }
+    @else {
+      width: $sm-width;
+    }
+  }
+  @include md-screen-media {
+    @if $md-width == null {
+      display: none!important;
+    }
+    @else {
+      width: $md-width;
+    }
+  }
+  @include lg-screen-media {
+    @if $md-width == null {
+      display: none!important;
+    }
+    @else {
+      width: $md-width;
+    }
+  }
+  @include xl-screen-media {
+    @if $md-width == null {
+      display: none!important;
+    }
+    @else {
+      width: $md-width;
+    }
+  }
+}
+
+.user-icon-form {
+  .user-icon {
     display: block;
     width: 100%;
     height: auto;
-}
+  }
 
-.user-icon-upload-button {
+  .user-icon-upload-button {
     margin-top:4px;
     display:block;
     width:100%;
+  }
+}
+
+.side-menu-item {
+  position: relative;
+  display: block;
+  padding: 8px 14px;
+  margin-bottom: -1px;
+  border: 1px solid #ccc;
+}
+
+.side-menu-item.selected {
+  font-weight: bold;
+}
+
+.side-menu-item.selected::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 4px;
+  content: "";
+  background-color: #b2cf3e;
+}
+
+.responsive-width-table
+{
+  table-layout: fixed;
+}
+
+.registered-game-list {
+  .registered-game-title-cell {
+    @include flexible-table-cell(60%, 60%, 50%);
+  }
+  .registered-game-category-cell {
+    @include flexible-table-cell($md-width: 25%);
+  }
+  .registered-game-platform-cell {
+    @include flexible-table-cell(40%, 40%, 25%);
+  }
+  .registered-game-title {
+    @include xs-screen-media {
+      margin-top: $margin-title-category / 2;
+    }
+    @include sm-screen-media {
+      margin-top: $margin-title-category / 2;
+    }
+  }
+  .registered-game-category {
+    @include xs-screen-media {
+      font-size: 0.8em;
+      color: $subtext-color;
+    }
+    @include sm-screen-media {
+      font-size: 0.8em;
+      color: $subtext-color;
+    }
+    @include md-screen-media {
+      display: none!important;
+    }
+    @include lg-screen-media {
+      display: none!important;
+    }
+    @include xl-screen-media {
+      display: none!important;
+    }
+  }
 }

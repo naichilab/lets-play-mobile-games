@@ -1,17 +1,8 @@
+@import "common.scss";
 @import "break-point";
 @import "vars";
 
-$heading-font-size: 24px;
 $margin-area: 28px;
-$header-text-margin: 8px;
-
-@mixin header-text {
-    legend {
-        font-weight: bold;
-        margin-bottom: $header-text-margin;
-        font-size: $heading-font-size;
-    }
-}
 
 .game-detail
 {
@@ -22,11 +13,11 @@ $header-text-margin: 8px;
 
 .game-detail-title {
     h1 {
-        margin-top: -14px;
+        margin-top: $margin-title-category;
     }
     p {
         font-size: 1.2em;
-        color: #969696;
+        color: $subtext-color;
     }
 }
 
