@@ -44,13 +44,20 @@ if ENV['VIRTUAL_ENV'] == 'development'
   end
 
   users = User.all
-
   categories = Category.all
+  platforms = Platform.all
 
   50.times do |n|
     game = FactoryBot.create(:game,
                              user: users.sample(1).first,
                              category: categories.sample(1).first)
+
+    rand(0..5).times do |n|
+      url = FactoryBot.create(:store_url,
+                              game: game,
+                              platform: platforms.sample(1).first)
+    end
+
     # pp game
   end
 
