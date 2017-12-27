@@ -22,8 +22,11 @@ feature "Game更新" do
 
     fill_in 'タイトル', with: '新タイトル。'
     select "アドベンチャー", from: "game_category"
-    fill_in 'AndroidストアURL', with: 'https://google.com/newandroid'
-    fill_in 'iOSストアURL', with: 'https://google.com/newios'
+
+    # todo vue部分。SystemTestCase？っての使わないとだめっぽい
+    # fill_in 'AndroidストアURL', with: 'https://google.com/newandroid'
+    # fill_in 'iOSストアURL', with: 'https://google.com/newios'
+
     fill_in 'ガイドライン', with: "新ガイドライン"
     fill_in '実況者へ伝えたいこと', with: '伝えたいこと'
 
