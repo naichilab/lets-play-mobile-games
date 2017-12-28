@@ -45,6 +45,7 @@
 }
 
 .user-icon-form {
+  margin-bottom: $margin-area;
   .user-icon {
     display: block;
     width: 100%;
@@ -78,6 +79,19 @@
   width: 4px;
   content: "";
   background-color: #b2cf3e;
+}
+
+$profile-margin-area: $margin-area * 1.5;
+.profile-form {
+  margin-bottom: $profile-margin-area;
+}
+
+.password-form {
+  margin-bottom: $profile-margin-area;
+}
+
+.account-delete-form {
+  margin-bottom: $profile-margin-area;
 }
 
 .responsive-width-table
