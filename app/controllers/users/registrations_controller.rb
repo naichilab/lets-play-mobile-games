@@ -1,4 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  prepend_before_action :authenticate_scope!, only: [:edit, :update, :destroy, :games]
+
   def cancel
     super
   end
@@ -12,7 +14,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def edit
-    super
+    render :layout => 'user_profile_layout'
+  end
+
+  def games
+    render :layout => 'user_profile_layout'
   end
 
   def update

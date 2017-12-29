@@ -1,3 +1,6 @@
+$header-text-margin: 8px;
+$heading-font-size: 24px;
+
 .ellipsisable-text {
     white-space: nowrap;
     overflow: hidden;
@@ -24,4 +27,12 @@
     // google playのBadgeに画像サイズ合わせるために設定
     margin: 12px;
     display:inline-block;
+}
+
+.header-text {
+  legend {
+    font-weight: bold;
+    margin-bottom: $header-text-margin;
+    font-size: $heading-font-size;
+  }
 }
