@@ -11,15 +11,25 @@ module ApplicationHelper
   end
 
   def text_contain_url(text)
-      URI.extract(text, ['http', 'https']).uniq.each do |url|
-          sub_text = "" << "<a href=" << url << " target=\"_blank\">" << url << "</a>"
-          text.gsub!(url, sub_text)
-      end
-      return text
+    URI.extract(text, ['http', 'https']).uniq.each do |url|
+      sub_text = "" << "<a href=" << url << " target=\"_blank\">" << url << "</a>"
+      text.gsub!(url, sub_text)
+    end
+    return text
   end
 
-   def parent_layout(layout)
-       @view_flow.set(:layout, self.output_buffer)
-       self.output_buffer = render(file: "layouts/#{layout}")
-   end
+  def parent_layout(layout)
+    @view_flow.set(:layout, self.output_buffer)
+    self.output_buffer = render(file: "layouts/#{layout}")
+  end
+
+  def to_xss_safe_url(text)
+    if text.match(StoreUrl::PERMIT_URL_REGEX)
+      text
+    else
+      ''
+    end
+  end
+
+
 end
