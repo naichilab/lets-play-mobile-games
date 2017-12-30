@@ -1,4 +1,8 @@
 <div data-vue="game_form" class="row">
+  <div data-vue-model="<%= "{ \"store_urls\": #{game.store_urls.to_json(:only => [:id, :url, :memo], :include => {:platform => {:only => [:id, :name]}})} }" %>"></div>
+  <div data-vue-model="<%= "{ \"platforms\": #{@platforms.to_json(:only => [:id, :name])} }" %>"></div>
+
+
   <div class="col-md-8 col-md-offset-2">
     <div class="well bs-component">
       <%= form_with(model: game, local: true, class: 'form-horizontal') do |form| %>
@@ -31,20 +35,6 @@
             </div>
 
             <div class="form-group">
-              <label for="game_android_url" class="col-lg-3 control-label">AndroidストアURL</label>
-              <div class="col-lg-9">
-                <%= form.text_field :android_url, id: :game_android_url, class: 'form-control', placeholder: 'https://play.google.com/store/apps/details?id=[パッケージ名]', "v-model" => "game.android_url" %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="game_ios_url" class="col-lg-3 control-label">iOSストアURL</label>
-              <div class="col-lg-9">
-                <%= form.text_field :ios_url, id: :game_ios_url, class: 'form-control', placeholder: 'https://itunes.apple.com/jp/app/id[app_id]', "v-model" => "game.ios_url" %>
-              </div>
-            </div>
-
-            <div class="form-group">
               <label for="game_guideline" class="col-lg-3 control-label">ガイドライン</label>
               <div class="col-lg-9">
                 <%= form.text_area :guideline, id: :game_guideline, class: 'form-control', rows: 5, placeholder: '実況に関するガイドライン、もしくはガイドラインを記載したURLがあれば入力してください。特にない場合は何も記入しないでください。', "v-model" => "game.guideline" %>
@@ -66,16 +56,20 @@
               </div>
             </div>
 
-            <!--<%= content_tag :ul, 'data-vue-model': "{ \"store_urls\": #{game.store_urls.to_json} }" do %>-->
-                <!--<li v-for="store_url in store_urls">-->
-                  <!--{{ store_url }}-->
-                <!--</li>-->
-            <!--<% end %>-->
-
-            <!--<%= game.store_urls.each do |su| %>-->
-                <!--<%= su.id %>-->
-            <!--<% end %>-->
-
+            <div class="form-group">
+              <label for="game_store_urls" class="col-lg-3 control-label">ダウンロードURL</label>
+              <div class="col-lg-9">
+                <div v-for="(store_url, index) in store_urls">
+                  <select v-model="store_url.platform.id" :id="'platform_' + index" name="game[store_url][][platform_id]">
+                    <option v-for="p in platforms" :value="p.id">{{p.name}}</option>
+                  </select>
+                  <input type="text" v-model="store_url.url" :id="'url_' + index" name="game[store_url][][url]" placeholder="https://">
+                  <input type="text" v-model="store_url.memo" :id="'memo_' + index" name="game[store_url][][memo]" placeholder="メモ">
+                  <button type="button" :id="'delete_' + index" @click="removeUrl(index)">削除</button>
+                </div>
+                <button type="button" @click="addUrl">追加</button>
+              </div>
+            </div>
 
             <div class="form-group">
               <div class="col-lg-9 col-lg-offset-3">

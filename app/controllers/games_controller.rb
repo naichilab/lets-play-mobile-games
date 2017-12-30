@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
   before_action :set_game, only: [:show, :edit, :update, :destroy]
   before_action :set_categories, only: [:new, :edit, :create, :update]
+  before_action :set_platforms, only: [:new, :edit, :create, :update]
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
@@ -28,36 +29,40 @@ class GamesController < ApplicationController
   def create
     @game = current_user.games.build(game_params)
 
-    if params[:game][:icon]
-      @game.icon = params[:game][:icon] # Assign a file like this
-    end
+    if @game.save
 
-    respond_to do |format|
-      if @game.save
-        format.html {redirect_to @game, notice: '登録しました。'}
-        format.json {render :show, status: :created, location: @game}
-      else
-        flash.now[:alert] = "エラーがあるため登録できませんでした。"
-        format.html {render :new}
-        format.json {render json: @game.errors, status: :unprocessable_entity}
+      # todo store_url登録失敗時の処理
+      if store_urls_params[:store_url].present?
+        @game.store_urls.create(store_urls_params[:store_url])
       end
-    end
 
+      redirect_to @game, notice: '登録しました。'
+    else
+      flash.now[:alert] = "エラーがあるため登録できませんでした。"
+      render :new
+    end
 
   end
 
   # PATCH/PUT /games/1
   # PATCH/PUT /games/1.json
   def update
-    respond_to do |format|
-      if @game.update(game_params)
-        format.html {redirect_to @game, notice: '更新しました。'}
-        format.json {render :show, status: :ok, location: @game}
-      else
-        flash.now[:alert] = "エラーがあるため更新できませんでした。"
-        format.html {render :edit}
-        format.json {render json: @game.errors, status: :unprocessable_entity}
+
+    if @game.update(game_params)
+
+      #めんどうなので全消し
+      @game.store_urls.each do |url|
+        url.destroy
       end
+
+      if store_urls_params[:store_url].present?
+        @game.store_urls.create(store_urls_params[:store_url])
+      end
+
+      redirect_to @game, notice: '更新しました。'
+    else
+      flash.now[:alert] = "エラーがあるため更新できませんでした。"
+      render :edit
     end
   end
 
@@ -81,9 +86,17 @@ class GamesController < ApplicationController
     @categories = Category.all
   end
 
+  def set_platforms
+    @platforms = Platform.all
+  end
+
   # Never trust parameters from the scary internet, only allow the white list through.
   def game_params
-    params.require(:game).permit(:title, :permission, :specific_conditions, :android_url, :ios_url, :icon, :category_id, :guideline)
+    params.require(:game).permit(:title, :permission, :specific_conditions, :icon, :category_id, :guideline)
+  end
+
+  def store_urls_params
+    params.require(:game).permit(store_url: [:platform_id, :url, :memo])
   end
 
   # Confirms the correct user.
@@ -92,4 +105,5 @@ class GamesController < ApplicationController
       render template: "errors/forbidden", layout: false, status: :forbidden
     end
   end
+
 end

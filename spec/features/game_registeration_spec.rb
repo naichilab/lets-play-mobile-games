@@ -20,10 +20,15 @@ feature "Game Registeration" do
 
     fill_in 'タイトル', with: 'これはゲームタイトルです。'
     select "シューティング", from: "game_category"
-    fill_in 'AndroidストアURL', with: 'https://google.com/hogehoge'
-    fill_in 'iOSストアURL', with: 'https://google.com/fugafuga'
     fill_in 'ガイドライン', with: "ガイドラインはこちらです！！¥r¥nhttps://www.google.co.jp/search?q=ガイドライン"
     fill_in '実況者へ伝えたいこと', with: 'ダウンロードページへのリンクを貼ってね！！！'
+
+
+    # todo vue部分。SystemTestCase？っての使わないとだめっぽい
+    # click_button '追加'
+    # select 'Android', from "platform_0"
+    # fill_in 'url_0', with: 'https://android.com/path'
+    # fill_in 'memo_0', with: 'これはメモです'
 
     click_button '作成'
 

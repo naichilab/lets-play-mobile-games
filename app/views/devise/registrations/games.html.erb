@@ -20,7 +20,11 @@
           <td class="registered-game-category-cell">
             <%= game.category.name %>
           </td>
-          <td class="registered-game-platform-cell"></td>
+          <td class="registered-game-platform-cell">
+            <% game.platforms.order(code: :desc).each do |p| %>
+                <span class="platform-icon icon-<%= p.code %>" aria-hidden="true"></span>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>
