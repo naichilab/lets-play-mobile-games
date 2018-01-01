@@ -1,6 +1,11 @@
+import InputTag from 'vue-input-tag'
+
 export default {
     data: () => ({
     }),
+    components: {
+        'input-tag': InputTag
+    },
     methods: {
         addUrl() {
             this.store_urls.push({

@@ -36,6 +36,12 @@ class GamesController < ApplicationController
         @game.store_urls.create(store_urls_params[:store_url])
       end
 
+      if tags_params[:tags].present?
+        tags_params[:tags].each do |tag|
+          @game.tags.create(name: tag)
+        end
+      end
+
       redirect_to @game, notice: '登録しました。'
     else
       flash.now[:alert] = "エラーがあるため登録できませんでした。"
@@ -57,6 +63,17 @@ class GamesController < ApplicationController
 
       if store_urls_params[:store_url].present?
         @game.store_urls.create(store_urls_params[:store_url])
+      end
+
+      #めんどうなので全消し
+      @game.tags.each do |tag|
+        tag.destroy
+      end
+
+      if tags_params[:tags].present?
+        tags_params[:tags].each do |tag|
+          @game.tags.create(name: tag)
+        end
       end
 
       redirect_to @game, notice: '更新しました。'
@@ -97,6 +114,10 @@ class GamesController < ApplicationController
 
   def store_urls_params
     params.require(:game).permit(store_url: [:platform_id, :url, :memo])
+  end
+
+  def tags_params
+    params.require(:game).permit(tags: [])
   end
 
   # Confirms the correct user.
