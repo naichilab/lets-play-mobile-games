@@ -2,6 +2,7 @@ class GamesController < ApplicationController
   before_action :set_game, only: [:show, :edit, :update, :destroy]
   before_action :set_categories, only: [:new, :edit, :create, :update]
   before_action :set_platforms, only: [:new, :edit, :create, :update]
+  before_action :set_recent_tags, only: [:new, :edit]
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
@@ -105,6 +106,10 @@ class GamesController < ApplicationController
 
   def set_platforms
     @platforms = Platform.all
+  end
+
+  def set_recent_tags
+    @recent_tags = Tag.order(created_at: :desc).take(10)
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

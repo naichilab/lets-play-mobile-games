@@ -77,6 +77,13 @@
               <div class="col-lg-9">
                 <input-tag :tags="tags" class="form-control"></input-tag>
                 <input type="hidden" name="game[tags][]" v-for="t in tags" :value="t" class="form-control">
+                <div class="recent-tags">
+                  <p>最近使用されたタグ:
+                    <% @recent_tags.each do |t| %>
+                      <%= t.name %>
+                    <% end %>
+                  </p>
+                </div>
               </div>
             </div>
 
