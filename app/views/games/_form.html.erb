@@ -1,7 +1,7 @@
 <div data-vue="game_form" class="row">
   <div data-vue-model="<%= "{ \"store_urls\": #{game.store_urls.to_json(:only => [:id, :url, :memo], :include => {:platform => {:only => [:id, :name]}})} }" %>"></div>
   <div data-vue-model="<%= "{ \"platforms\": #{@platforms.to_json(:only => [:id, :name])} }" %>"></div>
-
+  <div data-vue-model="<%= "{ \"tags\": #{game.tags.map {|m| m.name}.to_json} }" %>"></div>
 
   <div class="col-md-8 col-md-offset-2">
     <div class="well bs-component">
@@ -59,6 +59,7 @@
             <div class="form-group">
               <label for="game_store_urls" class="col-lg-3 control-label">ダウンロードURL</label>
               <div class="col-lg-9">
+                <span class="help-block">Windows/iOS/Androidなど、自由に追加してください</span>
                 <div v-for="(store_url, index) in store_urls">
                   <select v-model="store_url.platform.id" :id="'platform_' + index" name="game[store_url][][platform_id]">
                     <option v-for="p in platforms" :value="p.id">{{p.name}}</option>
@@ -68,6 +69,21 @@
                   <button type="button" :id="'delete_' + index" @click="removeUrl(index)">削除</button>
                 </div>
                 <button type="button" @click="addUrl">追加</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="game_tags" class="col-lg-3 control-label">検索タグ</label>
+              <div class="col-lg-9">
+                <input-tag :tags="tags" class="form-control"></input-tag>
+                <input type="hidden" name="game[tags][]" v-for="t in tags" :value="t" class="form-control">
+                <div class="recent-tags">
+                  <p>最近使用されたタグ:
+                    <% @recent_tags.each do |t| %>
+                      <%= t.name %>
+                    <% end %>
+                  </p>
+                </div>
               </div>
             </div>
 

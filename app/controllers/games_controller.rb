@@ -2,6 +2,7 @@ class GamesController < ApplicationController
   before_action :set_game, only: [:show, :edit, :update, :destroy]
   before_action :set_categories, only: [:new, :edit, :create, :update]
   before_action :set_platforms, only: [:new, :edit, :create, :update]
+  before_action :set_recent_tags, only: [:new, :edit]
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
@@ -36,6 +37,12 @@ class GamesController < ApplicationController
         @game.store_urls.create(store_urls_params[:store_url])
       end
 
+      if tags_params[:tags].present?
+        tags_params[:tags].each do |tag|
+          @game.tags.create(name: tag)
+        end
+      end
+
       redirect_to @game, notice: '登録しました。'
     else
       flash.now[:alert] = "エラーがあるため登録できませんでした。"
@@ -57,6 +64,17 @@ class GamesController < ApplicationController
 
       if store_urls_params[:store_url].present?
         @game.store_urls.create(store_urls_params[:store_url])
+      end
+
+      #めんどうなので全消し
+      @game.tags.each do |tag|
+        tag.destroy
+      end
+
+      if tags_params[:tags].present?
+        tags_params[:tags].each do |tag|
+          @game.tags.create(name: tag)
+        end
       end
 
       redirect_to @game, notice: '更新しました。'
@@ -90,6 +108,10 @@ class GamesController < ApplicationController
     @platforms = Platform.all
   end
 
+  def set_recent_tags
+    @recent_tags = Tag.order(created_at: :desc).take(10)
+  end
+
   # Never trust parameters from the scary internet, only allow the white list through.
   def game_params
     params.require(:game).permit(:title, :permission, :specific_conditions, :icon, :category_id, :guideline)
@@ -97,6 +119,10 @@ class GamesController < ApplicationController
 
   def store_urls_params
     params.require(:game).permit(store_url: [:platform_id, :url, :memo])
+  end
+
+  def tags_params
+    params.require(:game).permit(tags: [])
   end
 
   # Confirms the correct user.

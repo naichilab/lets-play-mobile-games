@@ -15,7 +15,12 @@
     </span>
     <div class="col-xs-12 col-sm-8">
         <div class="game-detail-title">
-            <p><%= @game.category.name %></p>
+            <p>
+              <%= @game.category.name %>
+              <% @game.tags.each do |tag| %>
+                  <%= tag.name %>
+              <% end %>
+            </p>
             <h1 class="foldable-text"><%= @game.title %></h1>
         </div>
         <% if @game.guideline.present? %>
