@@ -46,6 +46,7 @@ class GamesController < ApplicationController
       redirect_to @game, notice: '登録しました。'
     else
       flash.now[:alert] = "エラーがあるため登録できませんでした。"
+      set_recent_tags
       render :new
     end
 
@@ -80,6 +81,7 @@ class GamesController < ApplicationController
       redirect_to @game, notice: '更新しました。'
     else
       flash.now[:alert] = "エラーがあるため更新できませんでした。"
+      set_recent_tags
       render :edit
     end
   end

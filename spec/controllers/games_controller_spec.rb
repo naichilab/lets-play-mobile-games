@@ -126,6 +126,7 @@ describe GamesController do
       context "with invalid params" do
         it "returns a success response (i.e. to display the 'new' template)" do
           post :create, params: {game: build(:invalid_game).attributes}
+          expect(assigns(:recent_tags)).not_to be_nil
           expect(response).to be_success
         end
       end
@@ -197,6 +198,7 @@ describe GamesController do
 
           it "returns a success response (i.e. to display the 'edit' template)" do
             put_game.call
+            expect(assigns(:recent_tags)).not_to be_nil
             expect(response).to be_success
           end
 
