@@ -2,7 +2,7 @@ class GamesController < ApplicationController
   before_action :set_game, only: [:show, :edit, :update, :destroy]
   before_action :set_categories, only: [:new, :edit, :create, :update]
   before_action :set_platforms, only: [:new, :edit, :create, :update]
-  before_action :set_recent_tags, only: [:new, :edit]
+  before_action :set_recent_tags, only: [:new, :edit, :create, :update]
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
@@ -46,7 +46,6 @@ class GamesController < ApplicationController
       redirect_to @game, notice: '登録しました。'
     else
       flash.now[:alert] = "エラーがあるため登録できませんでした。"
-      set_recent_tags
       render :new
     end
 
@@ -81,7 +80,6 @@ class GamesController < ApplicationController
       redirect_to @game, notice: '更新しました。'
     else
       flash.now[:alert] = "エラーがあるため更新できませんでした。"
-      set_recent_tags
       render :edit
     end
   end
