@@ -109,7 +109,7 @@ class GamesController < ApplicationController
   end
 
   def set_recent_tags
-    @recent_tags = Tag.order(created_at: :desc).take(10)
+    @recent_tags = Tag.order(created_at: :desc).limit(10)
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
