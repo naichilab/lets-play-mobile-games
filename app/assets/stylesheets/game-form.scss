@@ -23,3 +23,12 @@
   -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
+
+.thumbnail-preview-clip {
+  display: block;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 0;
+  padding-bottom: 100%;
+  background-size: cover;
+}
