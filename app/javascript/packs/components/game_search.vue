@@ -83,7 +83,7 @@
                             <span class="icon-guideline" v-if="game.guideline !== null && game.guideline.length > 0 "
                                   aria-hidden="true"></span>
                             <span :class="'platform-icon icon-' + p.code" v-for="p in masterData.platforms"
-                                  v-if="game['has_' + p.code]" aria-hidden="true"></span>
+                                  v-if="game['has_' + p.code]" aria-hidden="true" v-bind:tooltip="p.name"></span>
                         </div>
                     </div>
                 </div>
