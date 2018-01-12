@@ -21,14 +21,14 @@
             <% end %>
 
             <div class="form-group">
-              <label for="game_title" class="col-lg-3 control-label">タイトル</label>
+              <label for="game_title" class="col-lg-3 control-label">タイトル <span class="label label-danger">必須</span></label>
               <div class="col-lg-9">
-                <%= form.text_field :title, id: :game_title, class: 'form-control', placeholder: 'ゲームタイトル', "v-model" => "game.title" %>
+                <%= form.text_field :title, id: :game_title, class: 'form-control', placeholder: 'ゲームタイトルを64文字以内で入力してください', "v-model" => "game.title" %>
               </div>
             </div>
 
             <div class="form-group">
-              <label for="game_category" class="col-lg-3 control-label">ジャンル</label>
+              <label for="game_category" class="col-lg-3 control-label">ジャンル <span class="label label-danger">必須</span></label>
               <div class="col-lg-9">
                 <%= form.select :category_id, @categories.map {|c| [c.name, c.id]}, {include_blank: '選択してください'}, {id: 'game_category', class: 'form-control', "v-model" => "game.category_id"} %>
               </div>
