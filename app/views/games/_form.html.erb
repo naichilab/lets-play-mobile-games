@@ -59,16 +59,15 @@
             <div class="form-group">
               <label for="game_store_urls" class="col-lg-3 control-label">ダウンロードURL</label>
               <div class="col-lg-9">
-                <span class="help-block">Windows/iOS/Androidなど、自由に追加してください</span>
                 <div v-for="(store_url, index) in store_urls">
-                  <select v-model="store_url.platform.id" :id="'platform_' + index" name="game[store_url][][platform_id]">
+                  <select v-model="store_url.platform.id" :id="'platform_' + index" name="game[store_url][][platform_id]" class="url-form">
                     <option v-for="p in platforms" :value="p.id">{{p.name}}</option>
                   </select>
-                  <input type="text" v-model="store_url.url" :id="'url_' + index" name="game[store_url][][url]" placeholder="https://">
-                  <input type="text" v-model="store_url.memo" :id="'memo_' + index" name="game[store_url][][memo]" placeholder="メモ">
-                  <button type="button" :id="'delete_' + index" @click="removeUrl(index)">削除</button>
+                  <input type="text" v-model="store_url.url" :id="'url_' + index" name="game[store_url][][url]" class="url-form" placeholder="https://">
+                  <input type="text" v-model="store_url.memo" :id="'memo_' + index" name="game[store_url][][memo]" class="url-form" placeholder="メモ">
+                  <button type="button" :id="'delete_' + index" class="btn btn-link btn-remove-url" @click="removeUrl(index)"><i class="fa fa-times" aria-hidden="true"></i></button>
                 </div>
-                <button type="button" @click="addUrl">追加</button>
+                <button type="button" class="btn btn-primary btn-sm" @click="addUrl"><i class="fa fa-plus" aria-hidden="true"></i> URLを追加する</button>
               </div>
             </div>
 

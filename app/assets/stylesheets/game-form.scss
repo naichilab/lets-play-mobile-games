@@ -1,0 +1,25 @@
+.btn-remove-url {
+  background-color: transparent;
+  border-color: transparent;
+  -webkit-box-shadow: none;
+  padding: 4px;
+  margin-left: -4px;
+  margin-top: -4px;
+  color: #3b9ae0;
+}
+
+.url-form {
+  height: 32px;
+  padding: 4px;
+  font-size: 14px;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
