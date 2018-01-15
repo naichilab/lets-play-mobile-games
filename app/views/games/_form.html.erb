@@ -4,9 +4,13 @@
   <div data-vue-model="<%= "{ \"tags\": #{game.tags.map {|m| m.name}.to_json} }" %>"></div>
 
   <div class="col-sm-12 col-md-10 col-md-offset-1">
-    <div class="well bs-component">
+    <div>
       <%= form_with(model: game, local: true, class: 'form-horizontal') do |form| %>
-          <legend><%= title %></legend>
+          <span class="header-text">
+            <legend>
+              <%= title %>
+            </legend>
+          </span>
 
           <fieldset>
             <% if game.errors.any? %>
@@ -44,7 +48,7 @@
                 <span class="thumbnail-preview-clip" id="preview_image" style="background-image: url(<%= game.icon %>)"></span>
               </div>
               <div>
-                <label class="btn btn-primary btn-block">
+                <label class="btn btn-primary btn-sm btn-block">
                   <i class="fa fa-upload" aria-hidden="true"></i> 画像をアップロードする
                   <%= form.file_field :icon, id: :game_icon, class: 'hidden-element', accept: 'image/png,image/jpg,image/jpeg,image/gif', "v-on:change"=>"onUploadedFile" %>
                 </label>
@@ -55,13 +59,25 @@
             <div class="col-xs-12 col-md-8">
               <div class="form-group">
                 <label for="game_store_urls" class="control-label">ダウンロードURL</label>
-                <div v-for="(store_url, index) in store_urls">
-                  <select v-model="store_url.platform.id" :id="'platform_' + index" name="game[store_url][][platform_id]" class="url-form">
-                    <option v-for="p in platforms" :value="p.id">{{p.name}}</option>
-                  </select>
-                  <input type="text" v-model="store_url.url" :id="'url_' + index" name="game[store_url][][url]" class="url-form" placeholder="https://">
-                  <input type="text" v-model="store_url.memo" :id="'memo_' + index" name="game[store_url][][memo]" class="url-form" placeholder="メモ">
-                  <button type="button" :id="'delete_' + index" class="btn btn-link btn-remove-url" @click="removeUrl(index)"><i class="fa fa-times" aria-hidden="true"></i></button>
+                <div class="url-form">
+                  <table class="url-form-table">
+                    <tr class="url-form-group" v-for="(store_url, index) in store_urls">
+                      <td class="select-platform-form">
+                        <select v-model="store_url.platform.id" :id="'platform_' + index" name="game[store_url][][platform_id]" class="url-form-control">
+                          <option v-for="p in platforms" :value="p.id">{{p.name}}</option>
+                        </select>
+                      </td>
+                      <td>
+                        <input type="text" v-model="store_url.url" :id="'url_' + index" name="game[store_url][][url]" class="url-form-control" placeholder="https://">
+                      </td>
+                      <td>
+                        <input type="text" v-model="store_url.memo" :id="'memo_' + index" name="game[store_url][][memo]" class="url-form-control" placeholder="メモ">
+                      </td>
+                      <td>
+                        <button type="button" :id="'delete_' + index" class="btn btn-link btn-remove-url" @click="removeUrl(index)"><i class="fa fa-times" aria-hidden="true"></i></button>
+                      </td>
+                    </tr>
+                  </table>
                 </div>
                 <div>
                   <button type="button" class="btn btn-primary btn-sm" @click="addUrl"><i class="fa fa-plus" aria-hidden="true"></i> URLを追加する</button>

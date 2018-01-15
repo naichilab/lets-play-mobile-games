@@ -1,10 +1,10 @@
+@import "break-point";
+
 .btn-remove-url {
   background-color: transparent;
   border-color: transparent;
   -webkit-box-shadow: none;
   padding: 4px;
-  margin-left: -4px;
-  margin-top: -4px;
   &:focus {
     outline: 0;
   }
@@ -14,24 +14,46 @@
 }
 
 .url-form {
-  height: 32px;
-  padding: 4px;
-  font-size: 14px;
-  color: #555;
-  background-color: #fff;
-  background-image: none;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-}
+  @include xs-screen-media {
+    overflow-x: scroll;
+  }
 
-.url-form:focus {
-  outline: 0;
-  border-color: #66afe9;
+  .url-form-table {
+    width: 100%;
+    @include xs-screen-media {
+      min-width: 575px;
+    }
+  }
+
+  .url-form-group {
+    td {
+      padding: 2px!important;
+    }
+  }
+
+  .select-platform-form {
+    width: 98px;
+  }
+
+  .url-form-control {
+    width: 100%;
+    height: 32px;
+    padding: 4px;
+    font-size: 14px;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    &:focus {
+      outline: 0;
+      border-color: #66afe9;
+    }
+  }
 }
 
 .thumbnail-preview-clip {
