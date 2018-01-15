@@ -5,7 +5,12 @@
   padding: 4px;
   margin-left: -4px;
   margin-top: -4px;
-  color: #3b9ae0;
+  &:focus {
+    outline: 0;
+  }
+  &:active:focus {
+    outline: 0;
+  }
 }
 
 .url-form {
@@ -22,6 +27,11 @@
   -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
   -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.url-form:focus {
+  outline: 0;
+  border-color: #66afe9;
 }
 
 .thumbnail-preview-clip {
