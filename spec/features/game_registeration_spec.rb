@@ -16,7 +16,7 @@ feature "Game Registeration" do
   scenario "ゲームを登録" do
     visit root_path
     click_link 'ゲームを登録', match: :first
-    expect(page).to have_text "新規登録"
+    expect(find_by_id('game-form').native.attributes['action'].value).to eq '/games'
 
     fill_in 'タイトル', with: 'これはゲームタイトルです。'
     select "シューティング", from: "game_category"
@@ -30,7 +30,7 @@ feature "Game Registeration" do
     # fill_in 'url_0', with: 'https://android.com/path'
     # fill_in 'memo_0', with: 'これはメモです'
 
-    click_button '作成'
+    first('input[type="submit"]').click
 
     expect(page).to have_text 'これはゲームタイトルです'
     expect(page).to have_text 'シューティング'
