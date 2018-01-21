@@ -3,10 +3,14 @@
   <div data-vue-model="<%= "{ \"platforms\": #{@platforms.to_json(:only => [:id, :name])} }" %>"></div>
   <div data-vue-model="<%= "{ \"tags\": #{game.tags.map {|m| m.name}.to_json} }" %>"></div>
 
-  <div class="col-md-8 col-md-offset-2">
-    <div class="well bs-component">
-      <%= form_with(model: game, local: true, class: 'form-horizontal') do |form| %>
-          <legend><%= title %></legend>
+  <div class="col-sm-12 col-md-10 col-md-offset-1">
+    <div>
+      <%= form_with(model: game, local: true, class: 'form-horizontal', id: 'game-form') do |form| %>
+          <span class="header-text">
+            <legend>
+              <%= title %>
+            </legend>
+          </span>
 
           <fieldset>
             <% if game.errors.any? %>
@@ -19,76 +23,81 @@
                   </div>
                 </div>
             <% end %>
-
-            <div class="form-group">
-              <label for="game_title" class="col-lg-3 control-label">タイトル</label>
-              <div class="col-lg-9">
-                <%= form.text_field :title, id: :game_title, class: 'form-control', placeholder: 'ゲームタイトル', "v-model" => "game.title" %>
+            <div class="col-sm-12 col-md-8">
+              <div class="form-group">
+                <label for="game_title" class="control-label">タイトル <span class="label label-danger">必須</span></label>
+                <%= form.text_field :title, id: :game_title, class: 'form-control', placeholder: 'ゲームタイトルを64文字以内で入力してください', "v-model" => "game.title" %>
               </div>
-            </div>
-
-            <div class="form-group">
-              <label for="game_category" class="col-lg-3 control-label">ジャンル</label>
-              <div class="col-lg-9">
+              <div class="form-group">
+                <label for="game_category" class="control-label">ジャンル <span class="label label-danger">必須</span></label>
                 <%= form.select :category_id, @categories.map {|c| [c.name, c.id]}, {include_blank: '選択してください'}, {id: 'game_category', class: 'form-control', "v-model" => "game.category_id"} %>
               </div>
-            </div>
-
-            <div class="form-group">
-              <label for="game_guideline" class="col-lg-3 control-label">ガイドライン</label>
-              <div class="col-lg-9">
-                <%= form.text_area :guideline, id: :game_guideline, class: 'form-control', rows: 5, placeholder: '実況に関するガイドライン、もしくはガイドラインを記載したURLがあれば入力してください。特にない場合は何も記入しないでください。', "v-model" => "game.guideline" %>
+              <div class="form-group">
+                <label for="game_guideline" class="control-label">ガイドライン</label>
+                <%= form.text_area :guideline, id: :game_guideline, class: 'form-control', rows: 4, placeholder: '実況に関するガイドライン、もしくはガイドラインを記載したURLがあれば入力してください。特にない場合は何も記入しないでください。', "v-model" => "game.guideline" %>
               </div>
-            </div>
 
-            <div class="form-group">
-              <label for="game_specific_conditions" class="col-lg-3 control-label">実況者へ伝えたいこと</label>
-              <div class="col-lg-9">
+              <div class="form-group">
+                <label for="game_specific_conditions" class="control-label">実況者へ伝えたいこと</label>
                 <%= form.text_area :specific_conditions, id: :game_specific_conditions, class: 'form-control', rows: 3, placeholder: 'ゲームの楽しみ方など、実況者へ伝えたいことがあれば入力してください。', "v-model" => "game.specific_conditions" %>
               </div>
             </div>
-
-            <div class="form-group">
-              <label for="game_icon" class="col-lg-3 control-label">アイコン画像</label>
-              <div class="col-lg-9">
-                <%= form.file_field :icon, id: :game_icon, class: 'form-control' %>
-                <span class="help-block">正方形を推奨。正方形に切り取られて表示されます。</span>
+            <div class="col-sm-12 col-md-4">
+              <label for="game_icon" class="control-label">アイコン画像</label>
+              <div id="game_icon_preview">
+                <span class="thumbnail-preview-clip" id="preview_image" style="background-image: url(<%= game.icon %>)"></span>
               </div>
+              <div>
+                <label class="btn btn-primary btn-sm btn-block">
+                  <i class="fa fa-upload" aria-hidden="true"></i> 画像をアップロードする
+                  <%= form.file_field :icon, id: :game_icon, class: 'hidden-element', accept: 'image/png,image/jpg,image/jpeg,image/gif', "v-on:change"=>"onUploadedFile" %>
+                </label>
+              </div>
+              <span class="help-block">正方形を推奨。正方形に切り取られて表示されます。</span>
             </div>
 
-            <div class="form-group">
-              <label for="game_store_urls" class="col-lg-3 control-label">ダウンロードURL</label>
-              <div class="col-lg-9">
-                <span class="help-block">Windows/iOS/Androidなど、自由に追加してください</span>
-                <div v-for="(store_url, index) in store_urls">
-                  <select v-model="store_url.platform.id" :id="'platform_' + index" name="game[store_url][][platform_id]">
-                    <option v-for="p in platforms" :value="p.id">{{p.name}}</option>
-                  </select>
-                  <input type="text" v-model="store_url.url" :id="'url_' + index" name="game[store_url][][url]" placeholder="https://">
-                  <input type="text" v-model="store_url.memo" :id="'memo_' + index" name="game[store_url][][memo]" placeholder="メモ">
-                  <button type="button" :id="'delete_' + index" @click="removeUrl(index)">削除</button>
+            <div class="col-xs-12 col-md-8">
+              <div class="form-group">
+                <label for="game_store_urls" class="control-label">ダウンロードURL</label>
+                <div class="url-form">
+                  <table class="url-form-table">
+                    <tr class="url-form-group" v-for="(store_url, index) in store_urls">
+                      <td class="select-platform-form">
+                        <select v-model="store_url.platform.id" :id="'platform_' + index" name="game[store_url][][platform_id]" class="url-form-control">
+                          <option v-for="p in platforms" :value="p.id">{{p.name}}</option>
+                        </select>
+                      </td>
+                      <td>
+                        <input type="text" v-model="store_url.url" :id="'url_' + index" name="game[store_url][][url]" class="url-form-control" placeholder="https://">
+                      </td>
+                      <td>
+                        <input type="text" v-model="store_url.memo" :id="'memo_' + index" name="game[store_url][][memo]" class="url-form-control" placeholder="メモ">
+                      </td>
+                      <td>
+                        <button type="button" :id="'delete_' + index" class="btn btn-link btn-remove-url" @click="removeUrl(index)"><i class="fa fa-times" aria-hidden="true"></i></button>
+                      </td>
+                    </tr>
+                  </table>
                 </div>
-                <button type="button" @click="addUrl">追加</button>
+                <div>
+                  <button type="button" class="btn btn-primary btn-sm" @click="addUrl"><i class="fa fa-plus" aria-hidden="true"></i> URLを追加する</button>
+                </div>
               </div>
-            </div>
 
-            <div class="form-group">
-              <label for="game_tags" class="col-lg-3 control-label">検索タグ</label>
-              <div class="col-lg-9">
+              <div class="form-group">
+                <label for="game_tags" class="control-label">検索タグ</label>
                 <input-tag :tags="tags" class="form-control"></input-tag>
                 <input type="hidden" name="game[tags][]" v-for="t in tags" :value="t" class="form-control">
                 <div class="recent-tags">
                   <p>最近使用されたタグ:
-                    <% @recent_tags.each do |t| %>
-                      <%= t.name %>
-                    <% end %>
+                  <% @recent_tags.each do |t| %>
+                    <%= t.name %>
+                  <% end %>
                   </p>
                 </div>
               </div>
-            </div>
 
-            <div class="form-group">
-              <div class="col-lg-9 col-lg-offset-3">
+              <div class="form-group">
                 <%= form.submit button_text, class: 'btn btn-primary' %>
               </div>
             </div>

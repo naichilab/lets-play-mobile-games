@@ -19,6 +19,7 @@ feature "Game更新" do
     visit game_path(@game)
 
     click_link '編集'
+    expect(find_by_id('game-form').native.attributes['action'].value).to match '\/games\/[0-9]+'
 
     fill_in 'タイトル', with: '新タイトル。'
     select "アドベンチャー", from: "game_category"
@@ -30,7 +31,7 @@ feature "Game更新" do
     fill_in 'ガイドライン', with: "新ガイドライン"
     fill_in '実況者へ伝えたいこと', with: '伝えたいこと'
 
-    click_button '更新'
+    first('input[type="submit"]').click
 
     expect(page).to have_text '新タイトル'
     expect(page).to have_text 'アドベンチャー'
