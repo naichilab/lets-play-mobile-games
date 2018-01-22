@@ -88,3 +88,5 @@ gem 'omniauth-twitter'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
 gem 'fog'
+
+gem 'bootstrap', '~> 4.0.0'
