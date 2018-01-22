@@ -1,14 +1,15 @@
 <% is_mobile ||= false %>
 
 <li <% if is_mobile %>class="mobile-nav-user-profile"<% end %>>
-    <%= link_to 'ゲームを登録', new_game_path %>
+    <%= link_to 'ゲームを登録', new_game_path, class: "dropdown-item" %>
 </li>
 <li <% if is_mobile %>class="mobile-nav-user-profile"<% end %>>
-    <%= link_to 'プロフィール変更', edit_user_registration_path %>
+    <%= link_to 'プロフィール変更', edit_user_registration_path, class: "dropdown-item" %>
 </li>
+<div class="dropdown-divider"></div>
 <li role="separator" class="divider"></li>
 <li <% if is_mobile %>class="mobile-nav-user-profile"<% end %>>
-    <%= link_to destroy_user_session_path, method: :delete do %>
+    <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
         <span class="icon-signout"></span>ログアウト
     <% end %>
 </li>

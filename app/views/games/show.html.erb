@@ -1,6 +1,6 @@
 <% provide(:html_title, "#{@game.title}") %>
 <div class="row game-detail">
-    <div class="col-xs-12">
+    <div class="col-12">
         <% if @game.user == current_user %>
             <%= link_to(edit_game_path(@game), class: 'btn btn-primary pull-left') do %>
                 <span class="icon-pencil"></span> 編集する
@@ -10,10 +10,10 @@
             <% end %>
         <% end %>
     </div>
-    <span class="col-xs-12 col-sm-4 game-icon">
-        <%= image_tag @game.icon.url, class: 'img-responsive' %>
+    <span class="col-12 col-sm-4 game-icon">
+        <%= image_tag @game.icon.url, class: 'img-fluid' %>
     </span>
-    <div class="col-xs-12 col-sm-8">
+    <div class="col-12 col-sm-8">
         <div class="game-detail-title">
             <p>
               <%= @game.category.name %>

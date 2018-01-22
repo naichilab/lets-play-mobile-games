@@ -1,10 +1,9 @@
 <% provide(:html_title, "新規ユーザ登録") %>
 <div class="row">
-  <div class="col-xs-12 col-sm-7 col-md-6 col-md-offset-1">
-    <div class="well bs-component">
+  <div class="col-12 col-sm-12 col-md-8 col-lg-7 offset-lg-1">
+    <div>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form-horizontal'}) do |f| %>
       <fieldset>
-          <legend>新規ユーザー登録</legend>
             <% if resource.errors.any? %>
                 <div class="form-group">
                   <div class="col-lg-9 col-lg-offset-3 text-danger">
@@ -16,6 +15,7 @@
                 </div>
             <% end %>
             <div class="col-md-12">
+              <legend>新規ユーザー登録</legend>
               <div class="form-group">
                 <label for="user_username" class="control-label">ユーザー表示名</label>
                 <%= f.text_field :username, id: :user_username, class: 'form-control' %>
@@ -35,14 +35,14 @@
                 <label for="user_password_confirmation" class="control-label">パスワード(確認)</label>
                 <%= f.password_field :password_confirmation, id: :user_password_confirmation, autocomplete: "off", class: 'form-control', placeholder: '再度パスワードを入力してください' %>
               </div>
-            </div>
-            <%= f.submit '登録', class: 'btn btn-success btn-block' %>
 
+              <%= f.submit '登録', class: 'btn btn-success btn-block' %>
+            </div>
           </fieldset>
       <% end %>
     </div>
   </div>
-  <div class="col-xs-12 col-sm-5 col-md-3">
+  <div class="col-12 col-sm-12 col-md-4">
     <%= render "devise/shared/links" %>
   </div>
 </div>

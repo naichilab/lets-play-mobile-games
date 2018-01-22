@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+        <div class="col-12 col-sm-12 col-md-4 col-lg-3">
 
             <div class="input-group search-area">
                 <input class="form-control" type="text" placeholder="単語で探す" v-model="formValues.words"
@@ -65,25 +65,27 @@
             </div>
         </div>
 
-        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
+        <div class="col-12 col-sm-12 col-md-8 col-lg-9">
             <div v-if="orderdGames.length === 0">
                 <h3>見つかりませんでした。</h3>
                 <p>このサービスに登録されていないゲームについては、開発者に直接お問い合わせください。</p>
             </div>
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3" v-for="game in orderdGames">
-                <!-- Start of the content -->
-                <div class="boxed">
-                    <div class="boxed-content">
-                        <a :href="'/games/' + game.id"></a>
-                        <img class="game-icon-image" :src="game.icon.thumb.url">
-                        <div class="front-page-title ellipsisable-text">
-                            <span v-text="game.title"></span>
-                        </div>
-                        <div class="boxed-icon-area">
-                            <span class="icon-guideline" v-if="game.guideline !== null && game.guideline.length > 0 "
-                                  aria-hidden="true"></span>
-                            <span :class="'platform-icon icon-' + p.code" v-for="p in masterData.platforms"
-                                  v-if="game['has_' + p.code]" aria-hidden="true" v-bind:tooltip="p.name"></span>
+            <div class="row">
+                <div class="col-12 col-sm-4 col-md-4 col-lg-3" v-for="game in orderdGames">
+                    <!-- Start of the content -->
+                    <div class="boxed">
+                        <div class="boxed-content">
+                            <a :href="'/games/' + game.id"></a>
+                            <img class="game-icon-image" :src="game.icon.thumb.url">
+                            <div class="front-page-title ellipsisable-text">
+                                <span v-text="game.title"></span>
+                            </div>
+                            <div class="boxed-icon-area">
+                                <span class="icon-guideline" v-if="game.guideline !== null && game.guideline.length > 0 "
+                                                             aria-hidden="true"></span>
+                                <span :class="'platform-icon icon-' + p.code" v-for="p in masterData.platforms"
+                                                                              v-if="game['has_' + p.code]" aria-hidden="true" v-bind:tooltip="p.name"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
