@@ -11,10 +11,10 @@
  * It is generally better to create a new file per style scope.
  *
  *= require font-awesome
- *= require_self
 */
 
 @import "bootstrap";
+@import "rin.css";
 
 @import "vars.scss";
 @import "icon.scss";
@@ -24,7 +24,7 @@
 
 @import "game-detail.scss";
 @import "game-form.scss";
-@import "game-grid.css";
+@import "game-grid.scss";
 @import "search.scss";
 
 @import "user-profile.scss";

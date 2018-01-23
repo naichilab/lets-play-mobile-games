@@ -17,38 +17,41 @@
             </label>
 
             <div class="condition-area">
-                <div class="panel panel-default condition-box box-joint">
-                    <div class="panel-heading search-condition-title" data-toggle="collapse"
+                <div class="card card-default condition-box box-joint">
+                    <div class="card-header search-condition-title" data-toggle="collapse"
                          data-target="#platform-condition" aria-expanded="true" aria-controls="platform-chevron">
                         <i class="fa fa-caret-right" aria-hidden="true"></i>
                         <i class="fa fa-caret-down" aria-hidden="true"></i>
                         プラットフォーム
                     </div>
-                    <ul class="list-group collapse in" id="platform-condition">
-                        <li class="condition-item">
-                            <input type="radio" id="radPlatformAll" value="" v-model="formValues.platform"
-                                   v-on:change="getGames">
-                            <label for="radPlatformAll">すべて</label>
-                        </li>
-                        <li class="condition-item" v-for="p in masterData.platforms">
-                            <input type="radio" :id="'radPlatform' + p.code" :value="p.code"
-                                   v-model="formValues.platform"
-                                   @change="getGames">
-                            <label :for="'radPlatform' + p.code">
-                                <span :class="'icon-' + p.code" aria-hidden="true"></span>{{p.name}}
-                            </label>
-                        </li>
-                    </ul>
+                    <div class="collapse show" id="platform-condition">
+                        <ul class="list-group">
+                            <li class="condition-item">
+                                <input type="radio" id="radPlatformAll" value="" v-model="formValues.platform"
+                                                                                 v-on:change="getGames">
+                                <label for="radPlatformAll">すべて</label>
+                            </li>
+                            <li class="condition-item" v-for="p in masterData.platforms">
+                                <input type="radio" :id="'radPlatform' + p.code" :value="p.code"
+                                       v-model="formValues.platform"
+                                       @change="getGames">
+                                <label :for="'radPlatform' + p.code">
+                                    <span :class="'icon-' + p.code" aria-hidden="true"></span>{{p.name}}
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="panel panel-default condition-box">
-                    <div class="panel-heading search-condition-title" data-toggle="collapse"
-                         data-target="#genre-condition" aria-expanded="true" aria-controls="genre-chevron">
-                        <i class="fa fa-caret-right" aria-hidden="true"></i>
-                        <i class="fa fa-caret-down" aria-hidden="true"></i>
-                        ジャンル
-                    </div>
-                    <ul class="list-group collapse in" id="genre-condition">
+                <div class="card card-default condition-box">
+                  <div class="card-header search-condition-title" data-toggle="collapse"
+                    data-target="#genre-condition" aria-expanded="true" aria-controls="genre-chevron">
+                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                    ジャンル
+                  </div>
+                  <div class="collapse show" id="genre-condition">
+                    <ul class="list-group">
                         <li class="condition-item">
                             <input type="radio" id="radCategoryAll" value="" v-model="formValues.category"
                                    v-on:change="getGames">
@@ -61,6 +64,7 @@
                             <label :for="'radCategory' + category.id" v-text="category.name"></label>
                         </li>
                     </ul>
+                  </div>
                 </div>
             </div>
         </div>

@@ -1,50 +1,54 @@
 <% provide(:html_title, "#{@game.title}") %>
 <div class="row game-detail">
-    <div class="col-12">
-        <% if @game.user == current_user %>
-            <%= link_to(edit_game_path(@game), class: 'btn btn-primary pull-left') do %>
-                <span class="icon-pencil"></span> 編集する
-            <% end %>
-            <%= link_to(game_path(@game), data: {confirm: "削除しますか？"}, method: :delete, class: 'btn btn-danger pull-right') do %>
-                <i class="fa fa-trash" aria-hidden="true"></i> 削除する
-            <% end %>
-        <% end %>
+  <div class="col-12">
+    <% if @game.user == current_user %>
+      <%= link_to(edit_game_path(@game), class: 'btn btn-primary pull-left') do %>
+        <span class="icon-pencil"></span> 編集する
+      <% end %>
+      <%= link_to(game_path(@game), data: {confirm: "削除しますか？"}, method: :delete, class: 'btn btn-danger pull-right') do %>
+        <i class="fa fa-trash" aria-hidden="true"></i> 削除する
+      <% end %>
+    <% end %>
+  </div>
+  <span class="col-12 col-sm-4 game-icon">
+    <%= image_tag @game.icon.url, class: 'img-fluid' %>
+  </span>
+  <div class="col-12 col-sm-8">
+    <div class="game-detail-title">
+      <p>
+      <%= @game.category.name %>
+      <% @game.tags.each do |tag| %>
+        <%= tag.name %>
+      <% end %>
+      </p>
+      <h1 class="foldable-text"><%= @game.title %></h1>
     </div>
-    <span class="col-12 col-sm-4 game-icon">
-        <%= image_tag @game.icon.url, class: 'img-fluid' %>
-    </span>
-    <div class="col-12 col-sm-8">
-        <div class="game-detail-title">
-            <p>
-              <%= @game.category.name %>
-              <% @game.tags.each do |tag| %>
-                  <%= tag.name %>
-              <% end %>
-            </p>
-            <h1 class="foldable-text"><%= @game.title %></h1>
-        </div>
-        <% if @game.guideline.present? %>
-            <div class = "guideline">
-                <span class="guideline-header"><i class="fa fa-warning" aria-hidden="true"></i>実況ガイドライン</span>
-                <span class="guideline-contents"><%= text_contain_url(h(@game.guideline)).html_safe %></span>
-            </div>
-        <% end %>
-        <div class="game-describe">
-            <legend><i class="fa fa-comment-o" aria-hidden="true"></i> 開発者からのメッセージ</legend>
-            <span class="game-describe-contents"><% if @game.specific_conditions.present? %><%= text_contain_url(h(@game.specific_conditions)).html_safe %><% else %>特にありません<% end %></span>
-        </div>
-        <div class="game-external-links">
-            <legend><i class="fa fa-link" aria-hidden="true"></i> 関連リンク</legend>
-            <div class="game-external-links-contents">
-              <ul>
-                <% @game.store_urls.each do |s| %>
-                    <li>
-                      <span class="icon-<%= s.platform.code %>" aria-hidden="true"></span>
-                      <%= link_to to_xss_safe_url(s.url), to_xss_safe_url(s.url), target: '_blank' %>
-                    </li>
-                <% end %>
-              </ul>
-            </div>
-        </div>
+    <% if @game.guideline.present? %>
+      <div class = "guideline">
+        <span class="guideline-header"><i class="fa fa-warning" aria-hidden="true"></i>実況ガイドライン</span>
+        <span class="guideline-contents"><%= text_contain_url(h(@game.guideline)).html_safe %></span>
+      </div>
+    <% end %>
+    <div class="game-describe">
+      <span class="header-text">
+        <i class="fa fa-comment-o" aria-hidden="true"></i> 開発者からのメッセージ
+      </span>
+      <span class="game-describe-contents"><% if @game.specific_conditions.present? %><%= text_contain_url(h(@game.specific_conditions)).html_safe %><% else %>特にありません<% end %></span>
     </div>
+    <div class="game-external-links">
+      <span class="header-text">
+        <i class="fa fa-link" aria-hidden="true"></i> 関連リンク
+      </span>
+      <div class="game-external-links-contents">
+        <ul>
+          <% @game.store_urls.each do |s| %>
+            <li>
+              <span class="icon-<%= s.platform.code %>" aria-hidden="true"></span>
+              <%= link_to to_xss_safe_url(s.url), to_xss_safe_url(s.url), target: '_blank' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>

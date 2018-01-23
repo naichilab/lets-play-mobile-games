@@ -1,11 +1,13 @@
 <% provide(:html_title, "ログイン") %>
 <div class="row">
   <div class="col-12 col-sm-12 col-md-8 col-lg-7 offset-lg-1">
-    <div class="col-md-12">
+    <div class="col-md-12 card card-body bg-light">
       <form>
         <%- if devise_mapping.omniauthable? %>
             <fieldset>
-              <legend>メールアドレスでログイン</legend>
+              <span class="header-text">
+                SNSアカウントでログイン
+              </span>
               <%- resource_class.omniauth_providers.each do |provider| %>
                 <div class="form-group">
                   <a href=<%= omniauth_authorize_path(resource_name, provider) %> class="btn btn-twitter btn-block">
@@ -22,8 +24,10 @@
     <div>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'}) do |f| %>
         <fieldset>
-          <div class="col-md-12">
-            <legend>SNSアカウントでログイン</legend>
+          <div class="col-md-12 card card-body bg-light">
+            <span class="header-text">
+              メールアドレスでログイン
+            </span>
             <div class="form-group">
               <label for="user_email" class="control-label">メールアドレス</label>
               <%= f.email_field :email, id: :user_email, class: 'form-control' %>

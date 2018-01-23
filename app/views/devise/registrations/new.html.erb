@@ -14,8 +14,10 @@
                   </div>
                 </div>
             <% end %>
-            <div class="col-md-12">
-              <legend>新規ユーザー登録</legend>
+            <div class="col-md-12 card card-body bg-light">
+              <span class="header-text">
+                新規ユーザー登録
+              </span>
               <div class="form-group">
                 <label for="user_username" class="control-label">ユーザー表示名</label>
                 <%= f.text_field :username, id: :user_username, class: 'form-control' %>
