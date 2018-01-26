@@ -1,37 +1,34 @@
 <% provide(:html_title, "パスワード再設定メールの送信") %>
 <div class="row">
-  <div class="col-xs-12 col-md-7 col-md-offset-1">
-    <div class="well bs-component">
-      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :post, class: 'form-horizontal'}) do |f| %>
-          <legend>パスワードリセット</legend>
-          <fieldset>
-
-            <% if resource.errors.any? %>
-                <div class="form-group">
-                  <div class="col-lg-9 col-lg-offset-3 text-danger">
-                    <%= "#{resource.errors.count}件のエラーがあります。" %>
-                    <% resource.errors.full_messages.each do |msg| %>
-                        <span class="help-block"><%= "・#{msg}" %></span>
-                    <% end %>
-                  </div>
-                </div>
-            <% end %>
-
-            <div class="col-md-12">
-              <div class="form-group">
-                <label for="user_email" class="control-label">メールアドレス</label>
-                <%= f.email_field :email, id: :user_email, class: 'form-control', placeholder: '再設定用メールの送信先を入力してください' %>
+  <div class="col-12 col-md-7 offset-md-1 card card-body bg-light">
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :post, class: 'form-horizontal'}) do |f| %>
+      <fieldset>
+        <div class="col-md-12">
+          <span class="header-text">
+            パスワードリセット
+          </span>
+          <% if resource.errors.any? %>
+            <div class="form-group">
+              <div class="col-lg-9 col-lg-offset-3 text-danger">
+                <%= "#{resource.errors.count}件のエラーがあります。" %>
+                <% resource.errors.full_messages.each do |msg| %>
+                  <span class="help-block"><%= "・#{msg}" %></span>
+                <% end %>
               </div>
             </div>
+          <% end %>
 
-            <%= f.submit 'メールを送信', class: 'btn btn-primary btn-block' %>
+          <div class="form-group">
+            <label for="user_email" class="control-label">メールアドレス</label>
+            <%= f.email_field :email, id: :user_email, class: 'form-control', placeholder: '再設定用メールの送信先を入力してください' %>
+          </div>
+          <%= f.submit 'メールを送信', class: 'btn btn-primary btn-block' %>
+        </div>
+      </fieldset>
 
-          </fieldset>
-
-      <% end %>
-    </div>
+    <% end %>
   </div>
-  <div class="col-xs-12 col-sm-5 col-md-3">
-      <%= render "devise/shared/links" %>
+  <div class="col-12 col-sm-5 col-md-3">
+    <%= render "devise/shared/links" %>
   </div>
 </div>

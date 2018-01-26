@@ -20,11 +20,9 @@
 }
 
 .game-external-links {
-  @extend .header-text;
 }
 
 .game-describe {
-  @extend .header-text;
   .game-describe-contents {
     display: block;
     white-space: pre-wrap;
