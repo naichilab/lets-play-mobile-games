@@ -1,7 +1,8 @@
 @import "vars.scss";
 
-$header-text-margin: 12px;
-$heading-font-size: 24px;
+body {
+  background-color: #EDF0F6;
+}
 
 .ellipsisable-text {
   white-space: nowrap;
@@ -33,10 +34,17 @@ $heading-font-size: 24px;
 
 .header-text {
   font-weight: bold;
-  margin-bottom: $header-text-margin;
+  margin-bottom: $form-group-margin-bottom;
   font-size: $heading-font-size;
   border-bottom: 1px solid $subline-color;
   display: block;
+}
+
+.form-area {
+  background-color: $panel-color;
+  margin-bottom: 22px;
+  padding: 18px;
+  border: 1px solid #CDD0D6;
 }
 
 [tooltip] {

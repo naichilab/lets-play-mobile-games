@@ -1,7 +1,7 @@
 <% provide(:html_title, "ログイン") %>
 <div class="row">
   <div class="col-12 col-sm-12 col-md-8 col-lg-7 offset-lg-1">
-    <div class="col-md-12 card card-body bg-light">
+    <div class="col-md-12 form-area">
       <form>
         <%- if devise_mapping.omniauthable? %>
             <fieldset>
@@ -24,7 +24,7 @@
     <div>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'}) do |f| %>
         <fieldset>
-          <div class="col-md-12 card card-body bg-light">
+          <div class="col-md-12 form-area">
             <span class="header-text">
               メールアドレスでログイン
             </span>
@@ -35,15 +35,15 @@
             <div class="form-group">
               <label for="user_password" class="control-label">パスワード</label>
               <%= f.password_field :password, id: :user_password, autocomplete: "off", class: 'form-control' %>
+              <% if devise_mapping.rememberable? -%>
+                <label class="checkbox">
+                  <label>
+                    <%= f.check_box :remember_me, id: :user_remember_me %> ログインしたままにする
+                  </label>
+                </label>
+              <% end -%>
             </div>
             <%= f.submit 'ログイン', class: 'btn btn-success btn-block' %>
-            <% if devise_mapping.rememberable? -%>
-              <label class="checkbox">
-                <label>
-                  <%= f.check_box :remember_me, id: :user_remember_me %> ログインしたままにする
-                </label>
-              </label>
-            <% end -%>
           </div>
         </fieldset>
       <% end %>
