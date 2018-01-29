@@ -1,17 +1,40 @@
+nav.sidebar {
+  position: fixed;
+  top: $navbar-brand-height;
+  left: 0;
+  bottom: 0px;
+  z-index: 1;
+  padding-top: 24px;
+  overflow-y: auto;
+}
+
+nav.sidebar {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.search-result-area {
+  padding: 24px 32px;
+  margin-top: -24px;
+  background-color: white;
+}
+
 .boxed,pre {
-    background-color: #fff;
-    margin-bottom: 36px;
+  background-color: #fff;
+  margin: 0px -8px 36px -8px;
 }
 
 .boxed-content {
-    margin-left: -10px;
-    margin-right: -10px;
     position: relative;
 }
 
 .boxed-icon-area {
     display: inline-block;
 }
+
+.boxed-body {
+    padding: 0px 8px 0px 4px;
+ }
 
 .boxed a {
     display: block;

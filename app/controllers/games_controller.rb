@@ -9,6 +9,7 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.json
   def index
+    render :layout => 'fullscreen'
   end
 
   # GET /games/1
