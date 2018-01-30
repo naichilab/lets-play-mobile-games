@@ -1,22 +1,37 @@
 nav.sidebar {
   position: fixed;
   top: $navbar-brand-height;
-  left: 0;
-  bottom: 0px;
   z-index: 1;
-  padding-top: 24px;
-  overflow-y: auto;
+  left: 0;
+  @include media-breakpoint-up(md) {
+    bottom: 0;
+    overflow-y: auto;
+    padding-top: 24px;
+  }
+  @include media-breakpoint-down(sm) {
+    padding-top: 32px;
+    background-color: $panel-color;
+    border-bottom: 1px solid #CDD0D6;
+  }
 }
 
 nav.sidebar {
-  padding-left: 0;
-  padding-right: 0;
+  @include media-breakpoint-up(md) {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .search-result-area {
-  padding: 24px 32px;
-  margin-top: -24px;
   background-color: white;
+  @include media-breakpoint-up(md) {
+    padding: 24px 32px;
+    margin-top: -24px;
+    border-left: 1px solid $panel-border-color;
+  }
+  @include media-breakpoint-down(sm) {
+    padding: 112px 32px 32px 24px;
+  }
 }
 
 .boxed,pre {

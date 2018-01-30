@@ -44,7 +44,7 @@ body {
   background-color: $panel-color;
   margin-bottom: 22px;
   padding: 18px;
-  border: 1px solid #CDD0D6;
+  border: 1px solid $panel-border-color;
 }
 
 [tooltip] {

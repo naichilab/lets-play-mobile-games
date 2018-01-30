@@ -1,8 +1,7 @@
 @import "vars.scss";
-@import "break-point.scss";
 
 @mixin flexible-table-cell($xs-width: null, $sm-width: null, $md-width: null) {
-  @include xs-screen-media {
+  @include media-breakpoint-only(xs) {
     @if $xs-width == null {
       display: none!important;
     }
@@ -10,7 +9,7 @@
       width: $xs-width;
     }
   }
-  @include sm-screen-media {
+  @include media-breakpoint-only(sm) {
     @if $sm-width == null {
       display: none!important;
     }
@@ -18,23 +17,7 @@
       width: $sm-width;
     }
   }
-  @include md-screen-media {
-    @if $md-width == null {
-      display: none!important;
-    }
-    @else {
-      width: $md-width;
-    }
-  }
-  @include lg-screen-media {
-    @if $md-width == null {
-      display: none!important;
-    }
-    @else {
-      width: $md-width;
-    }
-  }
-  @include xl-screen-media {
+  @include media-breakpoint-up(md) {
     @if $md-width == null {
       display: none!important;
     }
@@ -110,29 +93,16 @@ $profile-margin-area: $margin-area * 1.5;
     @include flexible-table-cell(40%, 40%, 25%);
   }
   .registered-game-title {
-    @include xs-screen-media {
-      margin-top: $margin-title-category / 2;
-    }
-    @include sm-screen-media {
+    @include media-breakpoint-down(sm) {
       margin-top: $margin-title-category / 2;
     }
   }
   .registered-game-category {
-    @include xs-screen-media {
+    @include media-breakpoint-down(sm) {
       font-size: 0.8em;
       color: $subtext-color;
     }
-    @include sm-screen-media {
-      font-size: 0.8em;
-      color: $subtext-color;
-    }
-    @include md-screen-media {
-      display: none!important;
-    }
-    @include lg-screen-media {
-      display: none!important;
-    }
-    @include xl-screen-media {
+    @include media-breakpoint-up(md) {
       display: none!important;
     }
   }
