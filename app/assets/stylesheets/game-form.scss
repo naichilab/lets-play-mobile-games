@@ -13,7 +13,7 @@
 
 .url-form {
   @include media-breakpoint-only(xs) {
-    overflow-x: scroll;
+    overflow-x: auto;
   }
 
   .url-form-table {

@@ -11,7 +11,7 @@
           </span>
         </label>
         <%= f.submit "", id:"icon_upload_button", class: 'btn btn-primary hidden-element' %>
-        <span class="help-block">正方形を推奨。正方形に切り取られて表示されます。</span>
+        <div class="subtext">正方形を推奨。正方形に切り取られて表示されます。</div>
       </div>
     <% end %>
   </div>
@@ -33,7 +33,7 @@
               <label for="user_email" class="control-label">メールアドレス</label>
               <%= f.email_field :email, id: :user_email, class: 'form-control' %>
               <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-                <span class="help-block">
+                <span class="subtext">
                   メールアドレス変更の確認待ちです。 : <%= resource.unconfirmed_email %>
               </span>
             <% end %>

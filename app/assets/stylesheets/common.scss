@@ -1,7 +1,7 @@
 @import "vars.scss";
 
 body {
-  background-color: #EDF0F6;
+  background-color: #F1F4FA;
 }
 
 .ellipsisable-text {
@@ -45,6 +45,12 @@ body {
   margin-bottom: 22px;
   padding: 18px;
   border: 1px solid $panel-border-color;
+}
+
+.subtext {
+  color: $helptext-color;
+  font-size: 0.85em;
+  margin-top: -6px;
 }
 
 [tooltip] {
