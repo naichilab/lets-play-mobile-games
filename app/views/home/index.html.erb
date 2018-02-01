@@ -1,81 +1,62 @@
-<section class="section-share">
-  <div class="row">
-    <div class="col-12">
-      <div class="pull-right">
-        <%= link_to "https://twitter.com/intent/tweet?url=http://letsplaylist.genieus.co.jp/&amp;text="+t('app.site_name'), class: "btn btn-twitter" do %>
+<div class="row">
+  <div class="col-12">
+    <div class="pull-right">
+      <%= link_to "https://twitter.com/intent/tweet?url=http://letsplaylist.genieus.co.jp/&amp;text="+t('app.site_name'), class: "btn btn-twitter" do %>
         <i class="fa fa-twitter fa-lg"></i>Tweet
-        <% end %>
-          <a href="http://www.facebook.com/sharer.php?u=http://letsplaylist.genieus.co.jp/" class="btn btn-facebook">
-              <i class="fa fa-facebook fa-lg"></i>Share
-          </a>
-          <a href="javascript:window.open('http://b.hatena.ne.jp/add?mode=confirm&amp;is_bm=1&amp;title='+escape(document.title)+'&amp;url='+escape(location.href),%20'_blank',%20'width=520,height=600,resizable=1,scrollbars=1');undefined;" class="btn btn-hatebu">
-            <i class="fa fa-hatebu fa-lg"></i>Bookmark
-          </a>
-      </div>
+      <% end %>
+      <a href="http://www.facebook.com/sharer.php?u=http://letsplaylist.genieus.co.jp/" class="btn btn-facebook">
+        <i class="fa fa-facebook fa-lg"></i>Share
+      </a>
+      <a href="javascript:window.open('http://b.hatena.ne.jp/add?mode=confirm&amp;is_bm=1&amp;title='+escape(document.title)+'&amp;url='+escape(location.href),%20'_blank',%20'width=520,height=600,resizable=1,scrollbars=1');undefined;" class="btn btn-hatena-bookmark">
+        <i class="fa fa-hatena-bookmark fa-lg"></i>Bookmark
+      </a>
     </div>
   </div>
-</section>
-
-<div class="jumbotron">
-  <h1>実況OKなゲームを集めました</h1>
-  <p>
-    <a href="/games" class="btn btn-primary btn-lg"><i class="fa fa-list-ul"></i> ゲーム一覧を見る</a>
-    <a href="/games/new" class="btn btn-primary btn-lg"><i class="fa fa-pencil"></i> ゲームを登録する</a>
-  </p>
 </div>
 
-<section class="section section-default point">
+<div class="introduction-section bg-white">
+  <h1>ゲーム開発者と実況者を繋ぎます</h1>
+  <h3>実況OKなゲームを集めました</h3>
+</div>
+
+<div class="introduction-section point">
   <div class="row">
-    <div class="col-12 col-lg-12 subtitle">
-      <h2>ゲーム開発者と実況者を繋ぎます</h2>
-      <p>当サイトでは以下のことができます。</p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-3 col-sm-6 point-box">
-      <div class="point-circle start">
-        <i class="fa fa-gamepad"></i>
-      </div>
-      <div class="point-description">
+    <div class="col-md-3 col-sm-6">
+      <i class="fa fa-gamepad"></i>
+      <div>
         <h4>ゲーム開発者さん</h4>
         <p>開発したゲームを登録し、実況OK/NGの意思表示をすることができます。</p>
       </div>
     </div>
-    <div class="col-md-3 col-sm-6 point-box">
-      <div class="point-circle replace">
-        <i class="fa fa-youtube-play"></i>
-      </div>
-      <div class="point-description">
+    <div class="col-md-3 col-sm-6">
+      <i class="fa fa-youtube-play"></i>
+      <div>
         <h4>ゲーム実況者さん</h4>
         <p>実況OKなゲームを検索できます。</p>
         <p>また、投稿した動画へのリンクを各ゲームに対して登録できます。※開発中</p>
       </div>
     </div>
-    <div class="col-md-3 col-sm-6 point-box">
-      <div class="point-circle compass">
-        <i class="fa fa-refresh"></i>
-      </div>
-      <div class="point-description">
+    <div class="col-md-3 col-sm-6">
+      <i class="fa fa-refresh"></i>
+      <div>
         <h4>アクセスUP</h4>
         <p>ゲームと実況動画、双方のアクセスアップを期待できます。</p>
       </div>
     </div>
-    <div class="col-md-3 col-sm-6 point-box">
-      <div class="point-circle japanese">
-        <i class="fa fa-yen"></i>
-      </div>
-      <div class="point-description">
+    <div class="col-md-3 col-sm-6">
+      <i class="fa fa-yen"></i>
+      <div>
         <h4>無料</h4>
         <p>全ての機能を無料でお使いいただけます。</p>
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<section class="section section-default getting-started">
+<div class="introduction-section bg-white">
   <div class="container">
     <div class="row">
-      <div class="col-12 subtitle">
+      <div class="col-12 text-center">
         <h2>さあ、はじめましょう。</h2>
       </div>
     </div>
@@ -88,4 +69,4 @@
       </div>
     </div>
   </div>
-</section>
+</div>

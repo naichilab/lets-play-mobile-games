@@ -90,3 +90,43 @@ body {
 .main-content {
   margin-top: 78px;
 }
+
+.introduction-section {
+  padding: 80px 0;
+}
+
+.footer {
+  font-size: 0.75em;
+  padding: 30px 0;
+  color: $white;
+  background-color: $dark;
+  .copyright {
+    padding: 10px 0;
+  }
+}
+
+@mixin social-button($bg-color) {
+  @include button-variant($bg-color, $bg-color);
+  color: $white;
+  ::before {
+    padding-right: 6px;
+  }
+}
+
+.btn-twitter {
+  @include social-button(#55acee);
+}
+
+.btn-facebook {
+  @include social-button(#3b5998);
+}
+
+.btn-hatena-bookmark {
+  @include social-button(#178fde);
+}
+
+.fa.fa-hatena-bookmark::before {
+  content: "B!";
+  font-family: Verdana;
+  font-weight: bold;
+}
