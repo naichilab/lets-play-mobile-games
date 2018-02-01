@@ -1,7 +1,8 @@
 @import "vars.scss";
 
-$header-text-margin: 12px;
-$heading-font-size: 24px;
+body {
+  background-color: #F1F4FA;
+}
 
 .ellipsisable-text {
   white-space: nowrap;
@@ -33,10 +34,23 @@ $heading-font-size: 24px;
 
 .header-text {
   font-weight: bold;
-  margin-bottom: $header-text-margin;
+  margin-bottom: $form-group-margin-bottom;
   font-size: $heading-font-size;
   border-bottom: 1px solid $subline-color;
   display: block;
+}
+
+.form-area {
+  background-color: $panel-color;
+  margin-bottom: 22px;
+  padding: 18px;
+  border: 1px solid $panel-border-color;
+}
+
+.subtext {
+  color: $helptext-color;
+  font-size: 0.85em;
+  margin-top: -6px;
 }
 
 [tooltip] {
@@ -66,4 +80,13 @@ $heading-font-size: 24px;
       transform: translateX(-50%);
     }
   }
+}
+
+.alert-area {
+  padding-top: 54px;
+  margin-bottom: -54px;
+}
+
+.main-content {
+  margin-top: 78px;
 }

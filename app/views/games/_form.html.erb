@@ -3,7 +3,7 @@
   <div data-vue-model="<%= "{ \"platforms\": #{@platforms.to_json(:only => [:id, :name])} }" %>"></div>
   <div data-vue-model="<%= "{ \"tags\": #{game.tags.map {|m| m.name}.to_json} }" %>"></div>
 
-  <div class="col-sm-12 col-md-10 offset-md-1">
+  <div class="col-sm-12 col-md-10 offset-md-1 form-area">
     <div>
       <%= form_with(model: game, local: true, class: 'form-horizontal', id: 'game-form') do |form| %>
           <span class="header-text">
@@ -42,17 +42,19 @@
                 </div>
               </div>
               <div class="col-sm-12 col-md-4 order-md-2">
-                <label for="game_icon" class="control-label">アイコン画像</label>
-                <div id="game_icon_preview">
-                  <span class="thumbnail-preview-clip" id="preview_image" style="background-image: url(<%= game.icon %>)"></span>
+                <div class="form-group">
+                  <label for="game_icon" class="control-label">アイコン画像</label>
+                  <div id="game_icon_preview">
+                    <span class="thumbnail-preview-clip" id="preview_image" style="background-image: url(<%= game.icon %>)"></span>
+                  </div>
+                  <div>
+                    <label class="btn btn-outline-primary btn-sm btn-block">
+                      <i class="fa fa-upload" aria-hidden="true"></i> 画像をアップロード
+                      <%= form.file_field :icon, id: :game_icon, class: 'hidden-element', accept: 'image/png,image/jpg,image/jpeg,image/gif', "v-on:change"=>"onUploadedFile" %>
+                    </label>
+                  </div>
+                  <div class="subtext">正方形を推奨。正方形に切り取られて表示されます。</div>
                 </div>
-                <div>
-                  <label class="btn btn-outline-primary btn-sm btn-block">
-                    <i class="fa fa-upload" aria-hidden="true"></i> 画像をアップロードする
-                    <%= form.file_field :icon, id: :game_icon, class: 'hidden-element', accept: 'image/png,image/jpg,image/jpeg,image/gif', "v-on:change"=>"onUploadedFile" %>
-                  </label>
-                </div>
-                <span class="help-block">正方形を推奨。正方形に切り取られて表示されます。</span>
               </div>
 
               <div class="col-12 col-md-8 order-3">
@@ -85,7 +87,7 @@
 
                 <div class="form-group">
                   <label for="game_tags" class="control-label">検索タグ</label>
-                  <input-tag :tags="tags" class="form-control"></input-tag>
+                  <input-tag :tags="tags"></input-tag>
                   <input type="hidden" name="game[tags][]" v-for="t in tags" :value="t" class="form-control">
                   <div class="recent-tags">
                     <p>最近使用されたタグ:
@@ -95,9 +97,8 @@
                     </p>
                   </div>
                 </div>
-
                 <div class="form-group">
-                  <%= form.submit button_text, class: 'btn btn-primary' %>
+                  <%= form.submit button_text, class: 'btn btn-primary btn-lg' %>
                 </div>
               </div>
             </div>

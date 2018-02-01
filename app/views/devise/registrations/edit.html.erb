@@ -2,7 +2,7 @@
 <div class="row">
   <div class="user-icon-form col-sm-12 col-md-4 order-md-2">
     <%= image_tag @user.icon, class: 'user-icon' %>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put,class: 'form-horizontal' }) do |f| %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: 'user_icon_form', method: :put, class: 'form-horizontal' }) do |f| %>
       <div data-vue="icon_upload_form">
         <label class="user-icon-upload-button">
           <span class="btn btn-primary btn-block">
@@ -11,13 +11,13 @@
           </span>
         </label>
         <%= f.submit "", id:"icon_upload_button", class: 'btn btn-primary hidden-element' %>
-        <span class="help-block">正方形を推奨。正方形に切り取られて表示されます。</span>
+        <div class="subtext">正方形を推奨。正方形に切り取られて表示されます。</div>
       </div>
     <% end %>
   </div>
   <div class="col-sm-12 col-md-8 order-md-1">
     <div class="profile-form">
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put,class: 'form-horizontal' }) do |f| %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: 'user_profile_form', method: :put,class: 'form-horizontal' }) do |f| %>
         <fieldset>
           <span class="header-text">
             プロフィール変更
@@ -33,7 +33,7 @@
               <label for="user_email" class="control-label">メールアドレス</label>
               <%= f.email_field :email, id: :user_email, class: 'form-control' %>
               <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-                <span class="help-block">
+                <span class="subtext">
                   メールアドレス変更の確認待ちです。 : <%= resource.unconfirmed_email %>
               </span>
             <% end %>
@@ -45,7 +45,7 @@
     </div>
 
     <div class="password-form">
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put,class: 'form-horizontal' }) do |f| %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: 'user_password_form', method: :put,class: 'form-horizontal' }) do |f| %>
         <fieldset>
           <span class="header-text">
             パスワード変更

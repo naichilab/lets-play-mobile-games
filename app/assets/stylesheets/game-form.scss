@@ -1,5 +1,3 @@
-@import "break-point";
-
 .btn-remove-url {
   background-color: transparent;
   border-color: transparent;
@@ -14,13 +12,13 @@
 }
 
 .url-form {
-  @include xs-screen-media {
-    overflow-x: scroll;
+  @include media-breakpoint-only(xs) {
+    overflow-x: auto;
   }
 
   .url-form-table {
     width: 100%;
-    @include xs-screen-media {
+    @include media-breakpoint-only(xs) {
       min-width: 575px;
     }
   }

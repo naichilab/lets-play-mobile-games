@@ -1,8 +1,4 @@
-// Place all the styles related to the Games controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 @import "vars.scss";
-@import "break-point.scss";
 
 @mixin text-prefix-icon {
     [class^="icon"]{
@@ -11,27 +7,23 @@
 }
 
 .search-area {
-    margin-bottom: $text-size / 4;
+  @include media-breakpoint-up(md){
+    padding: $text-size / 2;
+  }
+  @include media-breakpoint-up(xs){
+    padding: $text-size / 2 0px;
+  }
 }
 
 .condition-area {
-    @include xs-screen-media {
+    @include media-breakpoint-down(sm) {
        display: none;
-    }
-    @include sm-screen-media {
-       display: none;
-    }
-    @include md-screen-media {
-        display: none;
     }
 }
 
 .condition-filter-area {
-    @include lg-screen-media {
+    @include media-breakpoint-up(md) {
        display: none;
-    }
-    @include xl-screen-media {
-        display: none;
     }
 }
 
@@ -48,13 +40,14 @@
 }
 
 .condition-box {
-    font-size: $text-size;
+  font-size: $text-size;
+  border-radius: 0;
 }
 
 .condition-item {
     position: relative;
     display: block;
-    padding: 2px $text-size;
+    padding: 2px;
     margin-bottom: -1px;
     border: 1px solid #ddd;
     border-width: 0 0 1px 0;

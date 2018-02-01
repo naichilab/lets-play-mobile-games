@@ -1,15 +1,15 @@
 <% provide(:html_title, "#{@game.title}") %>
-<div class="row game-detail">
-  <div class="col-12">
-    <% if @game.user == current_user %>
-      <%= link_to(edit_game_path(@game), class: 'btn btn-primary pull-left') do %>
+<div class="row game-detail-area">
+  <% if @game.user == current_user %>
+    <div class="col-12 game-edit-menu">
+      <%= link_to(edit_game_path(@game), class: 'btn btn-outline-primary pull-left') do %>
         <span class="icon-pencil"></span> 編集する
       <% end %>
-      <%= link_to(game_path(@game), data: {confirm: "削除しますか？"}, method: :delete, class: 'btn btn-danger pull-right') do %>
+      <%= link_to(game_path(@game), data: {confirm: "削除しますか？"}, method: :delete, class: 'btn btn-outline-danger pull-right') do %>
         <i class="fa fa-trash" aria-hidden="true"></i> 削除する
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
   <span class="col-12 col-sm-4 game-icon">
     <%= image_tag @game.icon.url, class: 'img-fluid' %>
   </span>
