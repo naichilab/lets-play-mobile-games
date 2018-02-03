@@ -91,10 +91,6 @@ body {
   margin-top: 78px;
 }
 
-.introduction-section {
-  padding: 80px 0;
-}
-
 .footer {
   font-size: 0.75em;
   padding: 30px 0;
@@ -108,9 +104,7 @@ body {
 @mixin social-button($bg-color) {
   @include button-variant($bg-color, $bg-color);
   color: $white;
-  ::before {
-    padding-right: 6px;
-  }
+  margin: 4px;
 }
 
 .btn-twitter {
@@ -123,6 +117,7 @@ body {
 
 .btn-hatena-bookmark {
   @include social-button(#178fde);
+  margin-left: -2px;
 }
 
 .fa.fa-hatena-bookmark::before {

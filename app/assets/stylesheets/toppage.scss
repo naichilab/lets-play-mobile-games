@@ -1,0 +1,118 @@
+$side-padding: 24px;
+
+.introduction-section {
+  padding-bottom: 68px;
+  text-align: center;
+}
+
+.col-12.full-only-xs {
+  @include media-breakpoint-only(xs) {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+.hero-section {
+  margin-top: -22px;
+}
+
+.hero {
+  padding: 12px 0px;
+  position: absolute;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100vw;
+}
+
+.hero-content {
+  color: $white;
+  padding-top: 180px;
+  padding-bottom: 174px;
+
+  .hero-message {
+    margin-bottom: 56px;
+  } 
+}
+
+.hero-image {
+  background-image: image-url("hero.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  width: 100%;
+  height: 520px;
+  -webkit-filter: brightness(0.58);
+  -moz-filter: brightness(0.58);
+  -o-filter: brightness(0.58);
+  -ms-filter: brightness(0.58);
+  filter: brightness(0.58);
+}
+
+@mixin image-icon($background-color, $color, $font-size:92px) {
+  font-size: $font-size;
+  background-color: $background-color;
+  color: $color;
+  border-radius: 100%;
+  width: $font-size + 40px;
+  height: $font-size + 40px;
+  padding: 20px 0px;
+}
+
+@mixin image-outline-icon($color, $font-size:92px) {
+  font-size: $font-size;
+  color: $color;
+  margin-bottom: 8px;
+} 
+
+
+@mixin for-someone-area($base-color) {
+  color: $white;
+  background-color: $base-color;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  .image-icon {
+    @include image-icon($white, $base-color);
+  }
+}
+
+.for-developer-btn {
+  @include button-variant($developer-color, $developer-color);
+}
+
+.for-developer-header {
+  @include for-someone-area($developer-color);
+}
+
+.for-streamer-btn {
+  @include button-variant($streamer-color, $streamer-color);
+  color: $white;
+}
+
+.for-streamer-header {
+  @include for-someone-area($streamer-color);
+}
+
+.for-content {
+  background-color: $white; 
+  padding: 18px $side-padding;
+}
+
+.merit-icon {
+  @include image-outline-icon($merit-color, 68px);
+}
+
+.merit-content {
+  background-color: $white;
+  @include media-breakpoint-up(sm){
+    padding: 64px $side-padding;
+  }
+  @include media-breakpoint-only(xs){
+    padding: 32px $side-padding 0px $side-padding;
+  }
+}
+
+.endup-content {
+  background-color: $white;
+  padding: $side-padding * 2 $side-padding;
+}

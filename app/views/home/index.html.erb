@@ -1,72 +1,86 @@
-<div class="row">
-  <div class="col-12">
-    <div class="pull-right">
-      <%= link_to "https://twitter.com/intent/tweet?url=http://letsplaylist.genieus.co.jp/&amp;text="+t('app.site_name'), class: "btn btn-twitter" do %>
-        <i class="fa fa-twitter fa-lg"></i>Tweet
-      <% end %>
-      <a href="http://www.facebook.com/sharer.php?u=http://letsplaylist.genieus.co.jp/" class="btn btn-facebook">
-        <i class="fa fa-facebook fa-lg"></i>Share
-      </a>
-      <a href="javascript:window.open('http://b.hatena.ne.jp/add?mode=confirm&amp;is_bm=1&amp;title='+escape(document.title)+'&amp;url='+escape(location.href),%20'_blank',%20'width=520,height=600,resizable=1,scrollbars=1');undefined;" class="btn btn-hatena-bookmark">
-        <i class="fa fa-hatena-bookmark fa-lg"></i>Bookmark
-      </a>
+<div class="row hero-section introduction-section">
+  <div class="hero-image"></div>
+  <div class="hero">
+    <div class="col-12">
+      <div class="pull-right">
+        <%= render 'layouts/social_buttons' %>
+      </div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-message">
+        <h1>ゲーム開発者とゲーム実況者をつなぐ</h1>
+        <h3>実況OKなゲームを集めました！</h3>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="introduction-section bg-white">
-  <h1>ゲーム開発者と実況者を繋ぎます</h1>
-  <h3>実況OKなゲームを集めました</h3>
-</div>
+<div class="row introduction-section">
+  <div class="col-12 col-sm-6 full-only-xs">
+    <div class="for-developer-header">
+      <h3>ゲーム開発者</h3>
+      <i class="fa fa-gamepad image-icon"></i>
+    </div>
+    <div class="for-content">
+      <p>
+      開発したゲームの実況OK/NGの意思表示をすることができます。<br>
+      実況時の注意点をガイドラインとして登録できます。
+      </p>
+      <a href="/games/new" class="btn for-developer-btn btn-lg"><i class="fa fa-pencil"></i> ゲームを登録する</a>
+    </div>
+  </div>
 
-<div class="introduction-section point">
+  <div class="col-12 col-sm-6 full-only-xs">
+    <div class="for-streamer-header">
+      <h3>ゲーム実況者</h3>
+      <i class="fa fa-youtube-play image-icon"></i>
+    </div>
+    <div class="for-content">
+      <p>
+      実況OKなゲームを検索できます。<br>
+      投稿した動画へのリンクを各ゲームに対して登録できます。※開発中
+      </p>
+      <a href="/games" class="btn for-streamer-btn btn-lg"><i class="fa fa-search"></i> ゲームを探す</a>
+    </div>
+  </div>
+</div>
+<div class="introduction-section">
   <div class="row">
-    <div class="col-md-3 col-sm-6">
-      <i class="fa fa-gamepad"></i>
+    <div class="col-12 col-sm-4 merit-content">
+      <i class="fa fa-handshake-o merit-icon"></i>
       <div>
-        <h4>ゲーム開発者さん</h4>
-        <p>開発したゲームを登録し、実況OK/NGの意思表示をすることができます。</p>
+        <h4>つながる</h4>
+        <p class="subtext">開発者と実況者が互いのコンテンツでつながることができます。</p>
       </div>
     </div>
-    <div class="col-md-3 col-sm-6">
-      <i class="fa fa-youtube-play"></i>
+    <div class="col-12 col-sm-4 merit-content">
+      <i class="fa fa-line-chart merit-icon"></i>
       <div>
-        <h4>ゲーム実況者さん</h4>
-        <p>実況OKなゲームを検索できます。</p>
-        <p>また、投稿した動画へのリンクを各ゲームに対して登録できます。※開発中</p>
+        <h4>アクセス数UP</h4>
+        <p class="subtext">ゲームと実況動画、双方のアクセス数UPを期待できます。</p>
       </div>
     </div>
-    <div class="col-md-3 col-sm-6">
-      <i class="fa fa-refresh"></i>
-      <div>
-        <h4>アクセスUP</h4>
-        <p>ゲームと実況動画、双方のアクセスアップを期待できます。</p>
-      </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-      <i class="fa fa-yen"></i>
+
+    <div class="col-12 col-sm-4 merit-content">
+      <i class="fa fa-yen merit-icon"></i>
       <div>
         <h4>無料</h4>
-        <p>全ての機能を無料でお使いいただけます。</p>
+        <p class="subtext">すべての機能を無料でお使いいただけます。</p>
       </div>
     </div>
   </div>
 </div>
 
-<div class="introduction-section bg-white">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 text-center">
-        <h2>さあ、はじめましょう。</h2>
-      </div>
+<div class="introduction-section">
+  <div class="row">
+    <div class="col-12 col-sm-6 offset-sm-3 endup-content">
+      <h3>さぁ はじめましょう</h3>
+      <p class="subtext">ログインすることで各種登録機能が使えるようになります</p>
+      <%= link_to '新規登録', new_user_session_path, class: "btn btn-success btn-lg" %>   
+      <%= link_to 'ログイン', new_user_session_path, class: "btn btn-outline-success btn-lg" %>   
     </div>
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <div class="form-group">
-          <a href="/games" class="btn btn-primary btn-lg"><i class="fa fa-list-ul"></i> ゲーム一覧を見る</a>
-          <a href="/games/new" class="btn btn-primary btn-lg"><i class="fa fa-pencil"></i> ゲームを登録する</a>
-        </div>
-      </div>
-    </div>
+  </div>
+  <div class="pt-2 text-center">
+    <%= render 'layouts/social_buttons' %>
   </div>
 </div>
