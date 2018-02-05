@@ -14,13 +14,13 @@
 */
 
 @import "bootstrap";
-@import "rin.css";
 
 @import "vars.scss";
 @import "icon.scss";
 @import "custom.scss";
 @import "common.scss";
 
+@import "toppage";
 @import "game-detail.scss";
 @import "game-form.scss";
 @import "game-grid.scss";
