@@ -20,7 +20,7 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="タイトル">
   <meta name="twitter:description" content="詳細文">
-  <meta name="twitter:image" content="a">
+  <meta name="twitter:image" content= <%= (image_url("hero.jpeg")) %>>
   <% end %>
 </head>
 
@@ -29,7 +29,6 @@
 <%= render 'layouts/alert' %>
 
 <div class="main-content">
-  <% (image_url("hero.jpeg")) %>
   <%= yield %>
 </div>
 
