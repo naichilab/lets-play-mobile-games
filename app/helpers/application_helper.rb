@@ -18,6 +18,10 @@ module ApplicationHelper
     return text
   end
 
+  def decode_text(text)
+    return CGI.unescape(text)
+  end
+
   def parent_layout(layout)
     @view_flow.set(:layout, self.output_buffer)
     self.output_buffer = render(file: "layouts/#{layout}")

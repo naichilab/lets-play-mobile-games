@@ -44,7 +44,7 @@
           <% @game.store_urls.each do |s| %>
             <li>
               <span class="icon-<%= s.platform.code %>" aria-hidden="true"></span>
-              <%= link_to to_xss_safe_url(s.url), to_xss_safe_url(s.url), target: '_blank' %>
+              <%= link_to decode_text(to_xss_safe_url(s.url)), to_xss_safe_url(s.url), target: '_blank' %>
             </li>
           <% end %>
         </ul>
