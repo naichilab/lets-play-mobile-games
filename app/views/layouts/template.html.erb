@@ -11,16 +11,10 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <% if yield(:twitter_title).present? && yield(:twitter_description).present? && yield(:twitter_image).present?%>
-  <!--
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="<% yield(:twitter_title) %>">
-    <meta name="twitter:description" content="<% yield(:twitter_description) %>">
-    <meta name="twitter:image" content="<% yield(:twitter_image) %>">
-  -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="タイトル">
-  <meta name="twitter:description" content="詳細文">
-  <meta name="twitter:image" content= <%= image_url("hero.jpeg") %>>
+    <meta name="twitter:title" content="<%= yield(:twitter_title) %>">
+    <meta name="twitter:description" content="<%= yield(:twitter_description) %>">
+    <meta name="twitter:image" content="<%= yield(:twitter_image) %>">
   <% end %>
 </head>
 

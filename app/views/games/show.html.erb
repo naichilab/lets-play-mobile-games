@@ -1,7 +1,11 @@
 <% provide(:html_title, "#{@game.title}") %>
-<% provide(:twitter_title, "a") %>
-<% provide(:twitter_image, "a") %>
-<% provide(:twitter_description, "a") %>
+<% provide(:twitter_title, "#{@game.title} | ゲームを実況しよう！") %>
+<% provide(:twitter_image, "#{@game.icon.url}") %>
+<% if @game.specific_conditions.present? %>
+<% provide(:twitter_description, text_contain_url(h(@game.specific_conditions)).html_safe) %>
+<% else %>
+<% provide(:twitter_description, "特にありません") %>
+<% end %>
 <div class="row game-detail-area">
   <% if @game.user == current_user %>
     <div class="col-12 game-edit-menu">
@@ -20,14 +24,9 @@
     <div class="game-detail-title">
       <p>
       <%= @game.category.name %>
-
-
       <%= link_to "https://twitter.com/intent/tweet?url=http://letsplaylist.genieus.co.jp/games/#{params[:id]}&amp;text="+ERB::Util.url_encode("#{@game.title} | ゲームを実況しよう！"), class: "btn btn-twitter" do %>
         <i class="fa fa-twitter fa-lg"></i>
       <% end %>
-
-
-
       <% @game.tags.each do |tag| %>
         <%= tag.name %>
       <% end %>
