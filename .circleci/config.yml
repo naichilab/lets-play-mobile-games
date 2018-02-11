@@ -54,10 +54,6 @@ jobs:
             - ~/.yarn-cache
           key: v1-yarn-{{ checksum "yarn.lock" }}
 
-      # Database setup
-      - run: bundle exec rake db:create RAILS_ENV=test
-      - run: bundle exec rake db:schema:load RAILS_ENV=test
-
       # webpack
       - run: bundle exec webpack
 
