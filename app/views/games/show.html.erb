@@ -4,7 +4,7 @@
 <% if @game.specific_conditions.present? %>
 <% provide(:twitter_description, text_contain_url(h(@game.specific_conditions)).html_safe) %>
 <% else %>
-<% provide(:twitter_description, "特にありません") %>
+<% provide(:twitter_description, "是非、実況をお願いします！") %>
 <% end %>
 <div class="row game-detail-area">
   <% if @game.user == current_user %>
@@ -18,20 +18,34 @@
     </div>
   <% end %>
   <span class="col-12 col-sm-4 game-icon">
-    <%= image_tag @game.icon.url, class: 'img-fluid' %>
+    <div>
+      <%= image_tag @game.icon.url, class: 'img-fluid' %>
+    </div>
+    <div class="pull-left d-none d-sm-block">
+      <%= link_to "https://twitter.com/intent/tweet?url=http://letsplaylist.genieus.co.jp/games/#{params[:id]}&amp;text="+ERB::Util.url_encode("#{@game.title} | ゲームを実況しよう！"), class: "btn btn-twitter" do %>
+        <i class="fa fa-twitter fa-lg"></i>
+        宣伝する
+      <% end %>
+    </div>
   </span>
   <div class="col-12 col-sm-8">
     <div class="game-detail-title">
       <p>
-      <%= @game.category.name %>
-      <%= link_to "https://twitter.com/intent/tweet?url=http://letsplaylist.genieus.co.jp/games/#{params[:id]}&amp;text="+ERB::Util.url_encode("#{@game.title} | ゲームを実況しよう！"), class: "btn btn-twitter" do %>
-        <i class="fa fa-twitter fa-lg"></i>
-      <% end %>
-      <% @game.tags.each do |tag| %>
-        <%= tag.name %>
-      <% end %>
+        <%= @game.category.name %>
+        <% @game.tags.each do |tag| %>
+          <%= tag.name %>
+        <% end %>
       </p>
-      <h1 class="foldable-text"><%= @game.title %></h1>
+      <h1 class="foldable-text">
+        <%= @game.title %>
+      </h1>
+      <div class="d-block d-sm-none">
+        <!--ヘルパーとか用いて重複避けられそうだけど、classの渡し方とか分からないのでベタ書きしてます。-->
+        <%= link_to "https://twitter.com/intent/tweet?url=http://letsplaylist.genieus.co.jp/games/#{params[:id]}&amp;text="+ERB::Util.url_encode("#{@game.title} | ゲームを実況しよう！"), class: "btn btn-twitter" do %>
+          <i class="fa fa-twitter fa-lg"></i>
+          宣伝する
+        <% end %>
+      </div>
     </div>
     <% if @game.guideline.present? %>
       <div class = "guideline">
