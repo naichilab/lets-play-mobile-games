@@ -125,3 +125,10 @@ body {
   font-family: Verdana;
   font-weight: bold;
 }
+
+.input-form-error {
+  font-size: 0.8em;
+  display: block;
+  text-align: right;
+  margin-bottom: $text-size / 2;
+}
