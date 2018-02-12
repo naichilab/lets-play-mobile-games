@@ -1,4 +1,4 @@
-<% condition =  controller.action_name == target_action %>
+<% condition = target_action.include?(controller.action_name) %>
 <li class="side-menu-item <% if condition %>selected<% end %>">
     <% if condition %>
         <%= text %>

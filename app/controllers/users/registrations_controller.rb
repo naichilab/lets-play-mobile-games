@@ -1,5 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  prepend_before_action :authenticate_scope!, only: [:edit, :update, :destroy, :games]
+  prepend_before_action :authenticate_scope!, only: [:edit, :games, :update, :destroy]
+  layout 'user_profile_layout', only: [:edit, :games, :update]
 
   def cancel
     super
@@ -14,11 +15,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def edit
-    render :layout => 'user_profile_layout'
   end
 
   def games
-    render :layout => 'user_profile_layout'
   end
 
   def update
@@ -38,6 +37,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       resource.update_without_password(params)
     end
+  end
+
+  def after_update_path_for(resource)
+    edit_user_registration_path
   end
 
 end
