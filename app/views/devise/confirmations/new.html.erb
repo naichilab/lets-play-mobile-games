@@ -1,22 +1,12 @@
 <% provide(:html_title, "確認メールの再送") %>
 <div class="row">
   <div class="col-12 col-md-7 offset-md-1 form-area">
-    <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: {method: :post, class: 'form-horizontal'}) do |f| %>
+    <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: {method: :post, class: 'form-horizontal'}, :builder => FormHelper::FormWithErrorMessageBuilder) do |f| %>
       <div class="col-md-12">
         <span class="header-text">
           メールアドレス確認メールの再送
         </span>
         <fieldset>
-          <% if resource.errors.any? %>
-            <div class="form-group">
-              <div class="col-lg-9 col-lg-offset-3 text-danger">
-                <%= "#{resource.errors.count}件のエラーがあります。" %>
-                <% resource.errors.full_messages.each do |msg| %>
-                  <span class="help-block"><%= "・#{msg}" %></span>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
           <div class="form-group">
             <label for="user_email" class="control-label">メールアドレス</label>
             <%= f.email_field :email, id: :user_email, class: 'form-control' %>
