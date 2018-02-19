@@ -24,16 +24,14 @@ RubyやRails導入は個人個人違うと思うので省略します。導入�
 
   2. `.env.development`ファイルを生成。中身は以下をコピペして下さい。  
     ```
-    CONOHA_CONTAINER_NAME=letsplaylist_development
-
-    VIRTUAL_ENV=development
+      CONOHA_CONTAINER_NAME=letsplaylist_development  
+      VIRTUAL_ENV=development
     ```
 
   3. `.env.test`ファイルを生成。中身は以下をコピペして下さい。  
     ```
-    CONOHA_CONTAINER_NAME=letsplaylist_test
-    
-    VIRTUAL_ENV=test
+      CONOHA_CONTAINER_NAME=letsplaylist_test  
+      VIRTUAL_ENV=test
     ```
 
 4. `bundle exec rake db:create`と`bundle exec rake db:migrate`を順に実行して下さい。
