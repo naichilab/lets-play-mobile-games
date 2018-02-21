@@ -1,4 +1,4 @@
 <ul class="list-group bg-white">
-  <%= render :partial => "sidebar_item", :locals => { target_action: "edit", text: "プロフィール", action: :edit } %>
-  <%= render :partial => "sidebar_item", :locals => { target_action: "games", text: "ゲーム一覧", action: :games } %>
+  <%= render :partial => "sidebar_item", :locals => { target_action: ["edit", "update"], text: "プロフィール", action: :edit } %>
+  <%= render :partial => "sidebar_item", :locals => { target_action: ["games"], text: "ゲーム一覧", action: :games } %>
 </ul>
