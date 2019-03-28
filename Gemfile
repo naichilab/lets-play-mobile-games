@@ -12,7 +12,7 @@ gem 'dotenv-rails', '~> 2.2.1' , groups: [:development, :test]
 gem 'webpacker', github: 'rails/webpacker'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 5.1.7'
 gem 'pg'
 # Use sqlite3 as the database for Active Record
 # Use Puma as the app server
