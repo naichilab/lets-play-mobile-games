@@ -59,7 +59,7 @@ GEM
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.9, < 2)
       sass (>= 3.5.2)
-    brakeman (4.0.1)
+    brakeman (4.7.2)
     builder (3.2.3)
     byebug (9.1.0)
     capybara (2.15.4)
@@ -503,7 +503,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap (~> 4.0.0)
-  brakeman (~> 4.0)
+  brakeman (~> 4.7)
   byebug
   capybara (~> 2.13)
   carrierwave (~> 1.0)
