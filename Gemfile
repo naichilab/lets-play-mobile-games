@@ -49,7 +49,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec_junit_formatter'
   gem 'rails_best_practices', '~>1.19'
-  gem 'brakeman', '~>4.0'
+  gem 'brakeman', '~>5.0'
 end
 
 gem "factory_bot_rails"
