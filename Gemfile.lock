@@ -286,7 +286,7 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
-    hashie (3.5.6)
+    hashie (4.1.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (0.9.0)
@@ -334,13 +334,14 @@ GEM
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
-    oauth (0.5.3)
-    omniauth (1.7.1)
-      hashie (>= 3.4.6, < 3.6.0)
+    oauth (0.5.5)
+    omniauth (2.0.1)
+      hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
-    omniauth-oauth (1.1.0)
+      rack-protection
+    omniauth-oauth (1.2.0)
       oauth
-      omniauth (~> 1.0)
+      omniauth (>= 1.0, < 3)
     omniauth-twitter (1.4.0)
       omniauth-oauth (~> 1.1)
       rack
@@ -352,7 +353,9 @@ GEM
       method_source (~> 0.9.0)
     public_suffix (3.0.0)
     puma (3.10.0)
-    rack (2.0.3)
+    rack (2.2.3)
+    rack-protection (2.1.0)
+      rack
     rack-proxy (0.6.2)
       rack
     rack-test (0.7.0)
