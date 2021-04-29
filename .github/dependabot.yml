@@ -1,0 +1,32 @@
+version: 2
+updates:
+- package-ecosystem: bundler
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "20:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: excon
+    versions:
+    - 0.78.1
+    - 0.79.0
+    - 0.80.0
+    - 0.80.1
+  - dependency-name: omniauth
+    versions:
+    - 2.0.1
+    - 2.0.2
+    - 2.0.3
+  - dependency-name: brakeman
+    versions:
+    - 5.0.0
+  - dependency-name: loofah
+    versions:
+    - 2.9.0
+  - dependency-name: font-awesome-rails
+    versions:
+    - 4.7.0.6
+  - dependency-name: ffi
+    versions:
+    - 1.14.2
